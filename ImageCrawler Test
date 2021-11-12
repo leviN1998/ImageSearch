@@ -1,1 +1,11 @@
+import requests
+from bs4 import BeautifulSoup
+import os
 
+url = 'https://www.google.de/search?q=tübingen&hl=de&sxsrf=AOaemvJu7Mv8vod9oy5_HV9xLBrQjhP3EA:1636730746217&source=lnms&tbm=isch&sa=X&ved=2ahUKEwja7-GVkZP0AhUHh_0HHTN_ClUQ_AUoA3oECAEQBQ&biw=1879&bih=979&dpr=1'
+
+r = requests.get(url)
+
+soup = BeautifulSoup(r.text, 'html.parser')
+
+print(soup.title.text)
