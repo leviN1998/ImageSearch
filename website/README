@@ -1,0 +1,8 @@
+# To Run the Website do the following
+
+1. Go to Git Bash Terminal
+2. Redirect Terminal to C:\Users\timok\PycharmProjects\ImageSearch\website (cd website)
+3. Type:    python -m flask
+            export FLASK_APP=test
+            python -m flask run
+4. Click the URL Link
