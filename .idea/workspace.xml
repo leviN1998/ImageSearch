@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Flask installation and first testserver" />
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Flask installation and first testserver">
+      <change afterPath="$PROJECT_DIR$/website/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/templates/base_test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/templates/base_test_fullscreen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/templates/base_test_rtl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/hello_world.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/hello_world.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637331654823</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Flask installation and first testserver">
+      <created>1637333834026</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637333834026</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

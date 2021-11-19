@@ -13,6 +13,7 @@ def index():
 def first():
     return 'this is the first page'
 
+
 @app.route('/')
 @app.route('/<name>')
 def hello(name=None):
@@ -30,3 +31,7 @@ def login():
 @app.route('/user/<username>')
 def profile(username):
     return f'{username}\'s profile'
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
