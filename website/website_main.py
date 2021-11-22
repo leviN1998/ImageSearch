@@ -1,36 +1,26 @@
-import os
 from flask import Flask, request, render_template, url_for
+
 
 app = Flask(__name__)
 
 
-@app.route('/picture')
-def index():
-    return render_template('index.html')
-
-
-@app.route('/first page')
-def first():
-    return 'this is the first page'
-
-
 @app.route('/')
-@app.route('/<name>')
-def hello(name=None):
-    return render_template('hello_world.html', name=name)
+def first():
+    return render_template('first_page.html')
+
+@app.route('/1')
+def test():
+    return render_template('base.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        return 'accepted'
-    else:
-        return 'rejected'
+@app.route('/2')
+def second():
+    return render_template('second_page.html')
 
 
-@app.route('/user/<username>')
-def profile(username):
-    return f'{username}\'s profile'
+@app.route('/3')
+def third():
+    return render_template('third_page.html')
 
 
 if __name__ == "__main__":
