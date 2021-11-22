@@ -47,7 +47,7 @@ def get_image_urls(category, image_count=10): # count = 0 means all images
     }
 
     base_url = "https://www.google.com/search?site=&tbm=isch&source=hp&biw=1873&bih=990&"   # Base Url to start a search query on google images
-    url = base_url + "q=" + category                                                        # Final url with the categroy name for which we want
+    url = base_url + "q=" + category + "&start=700"                                         # Final url with the categroy name for which we want
                                                                                             # to get images for
     r = requests.get(url, headers=u_agent)
     class_name = 'rg_i Q4LuWd'                                                              # Googles name for tags with actual images in it
@@ -72,4 +72,4 @@ def get_image_urls(category, image_count=10): # count = 0 means all images
     return imagelinks
 
 if __name__ == "__main__":
-    download_images("Tübingen", image_count=0, folder="Test_Tübingen")
+    download_images("Tübingen", image_count=10, folder="Test_Tübingen")
