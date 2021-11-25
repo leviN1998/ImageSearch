@@ -6,21 +6,22 @@ app = Flask(__name__)
 
 @app.route('/')
 def first():
-    return render_template('first_page.html')
+    return render_template('home.html')
+
 
 @app.route('/1')
 def test():
-    return render_template('base.html')
+    return render_template('test.html')
 
 
 @app.route('/2')
 def second():
-    return render_template('second_page.html')
+    return render_template('algorithm.html')
 
 
 @app.route('/3')
 def third():
-    return render_template('third_page.html')
+    return render_template('impressum.html')
 
 
 if __name__ == "__main__":
