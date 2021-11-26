@@ -9,17 +9,17 @@ def first():
     return render_template('home.html')
 
 
-@app.route('/1')
+@app.route('/test')
 def test():
     return render_template('test.html')
 
 
-@app.route('/2')
+@app.route('/algorithm')
 def second():
     return render_template('algorithm.html')
 
 
-@app.route('/3')
+@app.route('/impressum')
 def third():
     return render_template('impressum.html')
 
