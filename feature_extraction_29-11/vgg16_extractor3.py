@@ -4,10 +4,13 @@ from keras.applications import vgg16
 from keras.preprocessing import image
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input
+from tensorflow.keras.models import Model
 import numpy as np
 
-model = VGG16(weights='imagenet', include_top=False)
-model.summary()
+#model = VGG16(weights='imagenet', include_top=False)
+base_model = VGG16(weights='imagenet')
+model = Model(inputs=base_model.input, outputs=base_model.get_layer("fc1").output)
+# model.summary()
 
 #extracts images from given img_dir and saves them to feature_dir as img_name.npy
 def extractAllImg(img_dir, feature_dir):
@@ -18,8 +21,8 @@ def extractAllImg(img_dir, feature_dir):
         extractImg(img_path, feature_dir)
 
 
-#loads features saved in feature_dir and returns 2d dict with names of picture and feature
-#features: [img_name] --> [feature]; feature.shape = (1,7,7,512)
+#loads features in an array
+#loads img names in an array
 def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
     numberOfFeatures = len(featureList)
@@ -68,8 +71,8 @@ def compareImages(img_feature, feature_dir):
     #shape(ids) = 5,7,7,512 --> jetzt 5,7,512
     print(np.shape(ids))
     
-    #scores = [(dists[id], img_names[id]) for id in ids]
-    #print(scores)
+    scores = [(dists[id], img_names[id]) for id in ids]
+    print(scores)
 
 
 
@@ -78,9 +81,9 @@ if __name__ == "__main__":
     img_dir = "./static/img/"
     feature_dir = "./static/features/"
 
-    extractAllImg(img_dir, feature_dir)
+    #extractAllImg(img_dir, feature_dir)
     #print(loadSavedFeatures(feature_dir))
     #compareImages()
-    #compareImages(extractImg("./static/img/beats.jpg", feature_dir), feature_dir)
+    compareImages(extractImg("./static/img/beats.jpg", feature_dir), feature_dir)
     
-    extractImg("./static/img/hund1.jpg", feature_dir) #neues Bild
+    #extractImg("./static/img/hund1.jpg", feature_dir) #neues Bild
