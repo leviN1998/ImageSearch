@@ -84,11 +84,13 @@ def download_images(query: str, image_count: int = 0, website: Website = Website
     --------
         Nothing
     """
+    old_pwd = os.getcwd()
     if not _change_folder(folder, verbose):
         return
 
     urls = _get_image_urls(query, website, image_count, verbose)
     _save_images(urls, query, image_count, verbose)
+    os.chdir(old_pwd)
 
 
 
@@ -161,7 +163,7 @@ def _save_images(urls, name: str, image_count: int, verbose: bool):
             print("Saving files... ", count, "/", len(urls))
 
     if verbose:
-        print("Finished downloading images! ", count, " Images downloaded, ", image_count, " images should be downloaded! ", "(0 means as many as possible)")
+        print("Finished downloading images for keyword: ", name, " " , count, " Images downloaded, ", image_count, " images should be downloaded! ", "(0 means as many as possible)")
 
 
 
