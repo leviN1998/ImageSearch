@@ -1,9 +1,9 @@
 # Image Crawling
 
-Python Skripts to crawl images from different websites using search-keywords
+Python Scripts to crawl images from different websites using search-keywords
 
 crawling.py contains base functions needed to crawl images
-crawl_images.py contains skript to generate the first image-set
+crawl_images.py contains script to generate the first image-set
 
 Known Issues:
 - only ca. 80 images per keyword are crawled
