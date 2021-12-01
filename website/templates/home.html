@@ -1,24 +1,27 @@
 {% extends 'template.html' %}
 
 {% block whitehead %}
-Home
+Testimplementation of Picture upload
 {% endblock %}
 
 {% block whitecursive %}
 {% endblock %}
 
 {% block whitetext %}
+Doesn't work somehow
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <input name="datei" type="file" accept="image/*">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
 {% endblock %}
 
 {% block whiteanything %}
 {% endblock %}
 
 {% block blackhead %}
-Very important Information
 {% endblock %}
 
 {% block blackcursive %}
-<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Very Important</a>
 {% endblock %}
 
 {% block bottom %}
