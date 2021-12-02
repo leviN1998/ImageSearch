@@ -6,7 +6,7 @@ from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.models import Model
 import numpy as np
-
+import heapq
 #model = VGG16(weights='imagenet', include_top=False)
 base_model = VGG16(weights='imagenet')
 model = Model(inputs=base_model.input, outputs=base_model.get_layer("fc1").output)
@@ -23,23 +23,24 @@ def extractAllImg(img_dir, feature_dir):
 
 # loads features in an array
 # loads img names in an array
-def loadSavedFeatures(feature_dir, img_dir):
+def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
     numberOfFeatures = len(featureList)
     # features = {}
     features = []
-    img_paths = []
+    img_names = []
 
     for i in range(numberOfFeatures):
         img_name = featureList[i]
-        img_paths.append(img_dir + os.path.splitext(img_name)[0] + ".jpg")  # save img name at position i
+        img_names.append(img_name)  # save img name at position i
         feature_path = os.path.join(feature_dir, img_name)
         feature = np.load(feature_path)
+        # feature = feature / np.linalg.norm(feature) # Normalize
         features.append(feature)  # save feature at position i
 
         # features[img_name] = feature
 
-    return features, img_paths
+    return features, img_names
 
 
 #extracts feature of 1 img and saves it to feature_dir
@@ -108,28 +109,36 @@ def hamming_dist(str1, str2):    #str1, str2 have same length
 def query(vector, embedding_vectors):
     embedding_vectors.append(vector)
     b = lsh(embedding_vectors)
-    num_similar_feature = 2
+    num_similar_feature = 5
+    index = []
     for item in b.values():
         if len(embedding_vectors)-1 in item:
             if len(item) > num_similar_feature:     # if there exists vector which has same bit-string as query vector
-                return item
+                for i in range(num_similar_feature):
+                    index.append(item[i])
+                return index
             goal_str = list(b.keys())[list(b.values()).index(item)]
             break
 
     bit_str_list = list(b.keys())
-    bit_str_list.remove(goal_str)
-    min_dist = hamming_dist(goal_str, bit_str_list[0])
+    # bit_str_list.remove(goal_str)
+    hamming = []
     for k in b.keys():
-        if hamming_dist(goal_str, k) < min_dist:
-            similar_bit_str = k
-    return list(b.values())[list(b.keys()).index(similar_bit_str)]  # find a list of vectors with the most similar
-                                                                    # bit-string to the query vector
+        # if hamming_dist(goal_str, k) < min_dist:
+        #     similar_bit_str = k
+        hamming.append(hamming_dist(goal_str, k))
+    print(len(hamming))
+    min_hammings = heapq.nsmallest(num_similar_feature, hamming)
+    min_indexes = list(map(hamming.index, min_hammings))
+    for n in min_indexes:
+        index.append(n)
+    return index
 
 
 if __name__ == "__main__":
     img_dir = "./static/images/"
     feature_dir = "./static/features/"
-    embedding_features = loadSavedFeatures(feature_dir, img_dir)[0]  # list of 4096 dimensional features
+    embedding_features = loadSavedFeatures(feature_dir)[0]  # list of 4096 dimensional features
     print(len(embedding_features))
 
     # number of hyperplanes
@@ -138,11 +147,11 @@ if __name__ == "__main__":
     dim = 4096
 
     # query_vector = embedding_features[4]
-    query_vector = embedding_features[4]
-    print("query img: " + loadSavedFeatures(feature_dir, img_dir)[1][6])   # name of query image
+    query_vector = embedding_features[300]
+    print(loadSavedFeatures(feature_dir)[1][300])   # name of query image
     indexes = query(query_vector, embedding_features)
     print(indexes)
     similar_feature_vector = []
     for i in indexes:
         similar_feature_vector.append(embedding_features[i])
-        print("name of sim image: " + loadSavedFeatures(feature_dir, img_dir)[1][i])    # name of the similar image
+        print(loadSavedFeatures(feature_dir)[1][i])    # name of the similar image
