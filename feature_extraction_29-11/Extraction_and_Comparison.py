@@ -23,24 +23,23 @@ def extractAllImg(img_dir, feature_dir):
 
 # loads features in an array
 # loads img names in an array
-def loadSavedFeatures(feature_dir):
+def loadSavedFeatures(feature_dir, img_dir):
     featureList = listdir(feature_dir)
     numberOfFeatures = len(featureList)
     # features = {}
     features = []
-    img_names = []
+    img_paths = []
 
     for i in range(numberOfFeatures):
         img_name = featureList[i]
-        img_names.append(img_name)  # save img name at position i
+        img_paths.append(img_dir + os.path.splitext(img_name)[0] + ".jpg")  # save img name at position i
         feature_path = os.path.join(feature_dir, img_name)
         feature = np.load(feature_path)
-        # feature = feature / np.linalg.norm(feature) # Normalize
         features.append(feature)  # save feature at position i
 
         # features[img_name] = feature
 
-    return features, img_names
+    return features, img_paths
 
 
 #extracts feature of 1 img and saves it to feature_dir
@@ -128,9 +127,9 @@ def query(vector, embedding_vectors):
 
 
 if __name__ == "__main__":
-    img_dir = "./static/img/"
+    img_dir = "./static/images/"
     feature_dir = "./static/features/"
-    embedding_features = loadSavedFeatures(feature_dir)[0]  # list of 4096 dimensional features
+    embedding_features = loadSavedFeatures(feature_dir, img_dir)[0]  # list of 4096 dimensional features
     print(len(embedding_features))
 
     # number of hyperplanes
@@ -140,10 +139,10 @@ if __name__ == "__main__":
 
     # query_vector = embedding_features[4]
     query_vector = embedding_features[4]
-    print(loadSavedFeatures(feature_dir)[1][4])   # name of query image
+    print("query img: " + loadSavedFeatures(feature_dir, img_dir)[1][6])   # name of query image
     indexes = query(query_vector, embedding_features)
     print(indexes)
     similar_feature_vector = []
     for i in indexes:
         similar_feature_vector.append(embedding_features[i])
-        print(loadSavedFeatures(feature_dir)[1][i])    # name of the similar image
+        print("name of sim image: " + loadSavedFeatures(feature_dir, img_dir)[1][i])    # name of the similar image
