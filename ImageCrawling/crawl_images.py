@@ -11,7 +11,7 @@ searchstrings = [   "airplane",
 					"ship",
 					"truck" ]
 
-folder = "image_set_1"
+folder = "ImageCrawling/image_set_1"
 
 
 if __name__ == "__main__":
