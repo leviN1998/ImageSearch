@@ -1,53 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 import os
+import time
+from enum import Enum
+import requests
 
 
-u_agent = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-        'Accept-Encoding': 'none',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Connection': 'keep-alive',
-    }
-
-image_count = 0
-url = "https://www.flickr.com/search/?text=Pferd"
-
-r = requests.get(url, headers=u_agent)
-class_name = 'overlay'
-soup = BeautifulSoup(r.content, 'html.parser')      
-#print(soup)
-                                       
-results = soup.findAll('img')
-# print(results)
-for r in results:
-    try:
-        print(r['class'])
-    except:
-        pass
-
-
-"""count = 0
-imagelinks = []
-for res in results:
-    try:
-        link = res['href']
-        imagelinks.append(link)
-        count = count + 1
-        if (count >= image_count and image_count != 0):                                 # Stop adding images if we have enough (image_count = 0
-            break                                                                       # means that we want to get as many images as possible)
-
-    except KeyError:                                                                    # some images do not have a 'data-src' identifier... we skip those
-        continue   
-
-print(len(imagelinks))
-print(imagelinks[0])"""
-  
-
-"""
-count = 0
+def _save_images(urls, name: str, image_count: int, verbose: bool):
+    """
+    """
+    count = 0
     for link in urls:
         with open(name + str(count) + '.jpg', 'wb') as f:
             image = requests.get(link)
@@ -58,4 +20,42 @@ count = 0
             print("Saving files... ", count, "/", len(urls))
 
     if verbose:
-        print("Finished downloading images! ", count, " Images downloaded, ", image_count, " images should be downloaded! ", "(0 means as many as possible)") """
+        print("Finished downloading images for keyword: ", name, " " , count, " Images downloaded, ", image_count, " images should be downloaded! ", "(0 means as many as possible)")
+
+url = "https://www.flickr.com/search/?text=horse"
+
+options = Options()
+headless = False
+if headless:
+    options.add_argument("--headless")
+current_pwd = os.getcwd()
+driver_path = current_pwd + "geckodriver.exe"
+driver = webdriver.Firefox(options=options)
+# open Website
+driver.get(url)
+time.sleep(1)
+print("Trying to click")
+
+
+images = driver.find_elements_by_xpath("//a[@href]")
+print(len(images))
+
+
+image_links = []
+for image in images:
+    link = image.get_attribute("href")
+    link_s = link.rsplit("/")
+    if len(link_s) == 7:
+        if link_s[3] == 'photos' and link_s[6] != '#comments':
+            image_links.append(link)
+
+#delete duplicates
+image_links = list(dict.fromkeys(image_links))
+
+driver.quit()
+
+_save_images(image_links, "pferd", 0, True)
+# <a class="overlay no-outline" href="/photos/parismadrid/5412377622/" tabindex="0" role="heading" aria-level="3" aria-label="horses von Danny VB" id="yui_3_16_0_1_1638480851150_7605"></a>
+# <div class="view photo-list-photo-view awake" id="yui_3_16_0_1_1638480851150_1032" style="transform: translate(548px, 219px); width: 258px; height: 180px; background-image: url(&quot;//live.staticflickr.com/5173/5412377622_2f5cb4156d_n.jpg&quot;);"><div class="interaction-view" id="yui_3_16_0_1_1638480851150_1898"><div class="photo-list-photo-interaction" id="yui_3_16_0_1_1638480851150_7601">
+
+		
