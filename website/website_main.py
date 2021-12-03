@@ -5,10 +5,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def first():
-    if request.method == 'POST':
-        return render_template('home.html')
-    else:
-        return render_template('home.html')
+    return render_template('home.html')
 
 
 @app.route('/test')
