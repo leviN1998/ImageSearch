@@ -1,12 +1,14 @@
-from flask import Flask, request, render_template, url_for
-
+from flask import Flask, request, render_template, url_for, redirect
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def first():
-    return render_template('home.html')
+    if request.method == 'POST':
+        return render_template('home.html')
+    else:
+        return render_template('home.html')
 
 
 @app.route('/test')
