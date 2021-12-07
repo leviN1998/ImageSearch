@@ -1,20 +1,10 @@
-# Image Crawling
+# Image Crawling (experimental)
 
-Python Scripts to crawl images from different websites using search-keywords
+Testing new Features such as crawling with Selenium and other websites as Google
 
-crawling.py contains base functions needed to crawl images
-crawl_images.py contains script to generate the first image-set
-
-Known Issues:
-- only ca. 80 images per keyword are crawled
-- images might be not very usefull logos, toys etc.
-- only GOOGLE supportet to get images from
-- no keywording or metric implemented yet
-
-TODOs:
-- Change Engine to Selenium instead of BeatifulSoup
-- try other websites (See TODO.txt)
-- implement keywording as metric
-- think of other usefull metrics to increase image quality
-- generate larger imageset
-- think of usefull keywords to get new images
+TODOS:
+- Finish crawling on Google with Selenium
+- Finish crawling on Flickr with Selenium
+- add Support for Feature Extraction
+- load images into database
+- measure how good crawled images are using 5 example images
