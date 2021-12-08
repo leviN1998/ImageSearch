@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            * { box-sizing: border-box;}
+
+            .query {text-align: center;}
+
+            .comparision::after {
+            content: ""; clear: both; display: table;
+            }
+
+            [class*="col-"] {
+            float: left; padding: 15px;
+            }
+
+            .col-6 {width: 50%;}
+
+            .header {
+            text-align: center; border: 1px solid red; padding: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Image Search Comparision</h1>
+        </div>
+        <div class="query">
+            
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="query_img"><br>
+                <input type="submit">
+            </form>
+            <h2>Query:</h2>
+            {% if query_path %}
+            <img src="{{ query_path }}" width="300px">
+            {% endif %}
+        </div>
+
+        <div class="comparision">
+            <div class="col-6">
+                <h3>Results using distance comparision:</h3>
+                <p>time: {{ distanceTime }}</p>
+                {% for score in scores %}
+                <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                    <img src="{{ score[1] }}" height="200px">
+                    <br>
+                    <figcaption>{{ score[0] }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+
+            <div class="col-6">
+                <h3>Results using LSH algorithm:</h3>
+                <p>time: {{ lhsTime }}</p>
+                {% for lhs_result in lhs_results %} 
+                <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                    <img src="{{ lhs_result }}" height="200px">
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+
