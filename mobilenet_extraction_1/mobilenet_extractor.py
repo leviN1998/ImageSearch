@@ -19,8 +19,7 @@ mobile = tf.keras.applications.mobilenet.MobileNet(
     include_top=False,
     weights="imagenet",
     input_tensor=None,
-    pooling=None,
-    classes=1000,
+    pooling="avg",
     classifier_activation="softmax",
 )
 
@@ -33,7 +32,7 @@ def prepare_image(img_path):
 #img -> 1D feature array with length = 1024
 def extractImage(img_path):
     preprocessed_image = prepare_image(img_path)
-    feature = mobile.predict(preprocessed_image)[0][0][0]
+    feature = mobile.predict(preprocessed_image)[0]
     print(np.shape(feature))
     return feature / np.linalg.norm(feature)
 
@@ -91,6 +90,7 @@ if __name__ == "__main__":
 
     samplequery = extractImage(img_dir + "horse22.jpg")
 
+    #np.shape(samplequery)
     list = compareImages(samplequery, feature_dir)
     print(list)
 
