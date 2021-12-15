@@ -1,3 +1,4 @@
+from re import search
 from PIL import Image
 import mobilenet_extractor as extractor
 from datetime import datetime
@@ -24,18 +25,15 @@ def index():
         #Extract
         startTime = time.time()
         extractedImg = extractor.extractImage(uploaded_img_path)
-        extracttime = str((time.time() - startTime))
-        #Linear Search
-        startTime = time.time()
         scores = extractor.compareImages(extractedImg, feature_dir)
-        searchtime = str((time.time() - startTime))
+        t = str((time.time() - startTime))
         
-
+        
         return render_template('index.html',
                                query_path=uploaded_img_path,
                                scores=scores,
-                               extracttime=extracttime,
-                               searchtime=searchtime)
+                               t = t)
+                        
     else:
         return render_template('index.html')
 

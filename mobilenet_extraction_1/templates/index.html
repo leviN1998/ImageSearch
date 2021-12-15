@@ -16,7 +16,7 @@
             <img src="{{ query_path }}" width="300px">
             {% endif %}
             <h2>Similar Images:</h2>
-            <p>time: {{time}}</p>
+            <p>time: {{ t }}</p>
             {% for score in scores %}
             <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
                 <img src="{{ score[1] }}" height="200px">
