@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.comparision::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-6 {width: 50%;}
+
+.header {
+  text-align: center;
+  border: 1px solid red;
+  padding: 15px;
+}
+

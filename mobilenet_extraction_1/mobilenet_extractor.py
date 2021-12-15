@@ -1,13 +1,9 @@
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras.layers import Dense, Activation
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.metrics import categorical_crossentropy
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras.models import Model
-from tensorflow.keras.applications import imagenet_utils
+import os
+from os import listdir
 
 tf.keras.applications.mobilenet.MobileNet()
 
@@ -36,19 +32,13 @@ def extractImage(img_path):
     print(np.shape(feature))
     return feature / np.linalg.norm(feature)
 
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.models import Model
-import numpy as np
-from pathlib import Path
-import os
-from os import listdir
 
-
+#extracts all images from a given image directory and saves them to feature dir
 def extractAllImg(img_dir, feature_dir):
     for img_name in listdir(img_dir):
-        print(img_name)  # e.g., ./static/img/xxx.jpg
+        print(img_name)  
         feature = extractImage(img_dir + img_name)
-        img_name = os.path.splitext(img_name)[0] #remove .jpg or jpeg
+        img_name = os.path.splitext(img_name)[0] #remove file extension
         np.save(feature_dir + img_name, feature)
 
 #loads features in an array
@@ -70,6 +60,8 @@ def loadSavedFeatures(feature_dir):
         
     return features, img_paths
 
+
+#simple linear search for similar images
 def compareImages(img_feature, feature_dir):
     features, img_paths = loadSavedFeatures(feature_dir)
 

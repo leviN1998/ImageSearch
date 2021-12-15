@@ -8,7 +8,7 @@ import copy
 def lsh(dim, query_vec, feature_dir, num_bits):
     '''
     input: Dimension of vector space
-    output: list of nearest neighbours
+    output: list of nearest neighbours (dist, img_path)
     '''
     # Create random binary hash with 10 bits
     random_bin_hash1 = RandomBinaryProjections('random_bin_hash1', num_bits)
