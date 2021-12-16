@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.2&#10;- First try of a picture upload mechanic">
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.3&#10;- First working website with picture comparison">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/javascript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/javascript/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639069625653</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Website Update 0.3&#10;- First working website with picture comparison">
+      <created>1639689292046</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1639689292046</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -358,6 +361,7 @@
     <MESSAGE value="Flask installation and first testserver" />
     <MESSAGE value="Website Update 0.1" />
     <MESSAGE value="Website Update 0.2&#10;- First try of a picture upload mechanic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.2&#10;- First try of a picture upload mechanic" />
+    <MESSAGE value="Website Update 0.3&#10;- First working website with picture comparison" />
+    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.3&#10;- First working website with picture comparison" />
   </component>
 </project>
