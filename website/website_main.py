@@ -8,7 +8,7 @@ import mobilenet_extractor as extractor
 
 app = Flask(__name__)
 
-feature_dir = "./static/features/"
+feature_dir = "./static/mobilenet_features/"
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -35,17 +35,17 @@ def first():
         return render_template('home.html')
 
 
-@app.route('/test')
+@app.route('/1')
 def test():
     return render_template('test.html')
 
 
-@app.route('/algorithm')
+@app.route('/2')
 def second():
     return render_template('algorithm.html')
 
 
-@app.route('/impressum')
+@app.route('/3')
 def third():
     return render_template('impressum.html')
 

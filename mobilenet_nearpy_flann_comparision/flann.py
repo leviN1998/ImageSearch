@@ -3,7 +3,7 @@ import numpy as np
 import mobilenet_extractor as mobile
 
 def similiarImgPaths(query_vector, feature_dir):
-    embedding_features = mobile.loadSavedFeatures(feature_dir)[0] # list of 4096 dimensional features
+    embedding_features = mobile.loadSavedFeatures(feature_dir)[0] # list of 4096 dimensional mobilenet_features
     dataset = np.array(embedding_features, dtype=np.float32)
 
     flann = pyflann.FLANN()

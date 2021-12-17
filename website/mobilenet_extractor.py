@@ -41,7 +41,7 @@ def extractAllImg(img_dir, feature_dir):
         img_name = os.path.splitext(img_name)[0] #remove file extension
         np.save(feature_dir + img_name, feature)
 
-#loads features in an array
+#loads mobilenet_features in an array
 #loads img names in an array
 def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
@@ -65,7 +65,7 @@ def loadSavedFeatures(feature_dir):
 def compareImages(img_feature, feature_dir):
     features, img_paths = loadSavedFeatures(feature_dir)
 
-    dists = np.linalg.norm(features-img_feature, axis=1) #L2 distances to the features    
+    dists = np.linalg.norm(features-img_feature, axis=1) #L2 distances to the mobilenet_features
     ids = np.argsort(dists)[:15] #top 15 resulsts --> should give back which indices are the best 
     print(np.shape(ids))
 
@@ -76,7 +76,7 @@ def compareImages(img_feature, feature_dir):
 if __name__ == "__main__":
 
     img_dir = "./static/images/"
-    feature_dir = "./static/features/"
+    feature_dir = "./static/mobilenet_features/"
 
     extractAllImg(img_dir, feature_dir)
 
