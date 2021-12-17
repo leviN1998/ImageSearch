@@ -4,11 +4,14 @@ from datetime import datetime
 from PIL import Image
 from flask import Flask, request, render_template
 
-import mobilenet_extractor as extractor
+import mobilenet_extractor as mobilenet_extractor
+import vgg16_extractor as vgg16_extractor
+
 
 app = Flask(__name__)
 
-feature_dir = "./static/mobilenet_features/"
+mobilenet_feature_dir = "./static/mobilenet_features/"
+vgg16_feature_dir = "./static/vgg16_feature/"
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -23,8 +26,8 @@ def first():
 
         # Run search
         startTime = time.time()
-        extractedImg = extractor.extractImage(uploaded_img_path)
-        scores = extractor.compareImages(extractedImg, feature_dir)
+        extractedImg = mobilenet_extractor.extractImage(uploaded_img_path)
+        scores = mobilenet_extractor.compareImages(extractedImg, mobilenet_feature_dir)
         t = str((time.time() - startTime))
 
         return render_template('home.html',
@@ -35,9 +38,30 @@ def first():
         return render_template('home.html')
 
 
-@app.route('/1')
+@app.route('/1', methods=['GET', 'POST'])
 def test():
-    return render_template('test.html')
+    if request.method == 'POST':
+        file = request.files['query_img']
+
+        # Save query image
+        img = Image.open(file.stream)  # PIL image
+        uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file.filename
+        img.save(uploaded_img_path)
+
+        # Extract using vgg16
+        startTime = time.time()
+        vgg_extractedImg = vgg16_extractor.extractImg(uploaded_img_path)
+        vgg16Time = str((time.time() - startTime))
+
+        vgg16_results = vgg16_extractor.compareImages(vgg_extractedImg, vgg16_feature_dir)
+
+        return render_template('test.html',
+                               query_path=uploaded_img_path,
+                               vgg16_results=vgg16_results,
+                               vgg16Time=vgg16Time)
+
+    else:
+        return render_template('test.html')
 
 
 @app.route('/2')
