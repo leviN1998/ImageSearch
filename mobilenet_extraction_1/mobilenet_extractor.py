@@ -78,11 +78,11 @@ if __name__ == "__main__":
     img_dir = "./static/images/"
     feature_dir = "./static/features/"
 
-    #extractAllImg(img_dir, feature_dir)
+    # extractAllImg(img_dir, feature_dir)
 
     samplequery = extractImage(img_dir + "horse22.jpg")
 
-    #np.shape(samplequery)
+    np.shape(samplequery)
     list = compareImages(samplequery, feature_dir)
     print(list)
 
