@@ -31,34 +31,35 @@ TODOS:
 
 INFORMATION:
 ------------
-	Every scraper needs to have a function _get_image_urls(query, image_count, verbose)
+	Every scraper needs to have a function get_image_urls(query, image_count, verbose)
 	That collects all image urls on that website
 
 """
 from .crawl_soup import *
 from .crawling_base import *
+from .crawl_flickr import *
 import os
 
 
 
 def download_images(query: str, image_count: int = 0, folder: str = "", verbose: bool = True):
-	""" downloads Images for a given Keyword into a given Folder
+    """ downloads Images for a given Keyword into a given Folder
 
     Parameters:
     -----------
     query: str
-    	Keyword String to enter into website for searching the images
+        Keyword String to enter into website for searching the images
 
     image_count: int, optional
-    	Desired Number of images, defaults to 0 which means as many as the crawler can get
+        Desired Number of images, defaults to 0 which means as many as the crawler can get
 
     folder: str, optional
-    	Path to folder where images should be saved, defaults to "" which means current working directory
-    	Paths are relative to current working directory
+        Path to folder where images should be saved, defaults to "" which means current working directory
+        Paths are relative to current working directory
 
     verbose: bool, optional
-    	Flag whether this function and functions that are called should output information to the console
-    	defaults to True
+        Flag whether this function and functions that are called should output information to the console
+        defaults to True
 
     Returns:
     --------
@@ -68,11 +69,12 @@ def download_images(query: str, image_count: int = 0, folder: str = "", verbose:
     if not crawling_base._change_folder(folder, verbose):
         return
 
-    urls = crawl_soup._get_image_urls(query, image_count, verbose)
+    # urls = crawl_soup.get_image_urls(query, image_count, verbose)
+    urls = crawl_flickr.get_image_urls(query, image_count, verbose)
     crawling_base._save_images(urls, query, image_count, verbose)
     os.chdir(old_pwd)
 
 def download_images_batch():
-	""" TODO: implement
-	"""
+    """ TODO: implement
+    """
     pass

@@ -14,7 +14,7 @@ Constants:
 Functions:
 ----------
 
-_get_image_urls(query, image_count, verbose): str, int, bool -> [str]
+get_image_urls(query, image_count, verbose): str, int, bool -> [str]
     crawls image-Urls from Google with a specific query or keyword
 
 get_urls_specific(url, image_count, tag_name, class_name, content_name, verbose): str, int, str, str, str, bool -> [str]
@@ -171,7 +171,7 @@ def _get_tags(tag_name: str, class_name: str, content_name: str, website_content
 
 
 
-def _get_image_urls(query: str, image_count: int, verbose: bool):
+def get_image_urls(query: str, image_count: int, verbose: bool):
     """ Function called by __init__.py to get urls from a Keyword
         compines base_url and qurey to get the full url to a result page on Google
         Calls _get_urls_from_url to insert required information about the html construction of the website
