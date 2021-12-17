@@ -1,12 +1,17 @@
-from flask import Flask, request, render_template, url_for, redirect
-from PIL import Image
-import vgg16_extractor as extractor
+import time
 from datetime import datetime
+
+from PIL import Image
+from flask import Flask, request, render_template
+
+import mobilenet_extractor as mobilenet_extractor
+import vgg16_extractor as vgg16_extractor
 
 
 app = Flask(__name__)
 
-feature_dir = "./static/features/"
+mobilenet_feature_dir = "./static/mobilenet_features/"
+vgg16_feature_dir = "./static/vgg16_feature/"
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -20,27 +25,51 @@ def first():
         img.save(uploaded_img_path)
 
         # Run search
-        extractedImg = extractor.extractImg(uploaded_img_path, feature_dir)
-        scores = extractor.compareImages(extractedImg, feature_dir)
+        startTime = time.time()
+        extractedImg = mobilenet_extractor.extractImage(uploaded_img_path)
+        scores = mobilenet_extractor.compareImages(extractedImg, mobilenet_feature_dir)
+        t = str((time.time() - startTime))
 
         return render_template('home.html',
                                query_path=uploaded_img_path,
-                               scores=scores)
+                               scores=scores,
+                               t=t)
     else:
         return render_template('home.html')
 
 
-@app.route('/test')
+@app.route('/1', methods=['GET', 'POST'])
 def test():
-    return render_template('test.html')
+    if request.method == 'POST':
+        file = request.files['query_img']
+
+        # Save query image
+        img = Image.open(file.stream)  # PIL image
+        uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file.filename
+        img.save(uploaded_img_path)
+
+        # Extract using vgg16
+        startTime = time.time()
+        vgg_extractedImg = vgg16_extractor.extractImg(uploaded_img_path)
+        vgg16Time = str((time.time() - startTime))
+
+        vgg16_results = vgg16_extractor.compareImages(vgg_extractedImg, vgg16_feature_dir)
+
+        return render_template('test.html',
+                               query_path=uploaded_img_path,
+                               vgg16_results=vgg16_results,
+                               vgg16Time=vgg16Time)
+
+    else:
+        return render_template('test.html')
 
 
-@app.route('/algorithm')
+@app.route('/2')
 def second():
     return render_template('algorithm.html')
 
 
-@app.route('/impressum')
+@app.route('/3')
 def third():
     return render_template('impressum.html')
 

@@ -12,7 +12,7 @@ import numpy as np
     #instanciates itself by reading a model
     #def __init__(self):
         #base_model = VGG16(weights="imagenet") #weights=imagenet --> downloads img data from the internet
-        #VGG16 is a Img Recognition Network --> we just need deep features, so we remove the last layer
+        #VGG16 is a Img Recognition Network --> we just need deep mobilenet_features, so we remove the last layer
         #self.model = Model(inputs=base_model.input, outputs=base_model.get_layer("fc1").output)
 
 
@@ -30,12 +30,12 @@ def extractAllImg(img_dir, feature_dir):
         extractImg(img_path, feature_dir)
 
 
-#loads features in an array
+#loads mobilenet_features in an array
 #loads img names in an array
 def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
     numberOfFeatures = len(featureList)
-    #features = {}
+    #mobilenet_features = {}
     features = []
     img_paths = []
 
@@ -47,7 +47,7 @@ def loadSavedFeatures(feature_dir):
         #feature = feature / np.linalg.norm(feature) # Normalize
         features.append(feature) #save feature at position i
         
-        #features[img_name] = feature
+        #mobilenet_features[img_name] = feature
 
     return features, img_paths
 
@@ -63,7 +63,7 @@ def extractImg(img_path, feature_dir):
     #save feature:
     img_name = os.path.basename(img_path) #"./static/img/bla.jpg" --> bla.jpg
     img_name = os.path.splitext(img_name)[0] #remove .jpg or jpeg
-    feature_path = os.path.join(feature_dir, img_name) #bla -> './static/features/bla.npy'
+    feature_path = os.path.join(feature_dir, img_name) #bla -> './static/mobilenet_features/bla.npy'
     np.save(feature_path, vgg16_feature)
     print(np.shape(vgg16_feature))
     return vgg16_feature
@@ -72,7 +72,7 @@ def extractImg(img_path, feature_dir):
 def compareImages(img_feature, feature_dir):
     features, img_paths = loadSavedFeatures(feature_dir)
 
-    dists = np.linalg.norm(features-img_feature, axis=1) #L2 distances to the features    
+    dists = np.linalg.norm(features-img_feature, axis=1) #L2 distances to the mobilenet_features
     ids = np.argsort(dists)[:15] #top 15 resulsts --> should give back which indices are the best 
     #print(np.shape(ids))
     

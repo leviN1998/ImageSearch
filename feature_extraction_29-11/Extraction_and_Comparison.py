@@ -21,12 +21,12 @@ def extractAllImg(img_dir, feature_dir):
         extractImg(img_path, feature_dir)
 
 
-# loads features in an array
+# loads mobilenet_features in an array
 # loads img names in an array
 def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
     numberOfFeatures = len(featureList)
-    # features = {}
+    # mobilenet_features = {}
     features = []
     img_names = []
 
@@ -38,7 +38,7 @@ def loadSavedFeatures(feature_dir):
         # feature = feature / np.linalg.norm(feature) # Normalize
         features.append(feature)  # save feature at position i
 
-        # features[img_name] = feature
+        # mobilenet_features[img_name] = feature
 
     return features, img_names
 
@@ -55,7 +55,7 @@ def extractImg(img_path, feature_dir):
     #save feature:
     img_name = os.path.basename(img_path) #"./static/img/bla.jpg" --> bla.jpg
     img_name = os.path.splitext(img_name)[0] #remove .jpg or jpeg
-    feature_path = os.path.join(feature_dir, img_name) #bla -> './static/features/bla.npy'
+    feature_path = os.path.join(feature_dir, img_name) #bla -> './static/mobilenet_features/bla.npy'
     np.save(feature_path, vgg16_feature)
     print(np.shape(vgg16_feature))
     return vgg16_feature
@@ -138,7 +138,7 @@ def query(vector, embedding_vectors):
 if __name__ == "__main__":
     img_dir = "./static/images/"
     feature_dir = "./static/features/"
-    embedding_features = loadSavedFeatures(feature_dir)[0]  # list of 4096 dimensional features
+    embedding_features = loadSavedFeatures(feature_dir)[0]  # list of 4096 dimensional mobilenet_features
     print(len(embedding_features))
 
     # number of hyperplanes

@@ -1,33 +1,53 @@
 {% extends 'template.html' %}
 
 {% block whitehead %}
-Heading in white Block
+<h1>Simple image search engine</h1>
 {% endblock %}
 
 {% block whitecursive %}
-Cursive Statement in white Block
+Using VGG16 algorithm
 {% endblock %}
 
 {% block whitetext %}
-Textbar in white Block
+
 {% endblock %}
 
 {% block whiteanything %}
-<img src="static/img1.jpg" alt="Testpicture" align="middle" heigth="500" width="400">
 {% endblock %}
 
 {% block blackhead %}
-Heading in black Block
 {% endblock %}
 
 {% block blackcursive %}
-<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Very Important</a>
+<head>
+    <style> body {text-align: center;}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="query_img"><br>
+        <input type="submit">
+    </form>
+    <h2>Uploaded Image:</h2>
+    {% if query_path %}
+    <img src="{{ query_path }}" width="300px">
+    {% endif %}
+    <h2>Similar Images:</h2>
+    <p>time: {{ vgg16Time }}</p>
+    {% for score in vgg16_results %}
+    <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+        <img src="{{ score[1] }}" height="200px">
+        <figcaption>{{ score[0] }}</figcaption>
+    </figure>
+    {% endfor %}
+</div>
+</body>
 {% endblock %}
 
 {% block bottom %}
-Heading in endblock
 {% endblock %}
 
 {% block bottomcursive %}
-Cursive Statement in endblock
 {% endblock %}

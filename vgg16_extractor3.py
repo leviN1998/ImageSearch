@@ -36,12 +36,12 @@ def extractAllImg(img_dir, feature_dir):
         extractImg(img_path, feature_dir)
 
 
-#loads features saved in feature_dir and returns 2d dict with names of picture and feature
-#features: [img_name] --> [feature]; feature.shape = (1,7,7,512)
+#loads mobilenet_features saved in feature_dir and returns 2d dict with names of picture and feature
+#mobilenet_features: [img_name] --> [feature]; feature.shape = (1,7,7,512)
 def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
     numberOfFeatures = len(featureList)
-    #features = {}
+    #mobilenet_features = {}
     features = []
 
     for i in range(numberOfFeatures):
@@ -49,7 +49,7 @@ def loadSavedFeatures(feature_dir):
         feature_path = os.path.join(feature_dir, img_name)
         feature = np.load(feature_path)
         features.append(feature)
-        #features[img_name] = feature
+        #mobilenet_features[img_name] = feature
 
     return features
 
@@ -64,7 +64,7 @@ def extractImg(img_path, feature_dir):
     #save feature:
     img_name = os.path.basename(img_path) #"./static/img/bla.jpg" --> bla.jpg
     img_name = os.path.splitext(img_name)[0] #remove .jpg or jpeg
-    feature_path = os.path.join(feature_dir, img_name) #bla -> './static/features/bla.npy'
+    feature_path = os.path.join(feature_dir, img_name) #bla -> './static/mobilenet_features/bla.npy'
     np.save(feature_path, vgg16_feature)
     return vgg16_feature
 
@@ -72,7 +72,7 @@ def extractImg(img_path, feature_dir):
 
 #funktioniert nicht
 def compareImages(img_feature, features):
-    dists = np.linalg.norm(features - img_feature, axis=1) #L2 distances to the features    
+    dists = np.linalg.norm(features - img_feature, axis=1) #L2 distances to the mobilenet_features
     ids = np.argsort(dists)[:30] #top 30 resulsts
     print(ids)
     #scores = [(dists[id], img_paths[id]) for id in ids]
@@ -82,7 +82,7 @@ def compareImages(img_feature, features):
 if __name__ == "__main__":
 
     img_dir = "./static/img/"
-    feature_dir = "./static/features/"
+    feature_dir = "./static/mobilenet_features/"
 
     #extractAllImg(img_dir, feature_dir)
     #loadSavedFeatures(feature_dir)
