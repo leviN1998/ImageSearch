@@ -1,8 +1,10 @@
-from flask import Flask, request, render_template, url_for, redirect
-from PIL import Image
-import vgg16_extractor as extractor
+import time
 from datetime import datetime
 
+from PIL import Image
+from flask import Flask, request, render_template
+
+import mobilenet_extractor as extractor
 
 app = Flask(__name__)
 
@@ -20,12 +22,15 @@ def first():
         img.save(uploaded_img_path)
 
         # Run search
-        extractedImg = extractor.extractImg(uploaded_img_path, feature_dir)
+        startTime = time.time()
+        extractedImg = extractor.extractImage(uploaded_img_path)
         scores = extractor.compareImages(extractedImg, feature_dir)
+        t = str((time.time() - startTime))
 
         return render_template('home.html',
                                query_path=uploaded_img_path,
-                               scores=scores)
+                               scores=scores,
+                               t=t)
     else:
         return render_template('home.html')
 
