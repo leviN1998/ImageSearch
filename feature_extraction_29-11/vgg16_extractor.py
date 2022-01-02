@@ -41,7 +41,7 @@ def loadSavedFeatures(feature_dir):
 
     for i in range(numberOfFeatures):
         img_name = featureList[i]
-        img_paths.append("./static/image_set_1/" + os.path.splitext(img_name)[0] + ".jpg") #save img path at position i 
+        img_paths.append("./static/images/" + os.path.splitext(img_name)[0] + ".jpg") #save img path at position i 
         feature_path = os.path.join(feature_dir, img_name)
         feature = np.load(feature_path)
         #feature = feature / np.linalg.norm(feature) # Normalize
@@ -86,8 +86,8 @@ def compareImages(img_feature, feature_dir):
 
 if __name__ == "__main__":
 
-    img_dir = "./static/image_set_1/"
-    feature_dir = "./static/features_img_set_1/"
+    img_dir = "./static/images/"
+    feature_dir = "./static/features/"
 
     #extractAllImg(img_dir, feature_dir)
     #print(loadSavedFeatures(feature_dir))

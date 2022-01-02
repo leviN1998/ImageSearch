@@ -8,7 +8,7 @@ from pathlib import Path
 app = Flask(__name__)
 
 #img_dir = "./static/image_set_1/"
-feature_dir = "./static/features_img_set_1/"
+feature_dir = "./static/features/"
 
 
 @app.route('/', methods=['GET', 'POST'])
