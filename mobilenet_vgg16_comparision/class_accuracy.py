@@ -1,4 +1,5 @@
-import mobilenet_extractor as extractor
+import mobilenet_extractor as m_extractor
+import vgg16_extractor as vgg16_extractor
 import os
 import re 
 from statistics import mean
@@ -33,8 +34,8 @@ def getPredictionAccuracy(query_img_path, feature_dir):
     
     query_img_class = getClassName(query_img_path)
         
-    query_feature = extractor.extractImage(query_img_path)
-    results = extractor.compareImages(query_feature, feature_dir)[1:] #cut off first element, as this will be the query img itself
+    query_feature = vgg16_extractor.extractImage(query_img_path)
+    results = vgg16_extractor.compareImages(query_feature, feature_dir)[1:] #cut off first element, as this will be the query img itself
     print('results: ')
     print(results)
     print("\n")
@@ -63,7 +64,7 @@ returns mean value and single values (=results)
 '''
 def totalClassAccuracy(img_dir, feature_dir):
     results = []
-    means = []
+    means = [0,0,0]
     images = os.listdir(img_dir)
 
     for i in range(len(images)):
@@ -79,8 +80,8 @@ def totalClassAccuracy(img_dir, feature_dir):
     return results, means
 
 if __name__=="__main__":
-    img_dir = './static/images'
-    m_feature_dir = './static/m_features'
+    img_dir = './static/images/cifar10_200'
+    m_feature_dir = './static/features/vgg16_features/cifar10_200'
 
     #query_img_path = './static/images/automobile34.jpg'
     

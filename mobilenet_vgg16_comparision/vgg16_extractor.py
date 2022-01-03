@@ -16,7 +16,7 @@ model = Model(inputs=base_model.input, outputs=base_model.get_layer("fc1").outpu
 def extractAllImg(img_dir, feature_dir):
     for img_name in listdir(img_dir):
         print(img_name)  
-        feature = extractImg(img_dir + img_name)
+        feature = extractImage(img_dir + img_name)
         img_name = os.path.splitext(img_name)[0] #remove file extension
         np.save(feature_dir + img_name, feature)
 
@@ -45,7 +45,7 @@ def loadSavedFeatures(feature_dir):
     return features, img_paths
 
 #extracts feature of 1 img and saves it to feature_dir
-def extractImg(img_path):
+def extractImage(img_path):
     img = image.load_img(img_path, target_size=(224, 224)) #bild in richtiges Format bringen
     img_arr = image.img_to_array(img) #img -> array
     img_arr = np.expand_dims(img_arr, axis=0) #?
@@ -69,12 +69,12 @@ def compareImages(img_feature, feature_dir):
 
 if __name__ == "__main__":
 
-    img_dir = "./static/images/"
-    feature_dir = "./static/vgg16_features/"
+    img_dir = "./static/images/cifar10_200/"
+    feature_dir = "./static/features/vgg16_features/cifar10_200/"
 
-    #extractAllImg(img_dir, feature_dir)
+    extractAllImg(img_dir, feature_dir)
     #print(loadSavedFeatures(feature_dir))
     #compareImages()
-    print(compareImages(extractImg("./static/images/airplane0.jpg", feature_dir), feature_dir))
+    #print(compareImages(extractImage("./static/images/airplane0.jpg", feature_dir), feature_dir))
     
     #extractImg("./static/img/hund1.jpg", feature_dir) #neues Bild
