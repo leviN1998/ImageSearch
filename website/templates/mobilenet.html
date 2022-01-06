@@ -15,7 +15,7 @@ Using Mobilenet algorithm
     </style>
 </head>
 <body>
-<div class="container">
+<div class="w3-container>
     <form method="POST" enctype="multipart/form-data">
         <input type="file" name="query_img"><br>
         <input type="submit">
@@ -27,7 +27,7 @@ Using Mobilenet algorithm
     <h2>Similar Images:</h2>
     <p>time: {{ t }}</p>
     {% for score in scores %}
-    <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+    <figure style="float: left; margin-right: 8px; margin-bottom: 8px;">
         <img src="{{ score[1] }}" height="200px">
         <figcaption>{{ score[0] }}</figcaption>
     </figure>

@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.5&#10;- implementation of Mobilenet and BGG16">
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.18.57.907435_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.19.32.436381_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.21.35.224252_airplane0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.21.50.396902_airplane0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T13.13.51.850459_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T13.14.15.536403_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.42.46.737172_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.44.16.525104_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/templates/mobilenet.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/templates/template_test.html" afterDir="false" />
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.6&#10;- implementation of Dropdown Menue">
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.47.07.431719_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.47.21.212749_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.52.17.305914_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.52.18.602449_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.52.31.608412_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.52.42.781151_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.54.06.797068_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.54.19.444997_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.54.32.987050_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.18.35.755709_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.19.30.176950_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.20.13.945006_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.21.32.471780_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.25.22.500820_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.29.51.957253_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.29.53.462082_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.31.05.274207_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.32.10.876698_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.34.15.452676_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.36.27.725861_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.38.30.515868_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.38.54.964976_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.39.06.812317_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.39.17.172604_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.39.22.856451_Download.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/algorithm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/impressum.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/impressum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/vgg16.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/collector.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/collector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/sources.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/sources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/locators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/setuptools/package_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/setuptools/package_index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/mobilenet.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/mobilenet.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -432,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639747249725</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Website Update 0.6&#10;- implementation of Dropdown Menue">
+      <created>1641476753177</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1641476753177</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -459,6 +471,7 @@
     <MESSAGE value="Website Update 0.2&#10;- First try of a picture upload mechanic" />
     <MESSAGE value="Website Update 0.3&#10;- First working website with picture comparison" />
     <MESSAGE value="Website Update 0.5&#10;- implementation of Mobilenet and BGG16" />
-    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.5&#10;- implementation of Mobilenet and BGG16" />
+    <MESSAGE value="Website Update 0.6&#10;- implementation of Dropdown Menue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.6&#10;- implementation of Dropdown Menue" />
   </component>
 </project>
