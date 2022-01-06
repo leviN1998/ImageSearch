@@ -2,44 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.6&#10;- implementation of Dropdown Menue">
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.44.38.386017_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.44.49.540462_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.45.55.396750_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.47.35.822962_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.47.48.303734_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.03.018016_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.33.614526_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.35.335110_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.36.584371_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.37.471215_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.38.401647_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.48.45.974339_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.49.24.025988_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.49.30.069518_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.53.18.435133_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.53.33.663114_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.53.56.285934_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.54.07.671375_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.54.55.860994_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.20.063437_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.27.837948_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.31.031634_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.37.958838_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.39.984045_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.45.292829_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.55.58.247779_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.56.15.521430_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.56.34.837856_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.59.09.104282_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.59.44.244571_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.59.46.101583_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T15.59.48.335535_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T16.05.06.131557_Download.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/mobilenet.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/mobilenet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/mobilenet_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/mobilenet_extractor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -462,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641480034690</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Website Update 0.6&#10;- implementation of Dropdown Menue">
+      <created>1641481557251</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1641481557252</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="UnknownFeatures">

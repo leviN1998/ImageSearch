@@ -19,13 +19,15 @@ mobile = tf.keras.applications.mobilenet.MobileNet(
     classifier_activation="softmax",
 )
 
+
 def prepare_image(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
     img_array = image.img_to_array(img)
     img_array_expanded_dims = np.expand_dims(img_array, axis=0)
     return tf.keras.applications.mobilenet.preprocess_input(img_array_expanded_dims)
 
-#img -> 1D feature array with length = 1024
+
+# img -> 1D feature array with length = 1024
 def extractImage(img_path):
     preprocessed_image = prepare_image(img_path)
     feature = mobile.predict(preprocessed_image)[0]
@@ -33,19 +35,20 @@ def extractImage(img_path):
     return feature / np.linalg.norm(feature)
 
 
-#extracts all images from a given image directory and saves them to feature dir
+# extracts all images from a given image directory and saves them to feature dir
 def extractAllImg(img_dir, feature_dir):
     for img_name in listdir(img_dir):
-        print(img_name)  
+        print(img_name)
         feature = extractImage(img_dir + img_name)
-        img_name = os.path.splitext(img_name)[0] #remove file extension
+        img_name = os.path.splitext(img_name)[0]  # remove file extension
         np.save(feature_dir + img_name, feature)
 
-#loads mobilenet_features in an array
-#loads img names in an array
+
+# loads mobilenet_features in an array
+# loads img names in an array
 def loadSavedFeatures(feature_dir):
     featureList = listdir(feature_dir)
-    #print(featureList)
+    # print(featureList)
     numberOfFeatures = len(featureList)
     features = []
     img_paths = []
@@ -54,19 +57,19 @@ def loadSavedFeatures(feature_dir):
         img_name = featureList[i]
         feature_path = os.path.join(feature_dir, img_name)
         feature = np.load(feature_path)
-        
-        features.append(feature) #save feature at position i
-        img_paths.append("./static/images/" + os.path.splitext(img_name)[0] + ".jpg") #save img path at position i 
-        
+
+        features.append(feature)  # save feature at position i
+        img_paths.append("./static/images/" + os.path.splitext(img_name)[0] + ".jpg")  # save img path at position i
+
     return features, img_paths
 
 
-#simple linear search for similar images
+# simple linear search for similar images
 def compareImages(img_feature, feature_dir):
     features, img_paths = loadSavedFeatures(feature_dir)
 
-    dists = np.linalg.norm(features-img_feature, axis=1) #L2 distances to the mobilenet_features
-    ids = np.argsort(dists)[:15] #top 15 resulsts --> should give back which indices are the best 
+    dists = np.linalg.norm(features - img_feature, axis=1)  # L2 distances to the mobilenet_features
+    ids = np.argsort(dists)[:15]  # top 15 resulsts --> should give back which indices are the best
     print(np.shape(ids))
 
     scores = [(dists[id], img_paths[id]) for id in ids]
@@ -74,15 +77,13 @@ def compareImages(img_feature, feature_dir):
 
 
 if __name__ == "__main__":
-
     img_dir = "./static/images/"
     feature_dir = "./static/mobilenet_features/"
 
     extractAllImg(img_dir, feature_dir)
 
-    #samplequery = extractImage(img_dir + "horse22.jpg")
+    # samplequery = extractImage(img_dir + "horse22.jpg")
 
-    #np.shape(samplequery)
-    #list = compareImages(samplequery, feature_dir)
-    #print(list)
-
+    # np.shape(samplequery)
+    # list = compareImages(samplequery, feature_dir)
+    # print(list)
