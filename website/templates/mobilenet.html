@@ -5,20 +5,10 @@
 {% endblock %}
 
 {% block whitecursive %}
-Using VGG16 algorithm
+Using Mobilenet algorithm
 {% endblock %}
 
 {% block whitetext %}
-
-{% endblock %}
-
-{% block whiteanything %}
-{% endblock %}
-
-{% block blackhead %}
-{% endblock %}
-
-{% block blackcursive %}
 <head>
     <style> body {text-align: center;}
 
@@ -35,8 +25,8 @@ Using VGG16 algorithm
     <img src="{{ query_path }}" width="300px">
     {% endif %}
     <h2>Similar Images:</h2>
-    <p>time: {{ vgg16Time }}</p>
-    {% for score in vgg16_results %}
+    <p>time: {{ t }}</p>
+    {% for score in scores %}
     <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
         <img src="{{ score[1] }}" height="200px">
         <figcaption>{{ score[0] }}</figcaption>
@@ -46,8 +36,8 @@ Using VGG16 algorithm
 </body>
 {% endblock %}
 
-{% block bottom %}
+{% block whiteanything %}
 {% endblock %}
 
-{% block bottomcursive %}
-{% endblock %}
+{% block bottom %}{% endblock %}
+{% block bottomcursive %}{% endblock %}

@@ -2,13 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.5&#10;- implementation of Mobilenet and BGG16">
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.33.18.370664_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.33.22.540149_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.33.32.156099_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.33.39.657279_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.33.45.461778_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.34.01.263392_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-17T10.34.08.308102_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.18.57.907435_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.19.32.436381_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.21.35.224252_airplane0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2021-12-18T18.21.50.396902_airplane0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T13.13.51.850459_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T13.14.15.536403_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.42.46.737172_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-06T14.44.16.525104_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/templates/mobilenet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/templates/template_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/algorithm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/impressum.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/impressum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/vgg16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/collector.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/collector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/sources.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_internal/index/sources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/pip/_vendor/distlib/locators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/venv/Lib/site-packages/setuptools/package_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/venv/Lib/site-packages/setuptools/package_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +74,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/static/vgg16_feature_dir" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/templates" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\templates" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\vgg16_feature_dir" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\features" />
@@ -409,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639733584547</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Website Update 0.5&#10;- implementation of Mobilenet and BGG16">
+      <created>1639747249725</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1639747249725</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="UnknownFeatures">

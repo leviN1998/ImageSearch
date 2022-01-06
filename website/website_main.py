@@ -30,12 +30,12 @@ def first():
         scores = mobilenet_extractor.compareImages(extractedImg, mobilenet_feature_dir)
         t = str((time.time() - startTime))
 
-        return render_template('home.html',
+        return render_template('mobilenet.html',
                                query_path=uploaded_img_path,
                                scores=scores,
                                t=t)
     else:
-        return render_template('home.html')
+        return render_template('mobilenet.html')
 
 
 @app.route('/1', methods=['GET', 'POST'])
@@ -55,18 +55,18 @@ def test():
 
         vgg16_results = vgg16_extractor.compareImages(vgg_extractedImg, vgg16_feature_dir)
 
-        return render_template('test.html',
+        return render_template('vgg16.html',
                                query_path=uploaded_img_path,
                                vgg16_results=vgg16_results,
                                vgg16Time=vgg16Time)
 
     else:
-        return render_template('test.html')
+        return render_template('vgg16.html')
 
 
 @app.route('/2')
 def second():
-    return render_template('algorithm.html')
+    return render_template('home.html')
 
 
 @app.route('/3')

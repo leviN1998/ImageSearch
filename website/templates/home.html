@@ -1,52 +1,21 @@
 {% extends 'template.html' %}
 
 {% block whitehead %}
-<h1>Simple image search engine</h1>
+Heading in white Block
 {% endblock %}
 
 {% block whitecursive %}
-Using Mobilenet algorithm
+Cursive Statement in white Block
 {% endblock %}
 
 {% block whitetext %}
-<head>
-    <style> body {text-align: center;}
-
-    </style>
-</head>
-<body>
-<div class="container">
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="query_img"><br>
-        <input type="submit">
-    </form>
-    <h2>Uploaded Image:</h2>
-    {% if query_path %}
-    <img src="{{ query_path }}" width="300px">
-    {% endif %}
-    <h2>Similar Images:</h2>
-    <p>time: {{ t }}</p>
-    {% for score in scores %}
-    <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
-        <img src="{{ score[1] }}" height="200px">
-        <figcaption>{{ score[0] }}</figcaption>
-    </figure>
-    {% endfor %}
-</div>
-</body>
+Textbar in white Block
 {% endblock %}
 
 {% block whiteanything %}
+<img src="static/images/airplane0.jpg" alt="Testpicture" align="middle" heigth="500" width="400">
 {% endblock %}
 
-{% block blackhead %}
-{% endblock %}
 
-{% block blackcursive %}
-{% endblock %}
-
-{% block bottom %}
-{% endblock %}
-
-{% block bottomcursive %}
-{% endblock %}
+{% block bottom %}{% endblock %}
+{% block bottomcursive %}{% endblock %}

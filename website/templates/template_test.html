@@ -13,29 +13,30 @@
             src="{{ url_for('static', filename='javascript/main.js') }}"></script>
 </head>
 
+<body>
+
 <!-- Navbar -->
 <div class="w3-top">
-    <div class="w3-bar w3-black w3-card">
-        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+<div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
            href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
                 class="fa fa-bars"></i></a>
-        <a href="/2" class="w3-bar-item w3-button">HOME</a>
-        <a href="/3" class="w3-bar-item w3-button">IMPRESSUM</a>
-        <div class="w3-dropdown-hover">
-            <button class="w3-button">ALGORITHMS</button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="/" class="w3-bar-item w3-button">MOBILENET</a>
-                <a href="/1" class="w3-bar-item w3-button">VGG16</a>
-            </div>
+    <a href="/2" class="w3-bar-item w3-button">ALGORITHM</a>
+    <a href="/3" class="w3-bar-item w3-button">IMPRESSUM</a>
+    <div class="w3-dropdown-hover">
+        <button class="w3-button">Dropdown</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/" class="w3-bar-item w3-button">MOBILENET</a>
+            <a href="/1" class="w3-bar-item w3-button">VGG16</a>
         </div>
     </div>
 </div>
-
+</div>
 
 <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MOBILENET</a>
-    <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">VGG16</a>
+    <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HOME</a>
+    <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TEST</a>
     <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">ALGORITHM</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">IMPRESSUM</a>
 </div>
@@ -51,20 +52,6 @@
         {% block whiteanything %} {% endblock %}
     </div>
 
-    <!-- The Black Section
-    <div class="w3-black" id="tour">
-      <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-        <h2 class="w3-wide w3-center">{% block blackhead %}{% endblock %}</h2>
-        <p class="w3-opacity w3-center"><i>{% block blackcursive %}{% endblock %}</i></p><br>
-      </div>
-    </div>
-  -->
-    <!-- The Bottom Section -->
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-        <h2 class="w3-wide w3-center">{% block bottom %}{% endblock %}</h2>
-        <p class="w3-opacity w3-center"><i>{% block bottomcursive %}{% endblock %}</i></p>
-    </div>
-
     <!-- End Page Content -->
 </div>
 
@@ -73,18 +60,15 @@
     <div class="w3-bar w3-black w3-card">
         <footer class="w3-container w3-padding-16 w3-center w3-opacity w3-black w3-large">
             <i class="w3-medium">Powered by <a href="https://uni-tuebingen.de" target="_blank">Uni Tübingen</a></i>
-            <!--
             <i class="fa fa-facebook-official w3-hover-opacity"></i>
             <i class="fa fa-instagram w3-hover-opacity"></i>
             <i class="fa fa-snapchat w3-hover-opacity"></i>
             <i class="fa fa-pinterest-p w3-hover-opacity"></i>
             <i class="fa fa-twitter w3-hover-opacity"></i>
             <i class="fa fa-linkedin w3-hover-opacity"></i>
-            -->
         </footer>
     </div>
 </div>
-
 
 </body>
 </html>
