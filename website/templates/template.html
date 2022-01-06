@@ -19,15 +19,15 @@
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
            href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
                 class="fa fa-bars"></i></a>
-        <a href="/2" class="w3-bar-item w3-button">HOME</a>
-        <a href="/3" class="w3-bar-item w3-button">IMPRESSUM</a>
+        <a href="/" class="w3-bar-item w3-button">HOME</a>
         <div class="w3-dropdown-hover">
             <button class="w3-button">ALGORITHMS</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="/" class="w3-bar-item w3-button">MOBILENET</a>
+                <a href="/2" class="w3-bar-item w3-button">MOBILENET</a>
                 <a href="/1" class="w3-bar-item w3-button">VGG16</a>
             </div>
         </div>
+        <a href="/3" class="w3-bar-item w3-button">IMPRESSUM</a>
     </div>
 </div>
 
@@ -44,7 +44,7 @@
 <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
     <!-- The White Section -->
-    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1800px" id="band">
         <h2 class="w3-wide">{% block whitehead %} {% endblock %}</h2>
         <p class="w3-opacity"><i>{% block whitecursive %} {% endblock %}</i></p>
         <p class="w3-justify">{% block whitetext %} {% endblock %}</p>
