@@ -16,11 +16,52 @@ Useful Links:
 <a href="https://flask.palletsprojects.com/en/2.0.x/quickstart/">Flask</a>
 <a href="https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/">Darkmode Idea</a>
 <a href="https://www.w3schools.com/howto/howto_css_social_media_buttons.asp">Social Media Buttons</a>
+<a href="https://www.w3schools.com/w3css/w3css_containers.asp">W3</a>
 {% endblock %}
 
 {% block whiteanything %}
+<!--
+<div class="w3-container" align="right" style="width:100%">
+    <div class="w3-display-container w3-hover-opacity" style="width:23%">
+        <img src="./static/website_images/laptop.jpg" style="width:400px">
+        <div class="w3-display-middle w3-display-hover w3-xlarge">
+            <button class="w3-button w3-black">Shop now</button>
+        </div>
+        <div class="w3-display-bottomleft w3-display-hover" style="width:30%">Laptop, 12.99€</div>
+    </div>
+</div>
+-->
 {% endblock %}
 
 
-{% block bottom %}{% endblock %}
-{% block bottomcursive %}{% endblock %}
+{% block bottom %}
+Advertisement
+{% endblock %}
+{% block bottomcursive %}
+
+<div class="w3-content" style="width:50%">
+    <div class="w3-display-container">
+        <img class="mySlides" src="./static/website_images/laptop.jpg" alt="custom_html_banner1" style="width:100%">
+        <img class="mySlides" src="./static/website_images/Crypto.jpg" alt="custom_html_banner2" style="width:100%">
+        <img class="mySlides" src="./static/website_images/Tablet1.jpg" alt="custom_html_banner3" style="width:100%">
+        <img class="mySlides" src="./static/website_images/Tablet2.jpg" alt="custom_html_banner4" style="width:100%">
+        <button class="w3-button w3-black w3-medium w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-medium w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+        <a href="https://best.aliexpress.com/?af=5c675edb95b57&dp=5c675edb95b57&aff_fcid=fee28209113b4a3d8697144dd7cdd9dd-1641574128211-09571-_AdZIyM&tt=CPS_NORMAL&aff_fsk=_AdZIyM&aff_platform=portals-promotion&sk=_AdZIyM&aff_trace_key=fee28209113b4a3d8697144dd7cdd9dd-1641574128211-09571-_AdZIyM&terminal_id=f5a196f41fd64ebf93b6c2f3f61cfc4e" class="w3-button w3-black w3-round-xlarge w3-padding-small w3-medium w3-display-middle" >GET!</a>
+
+    </div>
+</div>
+<script>
+ var slideIndex = 1;
+ showDivs(slideIndex);
+ function plusDivs(n) {
+ showDivs(slideIndex += n);
+  }
+ function showDivs(n) {
+ var i;
+ var x = document.getElementsByClassName("mySlides");
+ if (n > x.length) {slideIndex = 1} if (n < 1) {slideIndex = x.length}for
+ (i = 0; i < x.length; i++) {x[i].style.display = "none";}
+ x[slideIndex-1].style.display = "block"; }
+</script>
+{% endblock %}

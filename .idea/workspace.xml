@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- implementation of the 5 different extractors">
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Some refining and Buttons">
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T12.44.36.954483_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T12.45.23.803214_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T12.46.33.515100_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T12.47.02.468987_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T12.47.23.240999_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T17.49.56.662679_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/website_images/Crypto.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/website_images/Tablet1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/website_images/Tablet2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/website_images/laptop.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/README" beforeDir="false" afterPath="$PROJECT_DIR$/website/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
@@ -69,11 +78,11 @@
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\website_images" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\features" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\templates" />
-      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\test_files" />
     </key>
   </component>
   <component name="RunManager" selected="Python.website_main">
@@ -493,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641547498469</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Website Update 0.7&#10;- Some refining and Buttons">
+      <created>1641548686240</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1641548686240</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -524,7 +540,8 @@
     <MESSAGE value="Website Update 0.6&#10;- implementation of drapg&amp;drop" />
     <MESSAGE value="Website Update 0.7&#10;- Attempt to implement 5 extractors" />
     <MESSAGE value="Website Update 0.7&#10;- implementation of the 5 different extractors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.7&#10;- implementation of the 5 different extractors" />
+    <MESSAGE value="Website Update 0.7&#10;- Some refining and Buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.7&#10;- Some refining and Buttons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
