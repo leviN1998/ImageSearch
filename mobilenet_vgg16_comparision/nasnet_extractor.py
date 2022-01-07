@@ -75,8 +75,8 @@ def compareImages(img_feature, feature_dir):
 
 if __name__ == "__main__":
 
-    img_dir = "./static/images/"
-    feature_dir = "./static/nasnet_features/"
+    img_dir = "./static/images/cifar10_200/"
+    feature_dir = "./static/features/nasnet_features/cifar10_200/"
 
     extractAllImg(img_dir, feature_dir)
 

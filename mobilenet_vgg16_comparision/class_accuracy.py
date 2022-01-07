@@ -1,5 +1,8 @@
 import mobilenet_extractor as m_extractor
 import vgg16_extractor as vgg16_extractor
+import mobilenetv2_extractor as m2_extractor
+import nasnet_extractor as nasnet_extractor
+import xception_extractor as xception_extractor
 import os
 import re 
 from statistics import mean
@@ -30,12 +33,12 @@ gives back array with topX percentages of shape like this:
 [top5, top10, top15]
 '''
 
-def getPredictionAccuracy(query_img_path, feature_dir):
+def getPredictionAccuracy(query_img_path, feature_dir, extractor):
     
     query_img_class = getClassName(query_img_path)
         
-    query_feature = vgg16_extractor.extractImage(query_img_path)
-    results = vgg16_extractor.compareImages(query_feature, feature_dir)[1:] #cut off first element, as this will be the query img itself
+    query_feature = extractor.extractImage(query_img_path)
+    results = extractor.compareImages(query_feature, feature_dir)[1:] #cut off first element, as this will be the query img itself
     print('results: ')
     print(results)
     print("\n")
@@ -60,35 +63,36 @@ def getPredictionAccuracy(query_img_path, feature_dir):
 
 '''
 calculates top5, top10, top15 class accuracy for all images/features in a directory
-returns mean value and single values (=results)
+returns mean value and single values (=classAccuracyLlist)
 '''
-def totalClassAccuracy(img_dir, feature_dir):
-    results = []
+def totalClassAccuracy(img_dir, feature_dir, extractor):
+    classAccuracyList = []
     means = [0,0,0]
     images = os.listdir(img_dir)
 
     for i in range(len(images)):
-        result = getPredictionAccuracy(img_dir + '/' + images[i], feature_dir)
-        #print('result of ' + str(i) + 'image: \n' )
-        #print(result)
-        results.append(result)
+        classAccuracy = getPredictionAccuracy(img_dir + '/' + images[i], feature_dir, extractor)
+        classAccuracyList.append(classAccuracy)
 
     # calculate mean values of topX
     for j in range(3):
-        means[j] = mean(results[i][j] for i in range(len(results)))
+        means[j] = mean(classAccuracyList[i][j] for i in range(len(classAccuracyList)))
 
-    return results, means
+    return classAccuracyList, means
+
 
 if __name__=="__main__":
     img_dir = './static/images/cifar10_200'
-    m_feature_dir = './static/features/vgg16_features/cifar10_200'
+    m_feature_dir = './static/features/xception_features/cifar10_200'
+
+    extractor = xception_extractor #or vgg16_extractor
 
     #query_img_path = './static/images/automobile34.jpg'
     
     #res = test(query_img_path, feature_dir)
     #print(res)
 
-    results, means = totalClassAccuracy(img_dir, m_feature_dir)
+    results, means = totalClassAccuracy(img_dir, m_feature_dir, extractor)
     print('results: ')
     print(results)
     print('\n')
