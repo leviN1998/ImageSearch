@@ -68,4 +68,18 @@ body {font-family: "Lato", sans-serif}
   bottom: 0;
   left: 0;
 }
+
+/* Style all font awesome icons */
+.fa {
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-github{
+    font-size: 21px
+}
 </style>

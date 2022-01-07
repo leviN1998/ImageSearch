@@ -1,13 +1,5 @@
 # To Run the Website do the following
 
-1. Go to Git Bash Terminal
-2. Redirect Terminal to C:...\ImageSearch\website (cd website)
-3. Type:    python -m flask
-            export FLASK_APP=website_main
-            python -m flask run
-4. Click the URL Link
-
-https://flask.palletsprojects.com/en/2.0.x/quickstart/
-
-Future Darkmode Idea:
-https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
+1. Go to website_main
+2. Scroll down to the bottom
+3. press start
