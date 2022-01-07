@@ -69,12 +69,12 @@ def compareImages(img_feature, feature_dir):
 
 if __name__ == "__main__":
 
-    img_dir = "./static/images/"
-    feature_dir = "./static/vgg16_feature/"
+    img_dir = "./static/images/cifar10_200/"
+    feature_dir = "./static/features/vgg16_features/cifar10_200/"
 
-    #extractAllImg(img_dir, feature_dir)
+    extractAllImg(img_dir, feature_dir)
     #print(loadSavedFeatures(feature_dir))
     #compareImages()
-    print(compareImages(extractImg("./static/images/airplane0.jpg", feature_dir), feature_dir))
+    #print(compareImages(extractImg("./static/images/airplane0.jpg", feature_dir), feature_dir))
     
     #extractImg("./static/img/hund1.jpg", feature_dir) #neues Bild

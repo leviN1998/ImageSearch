@@ -10,8 +10,8 @@ import vgg16_extractor as vgg16_extractor
 
 app = Flask(__name__)
 
-mobilenet_feature_dir = "./static/mobilenet_features/"
-vgg16_feature_dir = "./static/vgg16_feature/"
+mobilenet_feature_dir = "./static/features/m_features/cifar10_200/"
+vgg16_feature_dir = "./static/features/vgg16_features/cifar10_200/"
 
 
 @app.route('/mobilenet', methods=['POST', 'GET'])

@@ -77,13 +77,13 @@ def compareImages(img_feature, feature_dir):
 
 
 if __name__ == "__main__":
-    img_dir = "./static/images/"
-    feature_dir = "./static/mobilenet_features/"
+    img_dir = "./static/images/cifar10_200/"
+    feature_dir = "./static/features/m_features/cifar10_200/"
 
     extractAllImg(img_dir, feature_dir)
 
-    # samplequery = extractImage(img_dir + "horse22.jpg")
+    #samplequery = extractImage(img_dir + "horse22.jpg")
 
-    # np.shape(samplequery)
-    # list = compareImages(samplequery, feature_dir)
-    # print(list)
+    #np.shape(samplequery)
+    #list = compareImages(samplequery, feature_dir)
+    #print(list)
