@@ -2,8 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.6&#10;- implementation of Dropdown Menue">
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.46.58.340548_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.55.53.875313_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.56.45.110909_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.56.46.214475_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.56.59.356789_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.57.03.377609_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.58.03.158369_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.58.08.137462_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.58.19.821689_star-wars-jedi-fallen-order-cal-kestis-characters-uhdpaper.com-4K-22 - Kopie (2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.58.45.985717_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.59.21.811874_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T08.59.34.127244_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-07T09.01.28.865455_Download (1).jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/mobilenet_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/mobilenet_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/static/javascript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/javascript/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/mobilenet.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/mobilenet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/vgg16.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/vgg16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641481557252</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Website Update 0.6&#10;- implementation of Dropdown Menue">
+      <created>1641481659931</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1641481659931</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="UnknownFeatures">

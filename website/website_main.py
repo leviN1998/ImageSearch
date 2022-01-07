@@ -14,7 +14,7 @@ mobilenet_feature_dir = "./static/mobilenet_features/"
 vgg16_feature_dir = "./static/vgg16_feature/"
 
 
-@app.route('/2', methods=['POST', 'GET'])
+@app.route('/mobilenet', methods=['POST', 'GET'])
 def first():
     if request.method == 'POST':
         file = request.files['query_img']
@@ -38,7 +38,7 @@ def first():
         return render_template('mobilenet.html')
 
 
-@app.route('/1', methods=['GET', 'POST'])
+@app.route('/vgg16', methods=['GET', 'POST'])
 def test():
     if request.method == 'POST':
         file = request.files['query_img']
@@ -69,7 +69,7 @@ def second():
     return render_template('home.html')
 
 
-@app.route('/3')
+@app.route('/impressum')
 def third():
     return render_template('impressum.html')
 
