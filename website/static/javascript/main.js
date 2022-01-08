@@ -38,3 +38,21 @@ $(function() {
     }
   });
 });
+
+function dark_light() {
+  var element = document.body;
+  var dark_on = 0;
+  element.classList.toggle(".dark-mode");
+  if (dark_on == 0) {
+  dark_on = 1;
+  } else {
+  dark_on = 0;
+  };
+};
+
+function mode_check(){
+    if(dark_on == 1) {
+    element.classList.toggle(".dark-mode");
+    } else {
+    };
+};

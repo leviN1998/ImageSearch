@@ -2,73 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Advertisement has been added">
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.15.19.864313_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.17.28.196623_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.18.53.851384_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.20.04.980454_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.20.47.771541_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.21.22.716340_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.21.46.169310_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.21.59.428140_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.22.41.591280_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.22.50.359960_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.26.52.768828_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.27.20.882946_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.31.12.163181_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.31.45.671085_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.34.23.673257_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.35.18.242095_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.35.40.585203_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.36.13.987941_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.36.17.109298_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.36.26.693015_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.37.28.437848_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.37.33.529387_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.37.34.904460_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.37.36.194991_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.37.37.339923_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.39.51.184446_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.39.53.945985_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.39.55.241794_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.40.45.612534_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.42.40.684969_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.42.51.047407_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.43.07.672530_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.43.15.793618_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.43.19.564137_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.43.25.816591_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.43.35.054543_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.43.43.789477_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.44.55.858209_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.45.03.400381_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.45.13.039765_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.45.21.717292_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.45.39.749315_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.47.46.012140_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.48.38.193528_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.49.04.610647_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.49.25.410000_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.49.52.144015_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.49.58.413305_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.50.00.013525_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.50.07.323002_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.50.08.731889_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.50.10.195938_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.52.34.984739_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T14.52.39.459733_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T15.03.17.491399_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T15.03.42.221635_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T15.03.56.599836_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T15.04.09.088862_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T15.04.44.717035_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-08T15.04.50.697221_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/css/dark_main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/static/javascript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/javascript/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/mobilenet.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/mobilenet.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/mobilenetv2.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/mobilenetv2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/nasnet.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/nasnet.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/template_test.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/vgg16.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/vgg16.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/xception.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/xception.html" afterDir="false" />
     </list>
@@ -121,16 +63,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/static/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/static/css" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\css" />
+      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\javascript" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\images" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\features" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static" />
-      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website" />
-      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\website_images" />
@@ -220,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636731198208</updated>
-    </task>
-    <task id="LOCAL-00002" summary="nothing">
-      <created>1637075570467</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1637075570467</updated>
     </task>
     <task id="LOCAL-00003" summary="nothing">
       <created>1637315259203</created>
@@ -564,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641574621284</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Website Update 0.7&#10;- Advertisement has been added">
+      <created>1641650974095</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1641650974096</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="UnknownFeatures">

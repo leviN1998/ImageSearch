@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>W3.CSS Template</title>
     <meta charset="UTF-8">
@@ -8,11 +9,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/dark_main.css" disabled="disabled">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script type="text/javascript"
             src="{{ url_for('static', filename='javascript/main.js') }}"></script>
 </head>
-
+<body>
 <!-- Navbar -->
 <div class="w3-top">
     <div class="w3-bar w3-black w3-card">
@@ -30,17 +32,9 @@
                 <a href="/nasnet" class="w3-bar-item w3-button">NASNET</a>
             </div>
         </div>
-        <a href="/impressum" class="w3-bar-item w3-button">IMPRESSUM</a>
+        <a href="/impressum" class="w3-bar-item w3-button" onclick="check_mode()">IMPRESSUM</a>
+        <a class="w3-bar-item w3-button" style="float: right" onclick="dark_light()">DARKMODE</a>
     </div>
-</div>
-
-
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MOBILENET</a>
-    <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">VGG16</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">ALGORITHM</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">IMPRESSUM</a>
 </div>
 
 <!-- Page content -->
@@ -71,16 +65,16 @@
 
     <!-- End Page Content -->
 </div>
-
 <!-- Footer -->
 <div class="w3-bottom">
     <div class="w3-bar w3-black w3-card">
         <footer class="w3-container w3-padding-16 w3-center w3-opacity w3-black w3-large">
-            <a target="_blank" href="https://github.com/leviN1998/ImageSearch" class="fa fa-github w3-hover-opacity"></a>
+            <a target="_blank" href="https://github.com/leviN1998/ImageSearch"
+               class="fa fa-github w3-hover-opacity"></a>
             <a target="_blank" href="https://uni-tuebingen.de" class="fa fa-university w3-hover-opacity"></a>
-        </footer>
     </div>
 </div>
+</footer>
 
 
 </body>

@@ -126,12 +126,7 @@ div.desc {
 
 
 
-
-body.\.dark-mode {
-  color: #eee;
-  background-color: #121212;
-}
-.dark-mode {
+body {
   color: #eee;
   background-color: #121212;
 }
