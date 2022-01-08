@@ -25,8 +25,8 @@ Using Xception algorithm
     <h2>Similar Images:</h2>
     <p>time: {{ t }}</p>
     {% for score in scores %}
-    <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
-        <img src="{{ score[1] }}" height="200px">
+    <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <img src="{{ score[1] }}" height="200px" max-width="300px" min-width="250px">
         <figcaption>{{ score[0] }}</figcaption>
     </figure>
     {% endfor %}
