@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/main.css">
-    <link rel="stylesheet" href="static/css/dark_main.css" disabled="disabled">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script type="text/javascript"
             src="{{ url_for('static', filename='javascript/main.js') }}"></script>
@@ -42,21 +41,13 @@
 
     <!-- The White Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1800px" id="band">
-        <h2 class="w3-wide">{% block whitehead %} {% endblock %}</h2>
+        <h1 class="w3-wide">{% block whitehead %} {% endblock %}</h1>
         <p class="w3-opacity"><i>{% block whitecursive %} {% endblock %}</i></p>
         <p class="w3-justify">{% block whitetext %} {% endblock %}</p>
         {% block whiteanything %}
         {% endblock %}
     </div>
 
-    <!-- The Black Section
-    <div class="w3-black" id="tour">
-      <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-        <h2 class="w3-wide w3-center">{% block blackhead %}{% endblock %}</h2>
-        <p class="w3-opacity w3-center"><i>{% block blackcursive %}{% endblock %}</i></p><br>
-      </div>
-    </div>
-  -->
     <!-- The Bottom Section -->
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
         <h2 class="w3-wide w3-center">{% block bottom %}{% endblock %}</h2>

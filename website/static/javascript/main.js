@@ -39,20 +39,28 @@ $(function() {
   });
 });
 
-function dark_light() {
-  var element = document.body;
-  var dark_on = 0;
-  element.classList.toggle(".dark-mode");
-  if (dark_on == 0) {
-  dark_on = 1;
-  } else {
-  dark_on = 0;
-  };
-};
 
-function mode_check(){
-    if(dark_on == 1) {
-    element.classList.toggle(".dark-mode");
-    } else {
-    };
+
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme == "dark") {
+  document.body.classList.toggle("dark-theme");
+} else if (currentTheme == "light") {
+  document.body.classList.toggle("light-theme");
+}
+
+function dark_light() {
+
+  if (prefersDarkScheme.matches) {
+    document.body.classList.toggle("light-theme");
+    var theme = document.body.classList.contains("light-theme")
+      ? "light"
+      : "dark";
+  } else {
+    document.body.classList.toggle("dark-theme");
+    var theme = document.body.classList.contains("dark-theme")
+      ? "dark"
+      : "light";
+  }
+  localStorage.setItem("theme", theme);
 };

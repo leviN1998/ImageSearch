@@ -124,15 +124,39 @@ div.desc {
 
 
 
-
-
-
-body.\.dark-mode {
-  color: #eee;
-  background-color: #121212;
+body {
+  --text-color: #222;
+  --bkg-color: #fff;
 }
-.dark-mode {
-  color: #eee;
-  background-color: #121212;
+body.dark-theme {
+  --text-color: #eee;
+  --bkg-color: #121212;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    --text-color: #eee;
+    --bkg-color: #121212;
+  }
+  body.light-theme {
+    --text-color: #222;
+    --bkg-color: #fff;
+  }
+}
+
+body {
+  background: var(--bkg-color);
+}
+
+h1 {
+    color: var(--text-color);
+}
+h2 {
+    color: var(--text-color);
+}
+h3 {
+    color: var(--text-color);
+}
+p {
+  color: var(--text-color);
 }
 </style>
