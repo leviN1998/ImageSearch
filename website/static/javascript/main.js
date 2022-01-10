@@ -41,7 +41,7 @@ $(function() {
 
 
 
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: light)");
 const currentTheme = localStorage.getItem("theme");
 if (currentTheme == "dark") {
   document.body.classList.toggle("dark-theme");
