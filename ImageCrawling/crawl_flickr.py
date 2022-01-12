@@ -2,8 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 from selenium.webdriver.firefox.webdriver import WebDriver
-# from . import crawl_soup
-import crawl_soup
+from . import crawl_soup
+# import crawl_soup
 # for debugging
 import os
 import codecs

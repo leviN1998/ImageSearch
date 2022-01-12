@@ -23,6 +23,8 @@ TODOS:
 """
 import requests
 import os
+from . import database_tools
+# import database_tools
 
 
 def _change_folder(folder_name: str, verbose: bool) -> bool:
@@ -97,6 +99,35 @@ def _save_images(urls, name: str, image_count: int, verbose: bool):
 
     if verbose:
         print("Finished downloading images for keyword: ", name, " " , count, " Images downloaded, ", image_count, " images should be downloaded! ", "(0 means as many as possible)")
+
+
+def _save_images_to_db(urls, database: str, table_name: str, class_name: str, database_name: str, website_name: str,
+                        image_count: int, test_img_count: int, verbose: bool=False):
+    # change folder to default database folder
+    _change_folder("ImageDatabases", verbose=True)
+    # get content for urls
+    images_data = []
+    test_images_data = []
+    for url in urls:
+        if verbose and (len(images_data) + len(test_images_data)) % 100 == 0:
+            print("Collected binary data " + str(len(images_data) + len(test_images_data)) + "/" + str(image_count))
+
+        if len(images_data) + len(test_images_data) >= image_count:
+            break
+        if len(images_data) < (image_count - test_img_count):
+            images_data.append(requests.get(url).content)
+        else:
+            test_images_data.append(requests.get(url).content)
+
+    if verbose:
+        print("Finished extracting binary data")
+
+    database_tools.load_images_to_db(database, table_name, images_data, class_name, database_name, website_name)
+    if verbose:
+        print("finished loading normal images into database.")
+    database_tools.load_images_to_db(database, table_name, test_images_data, class_name, database_name + "_test", website_name)
+    if verbose:
+        database_tools.print_info_images_connect(database, table_name)
 
 
 

@@ -38,6 +38,7 @@ INFORMATION:
 from .crawl_soup import *
 from .crawling_base import *
 from .crawl_flickr import *
+from .crawl_shutterstock import *
 import os
 
 
@@ -70,11 +71,15 @@ def download_images(query: str, image_count: int = 0, folder: str = "", verbose:
         return
 
     # urls = crawl_soup.get_image_urls(query, image_count, verbose)
-    urls = crawl_flickr.get_image_urls(query, image_count, verbose)
+    # urls = crawl_flickr.get_image_urls(query, image_count, verbose)
+    urls = crawl_shutterstock(query, image_count, verbose)
+
     crawling_base._save_images(urls, query, image_count, verbose)
     os.chdir(old_pwd)
 
-def download_images_batch():
-    """ TODO: implement
-    """
-    pass
+def download_images_batch(querys, database_name: str, image_count: int, test_img_count: int, verbose: bool=True):
+    old_pwd = os.getcwd()
+    for q in querys:
+        urls = crawl_shutterstock.get_image_urls(q, image_count, verbose)
+        crawling_base._save_images_to_db(urls, "test_database", "images", q, database_name, "shutterstock.com", image_count, test_img_count, verbose)
+        os.chdir(old_pwd)
