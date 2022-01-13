@@ -13,9 +13,11 @@ def _create_table(conn: sqlite3.Connection, table_name, names, types, drop_if_ex
 	
 	# handle case that table exists
 	query_str = "CREATE TABLE " + table_name + " ("
-	for n, t in names, types:
+	for n, t in zip(names, types):
 		query_str += n + " " + t + ", "
+	query_str = query_str[:-2]
 	query_str += ")"
+	cur.execute(query_str)
 	conn.commit()
 
 
