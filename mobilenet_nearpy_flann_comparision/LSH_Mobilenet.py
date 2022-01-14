@@ -4,7 +4,7 @@ from nearpy.hashes import RandomBinaryProjections
 from nearpy.distances import EuclideanDistance
 from nearpy.filters import NearestFilter
 import mobilenet_extractor as mobile
-import pymysql
+#import pymysql
 import copy
 import time
 import os
@@ -21,6 +21,13 @@ db1 = pymysql.connect(
 
 cursor = db1.cursor()
 '''
+num_bits = 8
+random_bin_hash1 = RandomBinaryProjections('random_bin_hash1', num_bits)
+random_bin_hash2 = RandomBinaryProjections('random_bin_hash2', num_bits)
+random_bin_hash3 = RandomBinaryProjections('random_bin_hash3', num_bits)
+random_bin_hash4 = RandomBinaryProjections('random_bin_hash4', num_bits)
+random_bin_hash5 = RandomBinaryProjections('random_bin_hash5', num_bits)
+
 def lsh(dim, query_vec, feature_dir, num_bits):
     '''
     input: Dimension of vector space
@@ -31,11 +38,11 @@ def lsh(dim, query_vec, feature_dir, num_bits):
     features, img_paths = mobile.loadSavedFeatures(feature_dir)
 
     # Create hash tables
-    random_bin_hash1 = RandomBinaryProjections('random_bin_hash1', num_bits)
-    random_bin_hash2 = RandomBinaryProjections('random_bin_hash2', num_bits)
-    random_bin_hash3 = RandomBinaryProjections('random_bin_hash3', num_bits)
-    random_bin_hash4 = RandomBinaryProjections('random_bin_hash4', num_bits)
-    random_bin_hash5 = RandomBinaryProjections('random_bin_hash5', num_bits)
+    #random_bin_hash1 = RandomBinaryProjections('random_bin_hash1', num_bits)
+    #random_bin_hash2 = RandomBinaryProjections('random_bin_hash2', num_bits)
+    #random_bin_hash3 = RandomBinaryProjections('random_bin_hash3', num_bits)
+    #random_bin_hash4 = RandomBinaryProjections('random_bin_hash4', num_bits)
+    #random_bin_hash5 = RandomBinaryProjections('random_bin_hash5', num_bits)
     # random_bin_hash6 = RandomBinaryProjections('random_bin_hash5', num_bits)
     # random_bin_hash7 = RandomBinaryProjections('random_bin_hash5', num_bits)
     # random_bin_hash8 = RandomBinaryProjections('random_bin_hash5', num_bits)
@@ -44,7 +51,7 @@ def lsh(dim, query_vec, feature_dir, num_bits):
     engine1 = Engine(dim, lshashes=[random_bin_hash1, random_bin_hash2, random_bin_hash3, random_bin_hash4, random_bin_hash5], distance=EuclideanDistance(), vector_filters=[NearestFilter(15)])
 
     for i, vec in enumerate(features):
-        engine1.store_vector(vec, i)
+        engine1.store_vector(vec, i) #vector im engine speichern --> im richtigen Bucket
 
     '''
     Hashwert in die Datenbank reinzuschreiben:
@@ -96,7 +103,7 @@ def lsh(dim, query_vec, feature_dir, num_bits):
     '''
 
     # Get number of candidates which are in the same bucket as query vector after hashing
-    print(engine1.candidate_count(query_vec))
+    print(engine1.candidate_count(query_vec)) 
 
     # Get 15 nearest neighbours
     N = engine1.neighbours(query_vec)
@@ -158,13 +165,13 @@ def getPredictionAccuracy(query_img_path, feature_dir):
 
 
 if __name__ == "__main__":
-    img_dir = "./static/images/cifar10_200/"
-    feature_dir = "./static/features/m_features/cifar10_200"
+    img_dir = "./static/images/"
+    feature_dir = "./static/features/"
 
     test_dir = "./static/testset/"
-    for img in os.listdir(test_dir):
-        print("classification accuracy: " + str(getPredictionAccuracy(test_dir + img, feature_dir)))
+    #for img in os.listdir(test_dir):
+    #    print("classification accuracy: " + str(getPredictionAccuracy(test_dir + img, feature_dir)))
 
 
-    # query_vec = mobile.extractImage(img_dir + "airplane36.jpg")
-    # print(lsh(1024, query_vec, feature_dir, 10))
+    query_vec = mobile.extractImage(img_dir + "airplane36.jpg")
+    print(lsh(1024, query_vec, feature_dir, 8))
