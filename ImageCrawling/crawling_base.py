@@ -23,8 +23,8 @@ TODOS:
 """
 import requests
 import os
-from . import database_tools
-# import database_tools
+# from . import database_tools
+import database_tools
 
 
 def _change_folder(folder_name: str, verbose: bool) -> bool:
