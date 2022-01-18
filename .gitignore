@@ -3,3 +3,6 @@
 
 # Ignoriere Pycache
 *.pyc
+
+# Ignoriere .idea
+.idea
