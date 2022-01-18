@@ -1,2 +1,8 @@
 # Ignoriere Datenbank-Dateien
 *.db
+
+# Ignoriere Pycache
+*.pyc
+
+# Ignoriere .idea
+.idea
