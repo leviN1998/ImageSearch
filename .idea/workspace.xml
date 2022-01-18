@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- First try to implement Darkmode">
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T17.16.44.131239_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T17.17.04.409184_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T17.18.52.009667_Download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T17.19.04.814794_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T17.25.36.000151_star-wars-jedi-fallen-order-cal-kestis-characters-uhdpaper.com-4K-22 - Kopie (2).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T18.01.21.167000_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T18.02.40.088483_Download (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T18.11.07.103952_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T18.11.17.638620_Download (1).jpg" afterDir="false" />
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Finished Dark Mode">
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-18T18.12.43.584806_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/extractors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/extractors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/javascript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/javascript/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/algorithm.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/algorithm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,13 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636731198208</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Flask installation and first testserver">
-      <created>1637327089305</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1637327089305</updated>
     </task>
     <task id="LOCAL-00009" summary="Flask installation and first testserver">
       <created>1637331654823</created>
@@ -511,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642522402668</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Website Update 0.7&#10;- Finished Dark Mode">
+      <created>1642525930932</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1642525930932</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -545,7 +531,8 @@
     <MESSAGE value="Website Update 0.7&#10;- Some refining and Buttons" />
     <MESSAGE value="Website Update 0.7&#10;- Advertisement has been added" />
     <MESSAGE value="Website Update 0.7&#10;- First try to implement Darkmode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.7&#10;- First try to implement Darkmode" />
+    <MESSAGE value="Website Update 0.7&#10;- Finished Dark Mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Website Update 0.7&#10;- Finished Dark Mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
