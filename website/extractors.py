@@ -64,7 +64,7 @@ class Extractor:
             feature = np.load(feature_path)
 
             features.append(feature)
-            img_paths.append("./static/images/" + os.path.splitext(feature_name)[0] + ".jpg")
+            img_paths.append("./static/images/cifar10_200/" + os.path.splitext(feature_name)[0] + ".jpg")
         
         return features, img_paths
 

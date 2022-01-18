@@ -8,20 +8,19 @@ import extractors as extractors
 
 app = Flask(__name__)
 
-#set feature directories
+# set feature directories
 mobilenet_feature_dir = "./static/features/m_features/cifar10_200/"
 vgg16_feature_dir = "./static/features/vgg16_features/cifar10_200/"
 mobilenetv2_feature_dir = "./static/features/m2_features/cifar10_200/"
 nasnet_feature_dir = "./static/features/nasnet_features/cifar10_200/"
 xception_feature_dir = "./static/features/xception_features/cifar10_200/"
 
-#instanciate extractors
+# instanciate extractors
 mobilenet_extractor = extractors.MobileNet()
 mobilenetv2_extractor = extractors.MobileNetV2()
 vgg16_extractor = extractors.VGG16Extractor()
 nasnet_extractor = extractors.NasNet()
 xception_extractor = extractors.Xception()
-
 
 
 @app.route('/mobilenet', methods=['POST', 'GET'])
@@ -41,12 +40,12 @@ def first():
         t = str((time.time() - startTime))
 
         return render_template('algorithm.html',
-                                extractor = "MobileNet",
-                                query_path=uploaded_img_path,
-                                scores=scores,
-                                t=t)
+                               extractor="MobileNet",
+                               query_path=uploaded_img_path,
+                               scores=scores,
+                               t=t)
     else:
-        return render_template('algorithm.html', extractor = "MobileNet",)
+        return render_template('algorithm.html', extractor="MobileNet", )
 
 
 @app.route('/mobilenetv2', methods=['POST', 'GET'])
@@ -66,12 +65,12 @@ def mobilenetv2():
         t = str((time.time() - startTime))
 
         return render_template('algorithm.html',
-                                extractor = "MobileNet Version 2",
-                                query_path=uploaded_img_path,
-                                scores=scores,
-                                t=t)
+                               extractor="MobileNet Version 2",
+                               query_path=uploaded_img_path,
+                               scores=scores,
+                               t=t)
     else:
-        return render_template('algorithm.html', extractor = "MobileNet Version 2",)
+        return render_template('algorithm.html', extractor="MobileNet Version 2", )
 
 
 @app.route('/nasnet', methods=['POST', 'GET'])
@@ -91,12 +90,12 @@ def nasnet():
         t = str((time.time() - startTime))
 
         return render_template('algorithm.html',
-                                extractor = "NasNet",
-                                query_path=uploaded_img_path,
-                                scores=scores,
-                                t=t)
+                               extractor="NasNet",
+                               query_path=uploaded_img_path,
+                               scores=scores,
+                               t=t)
     else:
-        return render_template('algorithm.html', extractor = "NasNet",)
+        return render_template('algorithm.html', extractor="NasNet", )
 
 
 @app.route('/xception', methods=['POST', 'GET'])
@@ -116,12 +115,12 @@ def xception():
         t = str((time.time() - startTime))
 
         return render_template('algorithm.html',
-                                extractor = "Xception",
-                                query_path=uploaded_img_path,
-                                scores=scores,
-                                t=t)
+                               extractor="Xception",
+                               query_path=uploaded_img_path,
+                               scores=scores,
+                               t=t)
     else:
-        return render_template('algorithm.html', extractor = "Xception",)
+        return render_template('algorithm.html', extractor="Xception", )
 
 
 @app.route('/vgg16', methods=['GET', 'POST'])
@@ -141,13 +140,13 @@ def test():
         scores = vgg16_extractor.linearSearch(extractedImg, vgg16_feature_dir)
 
         return render_template('algorithm.html',
-                                extractor = "VGG16",
-                                query_path=uploaded_img_path,
-                                scores=scores,
-                                t=t)
+                               extractor="VGG16",
+                               query_path=uploaded_img_path,
+                               scores=scores,
+                               t=t)
 
     else:
-        return render_template('algorithm.html', extractor = "VGG16",)
+        return render_template('algorithm.html', extractor="VGG16", )
 
 
 @app.route('/')

@@ -41,17 +41,20 @@ $(function() {
 
 
 
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: light)");
+const prefersLightScheme = window.matchMedia("(prefers-color-scheme: light)");
 const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
-} else if (currentTheme == "light") {
-  document.body.classList.toggle("light-theme");
-}
+
+document.addEventListener("DOMContentLoaded", function(){
+    if (currentTheme == "dark") {
+      document.body.classList.toggle("dark-theme");
+    } else if (currentTheme == "light") {
+      document.body.classList.toggle("light-theme");
+    }
+});
 
 function dark_light() {
 
-  if (prefersDarkScheme.matches) {
+  if (prefersLightScheme.matches) {
     document.body.classList.toggle("light-theme");
     var theme = document.body.classList.contains("light-theme")
       ? "light"

@@ -22,52 +22,6 @@ body {font-family: "Lato", sans-serif}
     width: 100%;
 }
 
-#dropzone {
-  position: relative;
-  border: 10px dotted #000000AA;
-  border-radius: 20px;
-  color: black;
-  font: bold 24px/200px tahoma;
-  height: 200px;
-  margin: 30px auto;
-  text-align: center;
-  width: 200px;
-}
-
-#dropzone.hover {
-  border: 10px solid #000000;
-  color: #000000;
-}
-
-#dropzone.dropped {
-  background: #000000;
-  border: 10px solid #000000;
-}
-
-#dropzone div {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-#dropzone img {
-  border-radius: 10px;
-  vertical-align: middle;
-  max-width: 95%;
-  max-height: 95%;
-}
-
-#dropzone [type="file"] {
-  cursor: pointer;
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
 
 /* Style all font awesome icons */
 .fa {
@@ -159,4 +113,52 @@ h3 {
 p {
   color: var(--text-color);
 }
+
+#dropzone {
+  position: relative;
+  border: 10px dotted var(--text-color);
+  border-radius: 20px;
+  color: var(--text-color);
+  font: 24px/200px arial;
+  height: 200px;
+  margin: 30px auto;
+  text-align: center;
+  width: 200px;
+}
+
+#dropzone.hover {
+  border: 10px solid var(--text-color);
+  color: var(--text-color);
+}
+
+#dropzone.dropped {
+  background: var(--bkg-color);
+  border: 10px solid var(--bkg-color);
+}
+
+#dropzone div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#dropzone img {
+  border-radius: 10px;
+  vertical-align: middle;
+  max-width: 95%;
+  max-height: 95%;
+}
+
+#dropzone [type="file"] {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 </style>
