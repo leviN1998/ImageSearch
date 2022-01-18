@@ -79,21 +79,21 @@ div.desc {
 
 
 body {
-  --text-color: #222;
-  --bkg-color: #fff;
+  --text-color: #101010;
+  --bkg-color: #E8E8E8;
 }
 body.dark-theme {
-  --text-color: #eee;
-  --bkg-color: #121212;
+  --text-color: #E8E8E8;
+  --bkg-color: #101010;
 }
 @media (prefers-color-scheme: light) {
   body {
-    --text-color: #eee;
-    --bkg-color: #121212;
+      --text-color: #101010;
+      --bkg-color: #E8E8E8;
   }
   body.light-theme {
-    --text-color: #222;
-    --bkg-color: #fff;
+        --text-color: #E8E8E8;
+        --bkg-color: #101010;
   }
 }
 
