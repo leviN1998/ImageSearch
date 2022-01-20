@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Finished Dark Mode">
-      <change beforePath="$PROJECT_DIR$/website/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/static/website_images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/website_images/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,9 +67,9 @@
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\website_images" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\ImageDatabases" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch" />
-      <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\website_images" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static\features" />
       <recent name="C:\Users\timok\PycharmProjects\ImageSearch\website\static" />
     </key>
@@ -174,13 +176,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636731198208</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Flask installation and first testserver">
-      <created>1637570470158</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1637570470158</updated>
     </task>
     <task id="LOCAL-00017" summary="Flask installation and first testserver">
       <created>1637576105446</created>
@@ -518,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642705092757</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Website Update 0.7&#10;- Finished Dark Mode">
+      <created>1642705133435</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1642705133435</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="UnknownFeatures">
