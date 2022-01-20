@@ -1,8 +1,9 @@
-import os
-from PIL import Image
 import io
-from tensorflow import keras
+import os
+
 import numpy as np
+from PIL import Image
+
 from ImageCrawling import database_tools
 
 if __name__ == '__main__':
