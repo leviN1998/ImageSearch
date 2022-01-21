@@ -40,7 +40,7 @@ def binary_to_image(binary_image_data, size=(500,500)):
 
 def get_test_image():
     from . import database_tools
-    conn = database_tools.connect("test.db")
+    conn = database_tools.connect("light_database.db")
     cur = conn.cursor()
     query_str =  "SELECT i.id, f.feature, i.data "
     query_str += "FROM images AS i, features AS f "
