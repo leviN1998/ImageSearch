@@ -3,30 +3,29 @@ import os
 
 import numpy as np
 from PIL import Image
+from ImageCrawling import toolbox
+from ImageCrawling import feature_interface
+import ImageCrawling
+
 
 from ImageCrawling import database_tools
 
 if __name__ == '__main__':
-    # Wichtig! sonst wird Datenbank nicht gefunden
-    # am ende wieder zurückwechseln mit os.chdir(old_dir)
-    old_dir = os.getcwd()
-    os.chdir('ImageDatabases')
+    # Ordner muss nicht mehr gewechselt werden!
 
-    # Der Teil generiert nur ein Bild zum testen und das feature dazu
-    image = database_tools.__dummy_get_test_image()
-    Image.open(io.BytesIO(image[2])).convert("RGB").resize((500, 500)).show()
-    feature = np.load(io.BytesIO(image[1]))
+    # generiere ein Bild zum suchen
+    image = toolbox.get_test_image()[2]
+    # Image ist ein binay --> also konvertieren
+    toolbox.binary_to_image(image).show()
 
 
-    # feature muss das von MoblieNet berechnete Numpy-Array sein
-    # um ein feature zu berechnen kann database_tools.__dummy_feature_func(images) verwendet werden
-    # images muss ein Array aus PIL Images sein z.b. [image1] oder so
-    images = database_tools.get_nearest_images("light_database.db", feature, "cifar10", "mobileNet", count=10)
+    # feature wird jetzt innerhalb der funktion neu berechnet
+    # image muss ein Bild im Binärformat sein
+    # toolbox.image_to_binary() kann ein Image zu binär umwandeln
+    images = ImageCrawling.get_nearest_images("light_database.db", image, "cifar10", "mobileNet", feature_interface.mobileNet_func, count=10)
     # Gibt Liste der Form: [(Image, distance), ...] zurück
     # Image ist ein PIL Image Objekt
     # distance ist eine numpy float Zahl (funktioniert wie normale Float)
-
-    os.chdir(old_dir)
 
     # Zeige Ergebnisse an:
     for i in images:
