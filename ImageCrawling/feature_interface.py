@@ -5,13 +5,16 @@ from PIL import Image
 from . import toolbox
 
 
+#wichtig:
 
 import extractors
 
 # M2 = extractors.MobileNetV2() zum Initialisieren
-# M2.extractImg(pil_img)
+# M2.extractImg(binary_img)
 
+#images sind binary images
 def mobileNetV2_func(images):
+
     M2 = extractors.MobileNetV2() 
     features = []
     count = 0
