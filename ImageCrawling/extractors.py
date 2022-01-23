@@ -1,3 +1,4 @@
+from json import tool
 from random import sample
 import numpy as np
 import tensorflow as tf
@@ -6,6 +7,7 @@ import os
 from os import listdir
 from keras.preprocessing import image
 from PIL import Image
+import toolbox 
 
 
 class Extractor:
@@ -26,14 +28,19 @@ class Extractor:
     #Methoden:
     #brauchen wir für extractImage
     def preprocessImage(self, pil_img):
+
         resized_img = pil_img.resize(self.target_size)
         img_array = image.img_to_array(resized_img)
         np.shape(img_array)
         img_array_expanded = np.expand_dims(img_array, axis=0)
         return self.net.preprocess_input(img_array_expanded)
 
-    #pil_img -> 1D feature array, length depending on network
-    def extractImage(self, pil_img):
+
+    #eigentliche extractImage(binary_img)-Funktion:
+    #binary_img --> 1D feature array, length depending on network
+    def extractImage(self, binary_img):
+
+        pil_img = toolbox.binary_to_image(binary_img)
         preprocessed_image = self.preprocessImage(pil_img)
         feature = self.extracting_network.predict(preprocessed_image)[0]
         print(np.shape(feature))
@@ -198,8 +205,7 @@ class NasNet(Extractor):
 
 if __name__ == "__main__":
 
-    img = image.load_img('img test.png')
+    img = image.load_img('airplane2.jpg') #pil
+    binary_img = toolbox.image_to_binary(img)
     M2 = MobileNetV2()
-    M2.extractImage(img)
-    
-
+    M2.extractImage(binary_img)
