@@ -6,6 +6,26 @@ from . import toolbox
 
 
 
+import extractors
+
+# M2 = extractors.MobileNetV2() zum Initialisieren
+# M2.extractImg(pil_img)
+
+def mobileNetV2_func(images):
+    M2 = extractors.MobileNetV2() 
+    features = []
+    count = 0
+    print("Staring to extract " + str(len(images)) + " features. This might take some time!")
+    for image in images:
+        feature = M2.extractImage(image)
+        features.append(feature)
+        if count % 100 == 0:
+            print("Extracted features " + str(count) + "/" + str(len(images)))
+        count += 1
+    return features
+    
+    
+    
 
 def mobileNet_func(images):
     '''
