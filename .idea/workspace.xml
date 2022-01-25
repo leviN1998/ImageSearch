@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Finished Dark Mode">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/website_images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/website_images/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
-    </list>
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Finished Dark Mode" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,13 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636731198208</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Flask installation and first testserver">
-      <created>1637576105446</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1637576105446</updated>
     </task>
     <task id="LOCAL-00018" summary="Flask installation and first testserver">
       <created>1637858118075</created>
@@ -520,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642705133435</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Website Update 0.7&#10;- Finished Dark Mode">
+      <created>1642706198025</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1642706198025</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="UnknownFeatures">
