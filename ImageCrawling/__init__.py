@@ -35,51 +35,92 @@ INFORMATION:
 	That collects all image urls on that website
 
 """
-from .crawl_soup import *
-from .crawling_base import *
-from .crawl_flickr import *
-from .crawl_shutterstock import *
-import os
+from .database_tools import *
+from .toolbox import *
+from .hashing_interface import *
+import numpy as np
+import io
 
 
+def crawl_images():
+    ''' TODO: implement
+    crawls Images for one Keyword
+    '''
+    pass
 
-def download_images(query: str, image_count: int = 0, folder: str = "", verbose: bool = True):
-    """ downloads Images for a given Keyword into a given Folder
 
-    Parameters:
-    -----------
-    query: str
-        Keyword String to enter into website for searching the images
+def crawl_images_batch():
+    ''' TODO: implement
+    crawls images from array of keywords
+    '''
+    pass
 
-    image_count: int, optional
-        Desired Number of images, defaults to 0 which means as many as the crawler can get
 
-    folder: str, optional
-        Path to folder where images should be saved, defaults to "" which means current working directory
-        Paths are relative to current working directory
+def crawl_from_txt():
+    '''
+    '''
+    pass
 
-    verbose: bool, optional
-        Flag whether this function and functions that are called should output information to the console
-        defaults to True
 
-    Returns:
-    --------
-    Nothing
-    """
-    old_pwd = os.getcwd()
-    if not crawling_base._change_folder(folder, verbose):
-        return
+def get_feature(feature_func, image):
+    '''
+    Takes binary Image
+    '''
+    return feature_func([image])[0]
 
-    # urls = crawl_soup.get_image_urls(query, image_count, verbose)
-    # urls = crawl_flickr.get_image_urls(query, image_count, verbose)
-    urls = crawl_shutterstock(query, image_count, verbose)
 
-    crawling_base._save_images(urls, query, image_count, verbose)
-    os.chdir(old_pwd)
+def calculate_features(database: str, network: str, feature_func, hashing_func, count:int=0):
+    '''
+    TODO calculate Features and Hashes for all Networks and Search algorithms
+    '''
+    conn = database_tools.connect(database)
+    database_tools.calculate_features(conn, network, feature_func, hashing_func, count)
+    database_tools._print_db_info(conn)
+    conn.close()
 
-def download_images_batch(querys, database_name: str, image_count: int, test_img_count: int, verbose: bool=True):
-    old_pwd = os.getcwd()
-    for q in querys:
-        urls = crawl_shutterstock.get_image_urls(q, image_count, verbose)
-        crawling_base._save_images_to_db(urls, "test_database", "images", q, database_name, "shutterstock.com", image_count, test_img_count, verbose)
-        os.chdir(old_pwd)
+
+def print_db_info(database: str):
+    '''
+    '''
+    database_tools.print_db_info(database)
+
+
+def get_image(database: str, id: int):
+    '''
+    Get Image from id
+    '''
+    conn = database_tools.connect(database)
+    result = database_tools._get_image(conn, id)
+    conn.close()
+    return result[4]
+
+
+def get_nearest_images(database: str, image, img_database_name: str, network: str, feature_func, count: int=10):
+    '''
+    Returns [(Image, Distance),()]
+    image must be binary
+    TODO comparison implementieren
+    '''
+    conn = database_tools.connect(database)
+    features = database_tools.get_features_for_comparison(conn, img_database_name, network)
+    closest_images = []
+    image_feature = np.load(io.BytesIO(get_feature(feature_func, image)))
+    features = features[0:30]
+    # print(len(features))
+    for f in features:
+        feature = np.load(io.BytesIO(f[1]))
+        distance = hashing_interface.dummy_calc_distance(feature, image_feature)
+        if len(closest_images) < count:
+            toolbox.insert_ordered(closest_images, (f[0], distance), count)
+            # print(len(closest_images))
+        elif distance < closest_images[-1][1]:
+            toolbox.insert_ordered(closest_images, (f[0], distance), count)
+            closest_images.pop()
+
+    output = []
+    # print(closest_images)
+    for i in closest_images:
+        img = database_tools._get_image(conn, i[0])[4]
+        output.append((toolbox.binary_to_image(img), i[1]))
+    conn.close()
+    return output
