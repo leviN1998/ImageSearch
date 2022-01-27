@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Finished Dark Mode" />
+    <list default="true" id="ac6ddf35-173c-4c4b-a110-728cdd35192e" name="Changes" comment="Website Update 0.7&#10;- Finished Dark Mode">
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.30.17.935839_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.34.06.471730_csm_car_slideshow_01_b284aaa263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.37.45.022204_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.40.26.728496_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.40.44.887245_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.40.45.968796_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.41.04.253660_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.42.14.717001_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.42.33.453473_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.42.41.673631_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.42.51.491975_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.43.09.652197_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.43.19.634014_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.45.15.026347_Download (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.45.42.924332_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.46.39.614043_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.49.01.486634_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.49.13.357028_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.49.22.751039_Download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/static/uploaded/2022-01-27T15.49.32.251448_Download.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/algorithm.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/algorithm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/website_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/website_main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +43,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -37,6 +62,9 @@
         <option name="url" value="https://github.com/leviN1998/ImageSearch.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="20pAXbmADJWpgDqApYgQyreiTnb" />
   <component name="ProjectLevelVcsManager">
@@ -534,7 +562,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -559,7 +586,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/website/website_main.py</url>
-          <line>161</line>
+          <line>194</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
