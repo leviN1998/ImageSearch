@@ -4,7 +4,9 @@ from datetime import datetime
 from PIL import Image
 from flask import Flask, request, render_template
 
+import ImageCrawling
 import extractors as extractors
+from ImageCrawling import feature_interface
 
 app = Flask(__name__)
 
@@ -21,6 +23,37 @@ mobilenetv2_extractor = extractors.MobileNetV2()
 vgg16_extractor = extractors.VGG16Extractor()
 nasnet_extractor = extractors.NasNet()
 xception_extractor = extractors.Xception()
+
+
+@app.route('/test', methods=['POST', 'GET'])
+def test1():
+    if request.method == 'POST':
+        file = request.files['query_img']
+
+        # Save query image
+        img = Image.open(file.stream)  # PIL image
+        uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file.filename
+        img.save(uploaded_img_path)
+
+        # Run search
+        startTime = time.time()
+        scores = ImageCrawling.get_nearest_images("light_database.db",
+                                                  img,
+                                                  "cifar10",
+                                                  "mobileNet",
+                                                  feature_interface.mobileNet_func,
+                                                  count=10)
+        #extractedImg = mobilenet_extractor.extractImage(uploaded_img_path)
+        #scores = mobilenet_extractor.linearSearch(extractedImg, mobilenet_feature_dir)
+        t = str((time.time() - startTime))
+
+        return render_template('algorithm.html',
+                               extractor="MobileNet",
+                               query_path=uploaded_img_path,
+                               scores=scores,
+                               t=t)
+    else:
+        return render_template('algorithm.html', extractor="MobileNet", )
 
 
 @app.route('/mobilenet', methods=['POST', 'GET'])
