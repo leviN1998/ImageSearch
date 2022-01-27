@@ -1,5 +1,6 @@
 import pickle
 import os
+import requests
 import numpy as np
 import io
 from PIL import Image
@@ -40,7 +41,7 @@ def binary_to_image(binary_image_data, size=(500,500)):
 
 def get_test_image():
     from . import database_tools
-    conn = database_tools.connect("light_database.db")
+    conn = database_tools.connect("test.db")
     cur = conn.cursor()
     query_str =  "SELECT i.id, f.feature, i.data "
     query_str += "FROM images AS i, features AS f "
@@ -68,3 +69,17 @@ def insert_ordered(list, element, count):
                 list.insert(i, element)
                 # print("After: " + str(len(list)))
                 return
+
+def download_image(url: str):
+    '''
+    returns binary image
+    '''
+    binary = requests.get(url).content
+    return binary
+
+
+def download_threaded(urls, start: int, stop: int, list):
+    '''
+    '''
+    for i in range(start, stop):
+        list.append(download_image(urls[i]))

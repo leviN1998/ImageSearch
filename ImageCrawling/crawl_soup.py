@@ -40,14 +40,28 @@ from bs4 import BeautifulSoup
 base_url = "https://www.google.com/search?site=&tbm=isch&source=hp&biw=1873&bih=990&"
 
 
+# u_agent = {
+#         # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36',
+#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0',
+#         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+#         'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+#         'Accept-Encoding': 'none',
+#         'Accept-Language': 'en-US,en;q=0.8',
+#         'Connection': 'keep-alive',
+#     }
 u_agent = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-        'Accept-Encoding': 'none',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Connection': 'keep-alive',
-    }
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-User": "?1",
+        "Sec-Fetch-Dest": "document",
+        "Referer": "https://www.google.com/",
+        "Accept-Encoding": "identity",
+        "Accept-Language": "en-US,en;q=0.9"
+}
 
 
 def _get_urls_from_url(url: str, image_count: int, verbose: bool):
@@ -193,4 +207,3 @@ def get_image_urls(query: str, image_count: int, verbose: bool):
     """
     url = base_url + "q=" + query                                     # Final url with the categroy name for which we want
     return _get_urls_from_url(url, image_count, verbose)                                                                                            # to get images for
-    

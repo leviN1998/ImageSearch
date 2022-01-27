@@ -38,15 +38,33 @@ INFORMATION:
 from .database_tools import *
 from .toolbox import *
 from .hashing_interface import *
+from .crawl_shutterstock import *
 import numpy as np
 import io
 
+database = "test.db"
 
-def crawl_images():
+
+def crawl_images(query: str, image_database_name: str, image_count: int, test_size: int, thread_count: int=5):
     ''' TODO: implement
     crawls Images for one Keyword
     '''
-    pass
+    links = crawl_shutterstock.crawl_links(query, image_count, thread_count)
+    images = []
+    threads = list()
+    images_per_thread = math.ceil(image_count / thread_count)
+    for i in range(0, thread_count):
+        t = threading.Thread(target=toolbox.download_threaded, args=(links, i * images_per_thread, min(image_count, (i+1) * images_per_thread), images, ))
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()
+
+    conn = database_tools.connect(database)
+    database_tools.add_images(conn, images, query, image_database_name, "shutterstock.com")
+    database_tools.print_info_images(conn)
+    conn.close()
 
 
 def crawl_images_batch():

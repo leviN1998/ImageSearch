@@ -1,87 +1,135 @@
-from . import crawl_soup
-# import crawl_soup
+from os import link
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+import time
+import math
+import threading
+
 
 base_url = "https://www.shutterstock.com/de/search/"
 base_url_2 = "?image_type=photo&page="
 
-def get_image_urls(query: str, image_count: int, verbose: bool=False):
-    # could crash if image_count is greater than available images
-    image_urls = []
-    page_number = 1
-    url = base_url + query + base_url_2
-    while len(image_urls) < image_count:
-        image_urls += _get_urls_from_page_number(url, page_number, verbose=False)
-        page_number += 1
-        # print(len(image_urls))
-    if verbose:
-        print("Finished crawling " + str(len(image_urls)) + "/" + str(image_count) + " images.")
-    return image_urls
 
-
-def _get_urls_from_page_number(base_string: str, page_number: int, verbose: bool=False):
-    url = base_string + str(page_number)
-    return crawl_soup.get_urls_specific(url, 0, 'img', 'jss231', 'src', verbose)
-
-
-# Testing -> temp
-import requests
-import io
-from PIL import Image
-import sqlite3
-import os
-def __get_binary_image(url: str):
-    binary = requests.get(url).content
-    return binary
-
-
-def __clean_db():
-    conn = sqlite3.connect('test_database')
-    cur = conn.cursor()
-    cur.execute("DROP TABLE IF EXISTS images")
-    cur.execute("CREATE TABLE images (id int, class text, database_name text, website text, data BLOB)")
-    conn.commit()
-
-
-def __safe_into_db(images):
-    conn = sqlite3.connect('test_database')
-    cur = conn.cursor()
-    cur.execute("SELECT max(i.id) FROM images AS i")
-    max_index = cur.fetchall()[0][0]
-    index = 0
-    if max_index != None:
-        index = max_index
-        index += 1
+def crawl_links(query: str, image_count: int, thread_count: int=5):
+    print("[Info]      Keyword: " + query + " is crawling now")
+    available_images = get_image_count(query)
+    if  available_images < image_count:
+        print("[Warning]   Only " + str(available_images) + " images available")
+        print("[Critical]  Keyword: " + query + " will not be crawled")
+        # handle case
+        return []
     
-    print(index)
+    pages_to_crawl = math.ceil(image_count / 100)
+    pages_per_thread = math.ceil(pages_to_crawl / thread_count)
+    links = []
+    threads = list()
+    for i in range(0, thread_count):
+        t = threading.Thread(target=__start_thread, args=(query, (i * pages_per_thread) + 1, ((i+1) * pages_per_thread) + 1, i, links, ))
+        threads.append(t)
+        t.start()
 
-    img_tuples = []
-    for image in images:
-        data = __get_binary_image(image)
-        img_tuples.append((index, 'horse', 'cifar_100', 'shutterstock', data))
-        index += 1
+    for t in threads:
+        t.join()
+    
+    # remove None-links
+    __remove_empty_links(links)
 
-    cur.executemany("INSERT INTO images(id, class, database_name, website, data) VALUES (?, ?, ?, ?, ?)", img_tuples)
-    cur.execute("SELECT i.id, i.website FROM images AS i")
-    print(cur.fetchall())
-    conn.commit()
-        
+    # handle case that list isnt long enough
+    current_page = pages_to_crawl +2
+    while len(links) < image_count:
+        pages_remaining = math.ceil((image_count - len(links)) / 100)
+        __start_thread(query, current_page, current_page + pages_remaining, 0, links)
+        current_page += pages_remaining + 1
 
-def __show_first():
-    conn = sqlite3.connect('test_database')
-    cur = conn.cursor()
-    cur.execute("SELECT i.data FROM images AS i")
-    image_data = cur.fetchall()[0][0]
-    image = Image.open(io.BytesIO(image_data)).convert("RGBA")
-    image.show()
+        # remove None-links
+        __remove_empty_links(links)
+
+    links = links[0:image_count]
+    return links
 
 
-if __name__ == '__main__':
-    images = get_image_urls('horse', 250, verbose=True)
-    images_data = []
-    for im in images:
-        images_data.append(__get_binary_image(im))
-    import crawling_base
-    crawling_base._change_folder("ImageDatabases", verbose=True)
-    # crawling_base._save_images(images, 'porcupine', 250, verbose=True)
-    import database_tools
-    database_tools.load_images_to_db("test_database", "images", images_data, "horse", "cifar_10", "shutterstock.com")
+def __start_thread(query: str, page: int, to:int, thread_id: int, links):
+    '''
+    '''
+    print("[Thread-" + str(thread_id) +"]  Started new Thread, crawling from: " + str(page) + " to: " + str(to))
+    driver = _create_driver()
+    array = []
+    for i in range(page, to):
+        array += __crawl_page(driver, query, i)
+    driver.quit()
+    for l in array:
+        links.append(l)
+    print("[Thread-" + str(thread_id) +"]  Thread finished")
+
+
+
+def get_image_count(query: str, headless: bool=True):
+    '''
+    '''
+    driver = _create_driver(headless)
+    _connect(driver, base_url + query + base_url_2 + '1')
+    text = driver.find_element_by_class_name('MuiTypography-colorTextSecondary')
+    numbers = text.text.split()[0].split(".")
+    driver.quit()
+    number_str = ""
+    for n in numbers:
+        number_str += n
+    return int(number_str)
+
+
+def crawl_page(query: str, page: int, headless: bool=True):
+    '''
+    '''
+    driver = _create_driver(headless)
+    return __crawl_page(driver, query, page)
+
+
+
+
+def __crawl_page(driver: webdriver, query: str, page: int):
+    '''
+    '''
+    _connect(driver, base_url + query + base_url_2 + str(page))
+    image_links = driver.find_elements_by_tag_name('img')
+    links = []
+    for l in image_links:
+        link = l.get_attribute("src")
+        links.append(link)
+    return links
+
+
+
+
+def _connect(driver: webdriver, url: str):
+    '''
+    '''
+    driver.get(url)
+    time.sleep(5)
+
+
+def _create_driver(headless: bool=True):
+    '''
+    '''
+    options = Options()
+    if headless:
+        options.add_argument("--headless")
+
+    driver = webdriver.Firefox(options=options)
+    driver.set_window_position(0, 0)
+    driver.set_window_size(1920, 1080)
+    return driver
+
+
+def __remove_empty_links(links):
+    i = 0
+    while i < len(links):
+        if links[i] == None:
+            links.pop(i)
+            i = 0
+        else:
+            temp = links[i].split(".")
+            if temp[-1] == "jpg":
+                i += 1
+            else:
+                links.pop(i)
+                i = 0

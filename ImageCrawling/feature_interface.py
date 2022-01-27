@@ -7,7 +7,8 @@ from . import toolbox
 
 #wichtig:
 
-import extractors
+# import extractors
+from . import extractors
 
 # M2 = extractors.MobileNetV2() zum Initialisieren
 # M2.extractImg(binary_img)

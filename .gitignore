@@ -6,3 +6,6 @@
 
 # Ignoriere .idea
 .idea
+
+# Ignoriere Geckodriver
+geckodriver.log

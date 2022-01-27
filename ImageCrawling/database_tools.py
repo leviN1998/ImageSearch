@@ -182,11 +182,16 @@ def _print_db_info(conn: sqlite3.Connection):
     conn.close()
 
 
-def drop_db_from_images():
+def drop_db_from_images(conn: sqlite3.Connection, database_name: str):
     '''
     TODO
     '''
-    pass
+    cur = conn.cursor()
+    table = "images"
+    query_str =  "DELETE FROM " + table + " "
+    query_str += "WHERE database_name = '" + database_name + "'"
+    cur.execute(query_str)
+    conn.commit()
 
 
 def _get_highest_id(conn: sqlite3.Connection, table_name: str):
