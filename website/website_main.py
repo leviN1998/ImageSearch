@@ -7,6 +7,7 @@ from flask import Flask, request, render_template
 import ImageCrawling
 import extractors as extractors
 from ImageCrawling import feature_interface
+from ImageCrawling import toolbox
 
 app = Flask(__name__)
 
@@ -32,26 +33,14 @@ def test1():
 
         # Save query image
         img = Image.open(file.stream)  # PIL image
-        uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file.filename
-        img.save(uploaded_img_path)
+        img.show()
 
-        # Run search
-        startTime = time.time()
-        scores = ImageCrawling.get_nearest_images("light_database.db",
-                                                  img,
-                                                  "cifar10",
-                                                  "mobileNet",
-                                                  feature_interface.mobileNet_func,
-                                                  count=10)
-        #extractedImg = mobilenet_extractor.extractImage(uploaded_img_path)
-        #scores = mobilenet_extractor.linearSearch(extractedImg, mobilenet_feature_dir)
-        t = str((time.time() - startTime))
+        image = toolbox.image_to_binary(img)
+        results = ImageCrawling.get_nearest_images("light_database.db", image, "cifar10", "mobileNet", feature_interface.mobileNet_func, count=10)
 
-        return render_template('algorithm.html',
-                               extractor="MobileNet",
-                               query_path=uploaded_img_path,
-                               scores=scores,
-                               t=t)
+        return render_template('test.html', image=toolbox.image_to_base64(results[0][0]))
+
+
     else:
         return render_template('algorithm.html', extractor="MobileNet", )
 

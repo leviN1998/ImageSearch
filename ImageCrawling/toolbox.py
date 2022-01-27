@@ -1,3 +1,4 @@
+from base64 import b64encode
 import pickle
 import os
 import requests
@@ -34,6 +35,10 @@ def image_to_binary(image):
     output = io.BytesIO()
     image.save(output, format="JPEG")
     return output.getvalue()
+
+
+def image_to_base64(image):
+    return b64encode(image_to_binary(image)).decode('ascii')
 
 
 def binary_to_image(binary_image_data, size=(500,500)):
