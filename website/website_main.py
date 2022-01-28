@@ -36,11 +36,14 @@ def test1():
         img.show()
 
         image = toolbox.image_to_binary(img)
-        results = ImageCrawling.get_nearest_images("light_database.db", image, "cifar10", "mobileNet", feature_interface.mobileNet_func, count=10)
+        results = ImageCrawling.get_nearest_images("light_database.db",
+                                                   image,
+                                                   "cifar10",
+                                                   "mobileNet",
+                                                   feature_interface.mobileNet_func,
+                                                   count=1)
 
         return render_template('test.html', image=toolbox.image_to_base64(results[0][0]))
-
-
     else:
         return render_template('algorithm.html', extractor="MobileNet", )
 
