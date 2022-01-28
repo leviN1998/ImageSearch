@@ -1,3 +1,4 @@
+import imp
 import time
 from datetime import datetime
 
@@ -5,7 +6,8 @@ from PIL import Image
 from flask import Flask, request, render_template
 
 import ImageCrawling
-import extractors as extractors
+from ImageCrawling import extractors
+import extractors_alt as extractors_alt
 from ImageCrawling import feature_interface
 from ImageCrawling import toolbox
 import io
@@ -42,7 +44,7 @@ def test1():
                                                    image,
                                                    "cifar10",
                                                    "mobileNet",
-                                                   feature_interface.mobileNet_func,
+                                                   mobilenet_extractor.extractImage(img), #feature
                                                    count=30)
         t = str((time.time() - startTime))
 
@@ -63,7 +65,7 @@ def first():
 
         # Run search
         startTime = time.time()
-        extractedImg = mobilenet_extractor.extractImage(uploaded_img_path)
+        extractedImg = mobilenet_extractor.extractImage_by_path(uploaded_img_path)
         scores = mobilenet_extractor.linearSearch(extractedImg, mobilenet_feature_dir)
         t = str((time.time() - startTime))
 
@@ -88,7 +90,7 @@ def mobilenetv2():
 
         # Run search
         startTime = time.time()
-        extractedImg = mobilenetv2_extractor.extractImage(uploaded_img_path)
+        extractedImg = mobilenetv2_extractor.extractImage_by_path(uploaded_img_path)
         scores = mobilenetv2_extractor.linearSearch(extractedImg, mobilenetv2_feature_dir)
         t = str((time.time() - startTime))
 
@@ -113,7 +115,7 @@ def nasnet():
 
         # Run search
         startTime = time.time()
-        extractedImg = nasnet_extractor.extractImage(uploaded_img_path)
+        extractedImg = nasnet_extractor.extractImage_by_path(uploaded_img_path)
         scores = nasnet_extractor.linearSearch(extractedImg, nasnet_feature_dir)
         t = str((time.time() - startTime))
 
@@ -138,7 +140,7 @@ def xception():
 
         # Run search
         startTime = time.time()
-        extractedImg = xception_extractor.extractImage(uploaded_img_path)
+        extractedImg = xception_extractor.extractImage_by_path(uploaded_img_path)
         scores = xception_extractor.linearSearch(extractedImg, xception_feature_dir)
         t = str((time.time() - startTime))
 
@@ -163,7 +165,7 @@ def test():
 
         # Extract using vgg16
         startTime = time.time()
-        extractedImg = vgg16_extractor.extractImage(uploaded_img_path)
+        extractedImg = vgg16_extractor.extractImage_by_path(uploaded_img_path)
         t = str((time.time() - startTime))
         scores = vgg16_extractor.linearSearch(extractedImg, vgg16_feature_dir)
 
