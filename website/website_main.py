@@ -33,7 +33,7 @@ def test1():
 
         # Save query image
         img = Image.open(file.stream)  # PIL image
-        img.show()
+        uploaded_img = toolbox.image_to_base64(img)
 
         image = toolbox.image_to_binary(img)
         results = ImageCrawling.get_nearest_images("light_database.db",
@@ -43,7 +43,7 @@ def test1():
                                                    feature_interface.mobileNet_func,
                                                    count=1)
 
-        return render_template('test.html', image=toolbox.image_to_base64(results[0][0]))
+        return render_template('algorithm', query_img=uploaded_img, image=toolbox.image_to_base64(results[0][0]))
     else:
         return render_template('algorithm.html', extractor="MobileNet", )
 
