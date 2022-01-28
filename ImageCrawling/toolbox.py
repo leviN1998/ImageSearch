@@ -41,8 +41,8 @@ def image_to_base64(image):
     return b64encode(image_to_binary(image)).decode('ascii')
 
 
-def binary_to_image(binary_image_data, size=(500,500)):
-    return Image.open(io.BytesIO(binary_image_data)).convert("RGB").resize(size)
+def binary_to_image(binary_image_data):
+    return Image.open(io.BytesIO(binary_image_data)).convert("RGB")
 
 def get_test_image():
     from . import database_tools

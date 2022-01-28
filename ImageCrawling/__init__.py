@@ -123,7 +123,7 @@ def get_nearest_images(database: str, image, img_database_name: str, network: st
     features = database_tools.get_features_for_comparison(conn, img_database_name, network)
     closest_images = []
     image_feature = np.load(io.BytesIO(get_feature(feature_func, image)))
-    features = features[0:30]
+    # features = features[0:30]
     # print(len(features))
     for f in features:
         feature = np.load(io.BytesIO(f[1]))
@@ -139,6 +139,6 @@ def get_nearest_images(database: str, image, img_database_name: str, network: st
     # print(closest_images)
     for i in closest_images:
         img = database_tools._get_image(conn, i[0])[4]
-        output.append((toolbox.binary_to_image(img), i[1]))
+        output.append((toolbox.image_to_base64(toolbox.binary_to_image(img)), i[1]))
     conn.close()
     return output

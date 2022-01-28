@@ -74,7 +74,7 @@ def init_mobileNet():
 
 
 def mobile_prepare_image(image_data):
-    image = toolbox.binary_to_image(image_data, size=(224, 224))
+    image = toolbox.binary_to_image(image_data).resize((224, 224))
     # image.show()
     img_array = keras.preprocessing.image.img_to_array(image)
     img_array_expanded_dims = np.expand_dims(img_array, axis=0)

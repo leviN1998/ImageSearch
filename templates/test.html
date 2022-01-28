@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+{% block whitetext %}
+<html>
+    <head>
+    </head>
+    <body>
+    <div class="w3-container" style="max-width:2000px">
+    <form method="POST" enctype="multipart/form-data">
+        <div id="dropzone">
+            <div>upload</div>
+            <input type="file" name="query_img"><br>
+        </div>
+        <input type="submit">
+    </form>
+    <h2>Uploaded Image:</h2>
+    {% if query_img %}
+    <img src="data:image/format;base64,{{ query_img }}" width="300px">
+    {% endif %}
+    <h2>Similar Images:</h2>
+    <p>time: {{ t }}</p>
+    {% for score in scores %}
+    <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <img src="data:image/format;base64,{{ score[0] }}" height="200px" max-width="300px" min-width="250px">
+        <figcaption>{{ score[1] }}</figcaption>
+    </figure>
+    {% endfor %}
+</div>
+    </body>
+</html>
+{% endblock %}

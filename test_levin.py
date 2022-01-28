@@ -8,12 +8,12 @@ import ImageCrawling
 
 if __name__ == '__main__':
     # ImageCrawling.calculate_features("test.db", "mobile_net", feature_interface.mobileNet_func, hashing_interface.dummy_hashing_func, count=0)
-    image = toolbox.get_test_image()[2]
-    toolbox.binary_to_image(image).show()
-    images = ImageCrawling.get_nearest_images("test.db", image, "cifar10-like", "mobile_net", feature_interface.mobileNet_func, count=10)
+    # image = toolbox.get_test_image()[2]
+    # toolbox.binary_to_image(image).show()
+    # images = ImageCrawling.get_nearest_images("test.db", image, "cifar10-like", "mobile_net", feature_interface.mobileNet_func, count=10)
 
-    for i in images:
-        i[0].show()
+    # for i in images:
+    #     i[0].show()
     # print(crawl_shutterstock.get_image_urls("horse", 200, True))
     # crawl_shutterstock.get_image_count("horse", headless=False)
     # print(crawl_shutterstock.get_image_count("horse", headless=True))
@@ -27,3 +27,8 @@ if __name__ == '__main__':
     # conn.close()
 
     # ImageCrawling.crawl_images("horse", "cifar10-like", 500, 0, 10)
+    ImageCrawling.print_db_info("light_database.db")
+
+    for i in range(0, 60000):
+        if i > 10000:
+            toolbox.binary_to_image(ImageCrawling.get_image("light_database.db", i)).show()
