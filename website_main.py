@@ -43,7 +43,7 @@ def test1():
                                                    "cifar10",
                                                    "mobileNet",
                                                    feature_interface.mobileNet_func,
-                                                   count=15)
+                                                   count=30)
         t = str((time.time() - startTime))
 
         return render_template('test.html', query_img=uploaded_img, scores=results, t=t)
