@@ -38,17 +38,41 @@ class Extractor:
 
     #eigentliche extractImage(binary_img)-Funktion:
     #binary_img --> 1D feature array, length depending on network
-    def extractImage(self, binary_img):
+    def extractImage(self, pil_img):
 
-        pil_img = toolbox.binary_to_image(binary_img)
+        #pil_img = toolbox.binary_to_image(binary_img)
         preprocessed_image = self.preprocessImage(pil_img)
         feature = self.extracting_network.predict(preprocessed_image)[0]
         print(np.shape(feature))
         return feature / np.linalg.norm(feature)
 
 
-    '''
+
+
+
+
+
+
+
+    
     #methods for storing and loading features in filesystem:
+
+
+
+        # prepares image for the network: changes size of image to specific target_size
+    def preprocessImage_by_path(self, img_path):
+        img = image.load_img(img_path, target_size = self.target_size)
+        img_array = image.img_to_array(img)
+        np.shape(img_array)
+        img_array_expanded = np.expand_dims(img_array, axis=0)
+        return self.net.preprocess_input(img_array_expanded)
+
+    #img -> 1D feature array, length depending on network
+    def extractImage_by_path(self, img_path):
+        preprocessed_image = self.preprocessImage_by_path(img_path)
+        feature = self.extracting_network.predict(preprocessed_image)[0]
+        print(np.shape(feature))
+        return feature / np.linalg.norm(feature)
     
 
     #extracts all images from a given image directory and saves them to feature dir
@@ -90,7 +114,7 @@ class Extractor:
         scores = [(dists[id], img_paths[id]) for id in ids]
         return scores
 
-'''
+
 
 
 

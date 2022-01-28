@@ -113,7 +113,7 @@ def get_image(database: str, id: int):
     return result[4]
 
 
-def get_nearest_images(database: str, image, img_database_name: str, network: str, feature_func, count: int=10):
+def get_nearest_images(database: str, image, img_database_name: str, network: str, image_feature, count: int=10):
     '''
     Returns [(Image, Distance),()]
     image must be binary
@@ -122,7 +122,7 @@ def get_nearest_images(database: str, image, img_database_name: str, network: st
     conn = database_tools.connect(database)
     features = database_tools.get_features_for_comparison(conn, img_database_name, network)
     closest_images = []
-    image_feature = np.load(io.BytesIO(get_feature(feature_func, image)))
+    #image_feature = np.load(io.BytesIO(get_feature(feature_func, image)))
     # features = features[0:30]
     # print(len(features))
     for f in features:
