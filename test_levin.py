@@ -26,9 +26,12 @@ if __name__ == '__main__':
     # database_tools.print_info_images(conn)
     # conn.close()
 
-    # ImageCrawling.crawl_images("horse", "cifar10-like", 500, 0, 10)
-    ImageCrawling.print_db_info("light_database.db")
+    # ImageCrawling.crawl_images("horse", "cifar10-like", 10, 0, 1)
+    # ImageCrawling.print_db_info("light_database.db")
 
-    for i in range(0, 60000):
-        if i > 10000:
-            toolbox.binary_to_image(ImageCrawling.get_image("light_database.db", i)).show()
+    # database_tools.create_db("test.db")
+
+    # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "test.db", "big", 20, 2, main_threads=10, child_threads=1)
+
+    ImageCrawling.calculate_features("test.db", "mobile_net", feature_interface.mobileNet_func, hashing_interface.dummy_hashing_func, count=0)
+    ImageCrawling.print_db_info("test.db")

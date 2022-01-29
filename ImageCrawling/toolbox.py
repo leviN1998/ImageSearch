@@ -5,6 +5,8 @@ import requests
 import numpy as np
 import io
 from PIL import Image
+from . import database_tools
+import time
 
 def extract_classes():
     '''
@@ -88,3 +90,36 @@ def download_threaded(urls, start: int, stop: int, list):
     '''
     for i in range(start, stop):
         list.append(download_image(urls[i]))
+
+def cut_image(image):
+    '''
+    ''' # 300 x 216   25:18
+        # 390 x 280   39:28
+    width, height = image.size
+    left = 0
+    top = 0
+    right = width
+    bottom = height - 20
+    return image.crop((left, top, right, bottom))
+
+
+def extract_keywords(file: str):
+    '''
+    '''
+    with open(file) as f:
+        lines = f.readlines()
+
+    keywords = []
+    for l in lines:
+        keywords.append(l.rstrip("\n"))
+        
+    return keywords
+
+def consume_queue(queue, database: str, running: bool):
+    conn = database_tools.connect(database)
+    while running or not queue.empty():
+        if queue.empty():
+            time.sleep(10)
+            continue
+        data = queue.get()
+        database_tools.add_images(conn, data[0], data[1], data[2], data[3])

@@ -30,6 +30,7 @@ def restore_file(folder_name: str, file_name: str):
 
 
 if __name__ == '__main__':
-    split_file('light_database.db', 'light_database')
+    # split_file('light_database.db', 'light_database')
     # restore_file('light_database', 'light_database1.db')
+    split_file('test.db', 'test')
     pass

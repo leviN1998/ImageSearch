@@ -41,11 +41,11 @@ from .hashing_interface import *
 from .crawl_shutterstock import *
 import numpy as np
 import io
+import random
+from queue import Queue
 
-database = "test.db"
 
-
-def crawl_images(query: str, image_database_name: str, image_count: int, test_size: int, thread_count: int=5):
+def crawl_images(query: str, image_database_name: str, image_count: int, test_size: int, queue, thread_count: int=5):
     ''' TODO: implement
     crawls Images for one Keyword
     '''
@@ -61,23 +61,62 @@ def crawl_images(query: str, image_database_name: str, image_count: int, test_si
     for t in threads:
         t.join()
 
-    conn = database_tools.connect(database)
-    database_tools.add_images(conn, images, query, image_database_name, "shutterstock.com")
-    database_tools.print_info_images(conn)
-    conn.close()
+    # Cut images
+    cropped_images = []
+    for i in images:
+        # toolbox.binary_to_image(i).show()
+        cropped_images.append(toolbox.image_to_binary(toolbox.cut_image(toolbox.binary_to_image(i))))
+
+    # for i in cropped_images:
+    #     toolbox.binary_to_image(i).show()
+
+    # extract validation set
+    validation = []
+    while len(validation) < test_size:
+        random_int = random.randint(0, len(cropped_images)-1)
+        validation.append(cropped_images[random_int])
+        cropped_images.pop(random_int)
+
+    queue.put(((cropped_images, query, image_database_name, "shutterstock.com")))
+    queue.put((validation, query, image_database_name + "_test", "shutterstock"))
 
 
-def crawl_images_batch():
+def crawl_images_batch(keywords, database: str, image_database_name: str, image_count: int, test_size: int, main_threads: int=10, child_threads: int=1):
     ''' TODO: implement
     crawls images from array of keywords
     '''
-    pass
+    print("[Info]      Starting to crawl " + str(len(keywords)) + " Keywords")
+    batch_size = math.ceil(len(keywords) / main_threads)
+    batches = [keywords[i:i + batch_size] for i in range(0, len(keywords), batch_size)]
+    print("[Info]      Using " + str(len(batches)) + " Threads with max " + str(batch_size) + " Keywords")
+    
+    threads = list()
+    queue = Queue()
+    running = True
+    thread_queue = threading.Thread(target=toolbox.consume_queue, args=(queue, database, lambda: running))
+    thread_queue.start()
+    for i in range(0, len(batches)):
+        t = threading.Thread(target=__crawl_images_batch, args=(batches[i], image_database_name, image_count, test_size, queue, child_threads, ))
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()
+    
+    running = False
+    thread_queue.join()
 
 
-def crawl_from_txt():
+def __crawl_images_batch(keywords, database: str, image_database_name: str, image_count: int, test_size: int, child_threads: int=1):
+    for k in keywords:
+        crawl_images(k, database, image_database_name, image_count, test_size, child_threads)
+
+
+def crawl_from_txt(file: str, database: str, image_database_name: str, image_count: int, test_size: int, main_threads: int=10, child_threads: int=1):
     '''
     '''
-    pass
+    keywords = toolbox.extract_keywords(file)
+    crawl_images_batch(keywords, database, image_database_name, image_count, test_size, main_threads, child_threads)
 
 
 def get_feature(feature_func, image):

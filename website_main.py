@@ -40,10 +40,10 @@ def test1():
 
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images("light_database.db",
+        results = ImageCrawling.get_nearest_images("test.db",
                                                    image,
-                                                   "cifar10",
-                                                   "mobileNet",
+                                                   "big",
+                                                   "mobile_net",
                                                    mobilenet_extractor.extractImage(img), #feature
                                                    count=30)
         t = str((time.time() - startTime))
