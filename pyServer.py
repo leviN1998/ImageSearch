@@ -5,7 +5,9 @@ import ImageCrawling
 from ImageCrawling import feature_interface
 from PIL import Image
 #import threading
-from ImageSearch.ImageCrawling import toolbox
+from ImageCrawling import toolbox
+from ImageCrawling import extractors
+
 
 host, port = "134.2.56.169", 1234
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,6 +29,17 @@ def recv():
         
         if data == "Correct":
             reply = "Success"
+
+            image = toolbox.binary_to_image(toolbox.get_test_image()[2])
+            
+            mobilenet_extractor = extractors.MobileNet()
+            feature = mobilenet_extractor.extractImage(image)
+
+
+            images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+
+            reply = images[0][0]
+
             conn.send(reply.encode("utf-8"))
             conn.close()
             print "-----------------------------"
