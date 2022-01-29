@@ -52,7 +52,7 @@ def get_test_image():
     cur = conn.cursor()
     query_str =  "SELECT i.id, f.feature, i.data "
     query_str += "FROM images AS i, features AS f "
-    query_str += "WHERE i.database_name = 'cifar10_test' "
+    query_str += "WHERE i.database_name = 'big' "
     query_str += "AND i.id = f.id "
     query_str += "AND f.network = 'mobile_net'"
     cur.execute(query_str)

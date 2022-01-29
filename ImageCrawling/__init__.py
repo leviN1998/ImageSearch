@@ -184,3 +184,41 @@ def get_nearest_images(database: str, image, img_database_name: str, network: st
         output.append((toolbox.image_to_base64(toolbox.binary_to_image(img)), i[1]))
     conn.close()
     return output
+
+
+def get_nearest_images_2(database: str, image, img_database_name: str, network: str, image_feature, count: int=10):
+    '''
+    '''
+    conn = database_tools.connect(database)
+    buf = io.BytesIO()
+    np.save(buf, image_feature)
+    binary_feature =  buf.getvalue()
+    hash = hashing_interface.calculate_hashes(network, [binary_feature])[0]
+    features = database_tools.get_images_from_hash(conn, network, img_database_name, hash)
+
+    print("found " + str(len(features)) + " features")
+
+    closest_images = []
+    #image_feature = np.load(io.BytesIO(get_feature(feature_func, image)))
+    # features = features[0:30]
+    # print(len(features))
+    for f in features:
+        feature = np.load(io.BytesIO(f[1]))
+        print(feature)
+        print(image_feature)
+        distance = hashing_interface.dummy_calc_distance(feature, image_feature)
+        if len(closest_images) < count:
+            toolbox.insert_ordered(closest_images, (f[0], distance), count)
+            # print(len(closest_images))
+        elif distance < closest_images[-1][1]:
+            toolbox.insert_ordered(closest_images, (f[0], distance), count)
+            closest_images.pop()
+
+    output = []
+    # print(closest_images)
+    for i in closest_images:
+        img = database_tools._get_image(conn, i[0])[4]
+        # output.append((toolbox.image_to_base64(toolbox.binary_to_image(img)), i[1]))
+        output.append((toolbox.binary_to_image(img), i[1]))
+    conn.close()
+    return output

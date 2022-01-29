@@ -4,7 +4,10 @@ from ImageCrawling import feature_interface
 from ImageCrawling import hashing_interface
 from ImageCrawling import toolbox
 from ImageCrawling import crawl_shutterstock
+from ImageCrawling import extractors
 import ImageCrawling
+import numpy as np
+import io
 
 if __name__ == '__main__':
     # ImageCrawling.calculate_features("test.db", "mobile_net", feature_interface.mobileNet_func, hashing_interface.dummy_hashing_func, count=0)
@@ -36,5 +39,22 @@ if __name__ == '__main__':
     # ImageCrawling.calculate_features("test.db", "mobile_net", feature_interface.mobileNet_func, hashing_interface.dummy_hashing_func, count=0)
     # ImageCrawling.print_db_info("test.db")
 
-    database_tools.create_db("test2.db")
-    ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "test2.db", "big", 20, 2, main_threads=1, child_threads=1)
+    # database_tools.create_db("test2.db")
+    # ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "test2.db", "big", 20, 2, main_threads=1, child_threads=1)
+
+    # conn = database_tools.connect("test.db")
+    # # database_tools.create_feature_table(conn)
+    # database_tools.calculate_features(conn, "mobile_net", feature_interface.mobileNet_func, hashing_interface.calculate_hashes, count=0)
+    # database_tools.print_table(conn, "features", 20, 100)
+    # conn.close()
+
+    image = toolbox.binary_to_image(toolbox.get_test_image()[2])
+    image.show()
+    mobilenet_extractor = extractors.MobileNet()
+    feature = mobilenet_extractor.extractImage(image)
+
+
+    images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+
+    for i in images:
+        i[0].show()

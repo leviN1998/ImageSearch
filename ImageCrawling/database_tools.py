@@ -43,8 +43,8 @@ def create_images_table(conn: sqlite3.Connection):
 def create_feature_table(conn: sqlite3.Connection):
     '''
     '''
-    names = ["id", "network", "feature", "hashing"]
-    types = ["int", "text", "BLOB", "BLOB"]
+    names = ["id", "network", "feature", "hashing1", "hashing2", "hashing3", "hashing4", "hashing5"]
+    types = ["int", "text", "BLOB", "text", "text", "text", "text", "text"]
     create_table(conn, "features", names, types, drop_if_exists=True)
 
 
@@ -255,11 +255,11 @@ def _add_features(conn: sqlite3.Connection, ids, network: str, features, hashing
     cur = conn.cursor()
     feature_tuples = []
     for id, feature, hash in zip(ids, features, hashings):
-        feature_tuples.append((id, network, feature, hash))
+        feature_tuples.append((id, network, feature, hash[0], hash[1], hash[2], hash[3], hash[4]))
 
     table = "features"
-    query_str =  "INSERT INTO " + table + "(id, network, feature, hashing) "
-    query_str += "VALUES (?, ?, ?, ?)"
+    query_str =  "INSERT INTO " + table + "(id, network, feature, hashing1, hashing2, hashing3, hashing4, hashing5) "
+    query_str += "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     cur.executemany(query_str, feature_tuples)
     conn.commit()
 
@@ -278,7 +278,7 @@ def calculate_features(conn: sqlite3.Connection, network: str, feature_function,
         images = images[0:count]
 
     features = feature_function(images)
-    hashes = hash_creating_function(features)
+    hashes = hash_creating_function(network, features)
     _add_features(conn, ids, network, features, hashes)
 
 
@@ -292,6 +292,25 @@ def get_features_for_comparison(conn: sqlite3.Connection, database_name: str, ne
     query_str += "WHERE f.network = '" + network + "' "
     query_str += "AND i.id = f.id "
     query_str += "AND i.database_name = '" + database_name + "'"
+    cur.execute(query_str)
+    return cur.fetchall()
+
+
+def get_images_from_hash(conn: sqlite3.Connection, network: str, database_name: str, hash):
+    '''
+    '''
+    cur = conn.cursor()
+    query_str =  "SELECT f.id, f.feature "
+    query_str += "FROM features AS f, images AS i "
+    query_str += "WHERE f.network = '" + network + "' "
+    query_str += "AND i.id = f.id "
+    query_str += "AND i.database_name = '" + database_name + "' "
+    query_str += "AND (f.hashing1 = '" + hash[0] + "' "
+    query_str += "OR f.hashing2 = '" + hash[1] + "' "
+    query_str += "OR f.hashing3 = '" + hash[2] + "' "
+    query_str += "OR f.hashing4 = '" + hash[3] + "' "
+    query_str += "OR f.hashing5 = '" + hash[4] + "')"
+
     cur.execute(query_str)
     return cur.fetchall()
 
