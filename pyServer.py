@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Aug 12 20:40:15 2018
 
-@author: Waseem Kntar
-@title: pyServer
-"""
 import socket
 #import threading
 
-host, port = "192.168.1.6", 1234
+host, port = "134.2.56.169", 1234
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
