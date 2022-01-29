@@ -15,6 +15,13 @@ Using {{ extractor }} algorithm
             <div>upload</div>
             <input type="file" name="query_img"><br>
         </div>
+        <p>Select your Search Algorithm:</p>
+        <div class="search-radio-bar">
+            <input type="radio" id="euklid" name="search" value="euklid" {% if checked == 'euklid'%} checked='checked' {% endif %}>
+            <label for="euklid">Euklid/Linear</label>
+            <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
+            <label for="hashing">Hashing</label><br>
+        </div>
         <input type="submit">
     </form>
     <h2>Uploaded Image:</h2>
