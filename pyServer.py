@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import socket
+import ImageCrawling
+from ImageCrawling import feature_interface
+from PIL import Image
 #import threading
+from ImageSearch.ImageCrawling import toolbox
 
 host, port = "134.2.56.169", 1234
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,6 +35,13 @@ def recv():
             conn.send(reply.encode("utf-8"))
             conn.close()
             break
+            # Testimplementation
+        elif data == "mobileNet":
+            reply = ImageCrawling.get_nearest_images("light_database.db",
+                                                     image = toolbox.image_to_binary(img),
+                                                     "cifar10", "mobileNet",
+                                                     feature_interface.mobileNet_func,
+                                                     count=10)
         else:
             reply = "Failed"
             conn.send(reply.encode("utf-8"))
