@@ -19,13 +19,14 @@ def recv():
     finally:
         pass
     client.listen(10) # how many connections can it receive at one time
-    print "Start Listening..."
+    print("Start Listening...")
     
     while True:
         conn, addr = client.accept()
-        print "client with address: ", addr, " is connected."
+        print("client with address: ", addr, " is connected.")
         data = conn.recv(1024)
-        print "Recieved this data: <", data, "> from the client."
+        data = data.decode("utf-8")
+        print("Recieved this data: <", data, "> from the client.")
         
         if data == "Correct":
             reply = "Success"
@@ -42,7 +43,7 @@ def recv():
 
             conn.send(reply.encode("utf-8"))
             conn.close()
-            print "-----------------------------"
+            print("-----------------------------")
         elif data == "Disconnect":
             reply = "Disconnected and the listen has Stopped"
             conn.send(reply.encode("utf-8"))
@@ -50,16 +51,17 @@ def recv():
             break
             # Testimplementation
         elif data == "mobileNet":
-            reply = ImageCrawling.get_nearest_images("light_database.db",
-                                                     image = toolbox.image_to_binary(img),
-                                                     "cifar10", "mobileNet",
-                                                     feature_interface.mobileNet_func,
-                                                     count=10)
+            #reply = ImageCrawling.get_nearest_images("light_database.db",
+             #                                        image = toolbox.image_to_binary(img),
+              #                                       "cifar10", "mobileNet",
+               #                                      feature_interface.mobileNet_func,
+                #                                     count=10)
+            pass
         else:
             reply = "Failed"
             conn.send(reply.encode("utf-8"))
             conn.close()
-            print "-----------------------------"
+            print("-----------------------------")
             
     client.close()
 """
