@@ -115,11 +115,42 @@ def extract_keywords(file: str):
         
     return keywords
 
+
+def write_keywords(file: str, keywords):
+    '''
+    '''
+    with open(file, 'w') as f:
+        f.writelines(keywords)
+
+
+def combine_keyword_files(file1: str, file2: str):
+    '''
+    '''
+    old = extract_keywords(file1)
+    to_add = extract_keywords(file2)
+    for k in to_add:
+        found = False
+        for existing_k in old:
+            if k == existing_k:
+                found = True
+        if not found:
+            old.append(k)
+    # delete both txts
+    os.remove(file1)
+    os.remove(file2)
+    write_keywords(file1, old)
+
+
 def consume_queue(queue, database: str, running: bool):
+    '''
+    '''
     conn = database_tools.connect(database)
-    while running or not queue.empty():
+    while running() or not queue.empty():
         if queue.empty():
             time.sleep(10)
+            # print("running: " + str(running()))
+            # print("not empty: " + str(not queue.empty()))
             continue
         data = queue.get()
         database_tools.add_images(conn, data[0], data[1], data[2], data[3])
+        print("[Info]      added " + data[1] + " to database")

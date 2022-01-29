@@ -33,5 +33,8 @@ if __name__ == '__main__':
 
     # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "test.db", "big", 20, 2, main_threads=10, child_threads=1)
 
-    ImageCrawling.calculate_features("test.db", "mobile_net", feature_interface.mobileNet_func, hashing_interface.dummy_hashing_func, count=0)
-    ImageCrawling.print_db_info("test.db")
+    # ImageCrawling.calculate_features("test.db", "mobile_net", feature_interface.mobileNet_func, hashing_interface.dummy_hashing_func, count=0)
+    # ImageCrawling.print_db_info("test.db")
+
+    database_tools.create_db("test2.db")
+    ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "test2.db", "big", 20, 2, main_threads=1, child_threads=1)

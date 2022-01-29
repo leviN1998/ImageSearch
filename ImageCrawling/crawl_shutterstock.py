@@ -51,7 +51,7 @@ def crawl_links(query: str, image_count: int, thread_count: int=5):
 def __start_thread(query: str, page: int, to:int, thread_id: int, links):
     '''
     '''
-    print("[Thread-" + str(thread_id) +"]  Started new Thread, crawling from: " + str(page) + " to: " + str(to))
+    # print("[Thread-" + str(thread_id) +"]  Started new Thread, crawling from: " + str(page) + " to: " + str(to))
     driver = _create_driver()
     array = []
     for i in range(page, to):
@@ -59,7 +59,7 @@ def __start_thread(query: str, page: int, to:int, thread_id: int, links):
     driver.quit()
     for l in array:
         links.append(l)
-    print("[Thread-" + str(thread_id) +"]  Thread finished")
+    # print("[Thread-" + str(thread_id) +"]  Thread finished")
 
 
 

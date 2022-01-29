@@ -49,6 +49,7 @@ def crawl_images(query: str, image_database_name: str, image_count: int, test_si
     ''' TODO: implement
     crawls Images for one Keyword
     '''
+    # print("[Info]      crawling " + query)
     links = crawl_shutterstock.crawl_links(query, image_count, thread_count)
     images = []
     threads = list()
@@ -79,6 +80,7 @@ def crawl_images(query: str, image_database_name: str, image_count: int, test_si
 
     queue.put(((cropped_images, query, image_database_name, "shutterstock.com")))
     queue.put((validation, query, image_database_name + "_test", "shutterstock"))
+    print("[Info]      finished crawling " + query)
 
 
 def crawl_images_batch(keywords, database: str, image_database_name: str, image_count: int, test_size: int, main_threads: int=10, child_threads: int=1):
@@ -105,6 +107,7 @@ def crawl_images_batch(keywords, database: str, image_database_name: str, image_
     
     running = False
     thread_queue.join()
+    print_db_info(database)
 
 
 def __crawl_images_batch(keywords, database: str, image_database_name: str, image_count: int, test_size: int, child_threads: int=1):
