@@ -33,24 +33,31 @@ xception_extractor = extractors.Xception()
 def test1():
     if request.method == 'POST':
         file = request.files['query_img']
+        search_algorithm = request.form.get('search')
+	
+        if(search_algorithm == 'hashing' ):
+            checked = 'hashing'
+            #results = ...
+        
+        else: #lineare Suche
+        
+            img = Image.open(file.stream).convert("RGB")  # PIL image
+            uploaded_img = toolbox.image_to_base64(img)
 
-        # Save query image
-        img = Image.open(file.stream).convert("RGB")  # PIL image
-        uploaded_img = toolbox.image_to_base64(img)
+            image = toolbox.image_to_binary(img)
+            startTime = time.time()
+            results = ImageCrawling.get_nearest_images("light_database.db",
+                                                    image,
+                                                    "cifar10",
+                                                    "mobileNet",
+                                                    mobilenet_extractor.extractImage(img), #feature
+                                                    count=30)
+            t = str((time.time() - startTime))
+            checked = 'euklid'
 
-        image = toolbox.image_to_binary(img)
-        startTime = time.time()
-        results = ImageCrawling.get_nearest_images("light_database.db",
-                                                   image,
-                                                   "cifar10",
-                                                   "mobileNet",
-                                                   mobilenet_extractor.extractImage(img), #feature
-                                                   count=30)
-        t = str((time.time() - startTime))
-
-        return render_template('test.html', query_img=uploaded_img, scores=results, t=t)
+        return render_template('test.html', query_img=uploaded_img, checked = checked, scores=results, t=t)
     else:
-        return render_template('algorithm.html', extractor="MobileNet", )
+        return render_template('algorithm.html', extractor="MobileNet", checked = '' )
 
 
 @app.route('/mobilenet', methods=['POST', 'GET'])
@@ -72,10 +79,11 @@ def first():
         return render_template('algorithm.html',
                                extractor="MobileNet",
                                query_path=uploaded_img_path,
+                               checked = '',
                                scores=scores,
                                t=t)
     else:
-        return render_template('algorithm.html', extractor="MobileNet", )
+        return render_template('algorithm.html', extractor="MobileNet", checked = '' )
 
 
 @app.route('/mobilenetv2', methods=['POST', 'GET'])
