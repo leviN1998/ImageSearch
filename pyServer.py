@@ -27,6 +27,25 @@ def recv():
         data = conn.recv(1024)
         data = data.decode("utf-8")
         print("Recieved this data: <", data, "> from the client.")
+
+        # data_recieved = data.split()
+        # mode = data_recieved[0]
+        
+
+        # if mode == "Search":
+        #     network = data_recieved[1]
+        #     query_image = data_recieved[2]
+        #     query_image = toolbox.base64_to_image(query_image)
+        #     # TODO: Do Search and send Images
+
+        # elif mode == "Disconnect":
+        #     pass
+        # else:
+        #     reply = "Failed"
+        #     conn.send(reply.encode("utf-8"))
+        #     conn.close()
+        #     print("-----------------------------")
+
         
         if data == "Correct":
             reply = "Success"
