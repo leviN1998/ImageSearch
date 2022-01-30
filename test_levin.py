@@ -56,5 +56,4 @@ if __name__ == '__main__':
 
     images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
 
-    for i in images:
-        i[0].show()
+    print(images[0][0])

@@ -39,9 +39,13 @@ def recv():
 
             images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
 
-            reply = images[0][0]
+            response = ""
+            for i in images:
+                response += i[0]
+                response += " "
+        
 
-            conn.send(reply.encode("utf-8"))
+            conn.send(response.encode("utf-8"))
             conn.close()
             print("-----------------------------")
         elif data == "Disconnect":
@@ -52,10 +56,10 @@ def recv():
             # Testimplementation
         elif data == "mobileNet":
             #reply = ImageCrawling.get_nearest_images("light_database.db",
-             #                                        image = toolbox.image_to_binary(img),
-              #                                       "cifar10", "mobileNet",
-               #                                      feature_interface.mobileNet_func,
-                #                                     count=10)
+            #                                         image = toolbox.image_to_binary(img),
+            #                                         "cifar10", "mobileNet",
+            #                                         feature_interface.mobileNet_func,
+            #                                         count=10)
             pass
         else:
             reply = "Failed"

@@ -204,8 +204,8 @@ def get_nearest_images_2(database: str, image, img_database_name: str, network: 
     # print(len(features))
     for f in features:
         feature = np.load(io.BytesIO(f[1]))
-        print(feature)
-        print(image_feature)
+        # print(feature)
+        # print(image_feature)
         distance = hashing_interface.dummy_calc_distance(feature, image_feature)
         if len(closest_images) < count:
             toolbox.insert_ordered(closest_images, (f[0], distance), count)
