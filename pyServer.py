@@ -28,63 +28,43 @@ def recv():
         data = data.decode("utf-8")
         print("Recieved this data: <", data, "> from the client.")
 
-        # data_recieved = data.split()
-        # mode = data_recieved[0]
+        data_recieved = data.split()
+        mode = data_recieved[0]
         
 
-        # if mode == "Search":
-        #     network = data_recieved[1]
-        #     query_image = data_recieved[2]
-        #     query_image = toolbox.base64_to_image(query_image)
-        #     # TODO: Do Search and send Images
-
-        # elif mode == "Disconnect":
-        #     pass
-        # else:
-        #     reply = "Failed"
-        #     conn.send(reply.encode("utf-8"))
-        #     conn.close()
-        #     print("-----------------------------")
-
-        
-        if data == "Correct":
-            reply = "Success"
-
-            image = toolbox.binary_to_image(toolbox.get_test_image()[2])
+        if mode == "Search":
+            network = data_recieved[1]
+            query_image = data_recieved[2]
+            query_image = toolbox.base64_to_image(query_image)
             
             mobilenet_extractor = extractors.MobileNet()
             feature = mobilenet_extractor.extractImage(image)
 
-
-            images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+            # at the moment network needs to be "mobile_net"
+            images = ImageCrawling.get_nearest_images_2("test.db", image, "big", network, feature, count=10)
 
             response = ""
             for i in images:
                 response += i[0]
                 response += " "
-        
 
             conn.send(response.encode("utf-8"))
             conn.close()
             print("-----------------------------")
-        elif data == "Disconnect":
+
+        elif mode == "Disconnect":
             reply = "Disconnected and the listen has Stopped"
             conn.send(reply.encode("utf-8"))
             conn.close()
             break
             # Testimplementation
-        elif data == "mobileNet":
-            #reply = ImageCrawling.get_nearest_images("light_database.db",
-            #                                         image = toolbox.image_to_binary(img),
-            #                                         "cifar10", "mobileNet",
-            #                                         feature_interface.mobileNet_func,
-            #                                         count=10)
-            pass
+
         else:
             reply = "Failed"
             conn.send(reply.encode("utf-8"))
             conn.close()
             print("-----------------------------")
+
             
     client.close()
 """
