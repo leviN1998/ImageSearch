@@ -56,4 +56,4 @@ if __name__ == '__main__':
 
     images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
 
-    print(images[0][0])
+    toolbox.base64_to_image(images[0][0]).show()

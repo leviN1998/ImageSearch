@@ -1,4 +1,4 @@
-from base64 import b64encode
+from base64 import b64decode, b64encode
 import pickle
 import os
 import requests
@@ -41,6 +41,10 @@ def image_to_binary(image):
 
 def image_to_base64(image):
     return b64encode(image_to_binary(image)).decode('ascii')
+
+
+def base64_to_image(image):
+    return binary_to_image(b64decode(image))
 
 
 def binary_to_image(binary_image_data):
