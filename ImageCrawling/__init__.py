@@ -51,6 +51,11 @@ def crawl_images(query: str, image_database_name: str, image_count: int, test_si
     '''
     # print("[Info]      crawling " + query)
     links = crawl_shutterstock.crawl_links(query, image_count, thread_count)
+    if len(links) == 0:
+        print("[ERROR]     no images extracted")
+        print("[FAILED]    stopped crawling for Keyword: " + query)
+        return
+
     images = []
     threads = list()
     images_per_thread = math.ceil(image_count / thread_count)
