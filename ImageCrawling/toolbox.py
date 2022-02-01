@@ -184,7 +184,7 @@ def consume_queue(queue, database: str, running: bool):
         data = queue.get()
         database_tools.add_images(conn, data[0], data[1], data[2], data[3])
         print("[Info]      added " + data[1] + " to database")
-        update_log("[" + str(count) + "]      Added " + str(count)+ " Keywords to database, last was: " + data[1])
+        update_log("[" + str(count) + "]      Added " + str(count)+ " Keywords to database, last was: " + data[1] + "\n")
         if count % 50 == 0:
             print("------------------------------------------------------------------------")
             print("[Info]      added " + str(count) + " keywords to db")
