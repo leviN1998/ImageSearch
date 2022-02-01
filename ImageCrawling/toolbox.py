@@ -149,11 +149,32 @@ def combine_keyword_files(file1: str, file2: str):
     write_keywords(file1, old)
 
 
+def create_log_file():
+    '''
+    '''
+    with open("crawling_log.log", 'w') as f:
+        f.write("Started Crawling\n")
+
+
+def update_log(message):
+    '''
+    '''
+    with open("crawling_log.log") as f:
+        lines = f.readlines()
+
+    lines.append(message)
+    os.remove("crawling_log.log")
+
+    with open("crawling_log.log", 'w') as f:
+        f.writelines(lines)
+
+
 def consume_queue(queue, database: str, running: bool):
     '''
     '''
     count = 0
     conn = database_tools.connect(database)
+    create_log_file()
     while running() or not queue.empty():
         if queue.empty():
             time.sleep(10)
@@ -163,6 +184,7 @@ def consume_queue(queue, database: str, running: bool):
         data = queue.get()
         database_tools.add_images(conn, data[0], data[1], data[2], data[3])
         print("[Info]      added " + data[1] + " to database")
+        update_log("[" + str(count) + "]      Added " + str(count)+ " Keywords to database, last was: " + data[1])
         if count % 50 == 0:
             print("------------------------------------------------------------------------")
             print("[Info]      added " + str(count) + " keywords to db")
