@@ -48,12 +48,15 @@ if __name__ == '__main__':
     # database_tools.print_table(conn, "features", 20, 100)
     # conn.close()
 
-    image = toolbox.binary_to_image(toolbox.get_test_image()[2])
-    image.show()
-    mobilenet_extractor = extractors.MobileNet()
-    feature = mobilenet_extractor.extractImage(image)
+    # image = toolbox.binary_to_image(toolbox.get_test_image()[2])
+    # image.show()
+    # mobilenet_extractor = extractors.MobileNet()
+    # feature = mobilenet_extractor.extractImage(image)
 
 
-    images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+    # images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
 
-    toolbox.base64_to_image(images[0][0]).show()
+    # toolbox.base64_to_image(images[0][0]).show()
+
+    ImageCrawling.create_db("final.db")
+    ImageCrawling.print_db_info("final.db")
