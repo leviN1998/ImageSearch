@@ -152,6 +152,7 @@ def combine_keyword_files(file1: str, file2: str):
 def consume_queue(queue, database: str, running: bool):
     '''
     '''
+    count = 0
     conn = database_tools.connect(database)
     while running() or not queue.empty():
         if queue.empty():
@@ -162,3 +163,8 @@ def consume_queue(queue, database: str, running: bool):
         data = queue.get()
         database_tools.add_images(conn, data[0], data[1], data[2], data[3])
         print("[Info]      added " + data[1] + " to database")
+        if count % 50 == 0:
+            print("------------------------------------------------------------------------")
+            print("[Info]      added " + str(count) + " keywords to db")
+            print("------------------------------------------------------------------------")
+        count += 1
