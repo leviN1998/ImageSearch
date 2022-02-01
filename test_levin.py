@@ -61,5 +61,6 @@ if __name__ == '__main__':
     ImageCrawling.create_db("final.db")
     # ImageCrawling.print_db_info("final.db")
 
-    ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "final.db", "big", 2200, 200, main_threads=20, child_threads=2)
+    # ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "final.db", "big", 20, 2, main_threads=1, child_threads=1)
+    ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=20, child_threads=2)
     ImageCrawling.print_db_info("final.db")

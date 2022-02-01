@@ -70,6 +70,8 @@ def get_image_count(query: str, headless: bool=True):
     _connect(driver, base_url + query + base_url_2 + '1')
     text = driver.find_element_by_class_name('MuiTypography-colorTextSecondary')
     numbers = text.text.split()[0].split(".")
+    if len(numbers) == 1:
+        numbers = text.text.split()[0].split(",")
     driver.quit()
     number_str = ""
     for n in numbers:
