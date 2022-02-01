@@ -1,3 +1,1 @@
 aquarium+fish
-flatfish
-ray
