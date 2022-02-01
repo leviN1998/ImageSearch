@@ -115,7 +115,10 @@ def extract_keywords(file: str):
 
     keywords = []
     for l in lines:
-        keywords.append(l.rstrip("\n"))
+        keyword = l.rstrip("\n")
+        keyword = keyword.replace(" ", "+")
+        keyword = keyword.replace("_", "+")
+        keywords.append(keyword)
         
     return keywords
 
@@ -124,7 +127,8 @@ def write_keywords(file: str, keywords):
     '''
     '''
     with open(file, 'w') as f:
-        f.writelines(keywords)
+        for k in keywords:
+            f.write(k + "\n")
 
 
 def combine_keyword_files(file1: str, file2: str):

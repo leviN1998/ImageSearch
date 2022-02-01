@@ -59,4 +59,7 @@ if __name__ == '__main__':
     # toolbox.base64_to_image(images[0][0]).show()
 
     ImageCrawling.create_db("final.db")
+    # ImageCrawling.print_db_info("final.db")
+
+    ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "final.db", "big", 2200, 200, main_threads=20, child_threads=2)
     ImageCrawling.print_db_info("final.db")

@@ -15,7 +15,7 @@ def connect(database_name: str):
     return conn
 
 
-def create_table(conn: sqlite3.Connection, table_name: str, column_names, column_types, drop_if_exists: bool=True):
+def create_table(conn: sqlite3.Connection, table_name: str, column_names, column_types, constraints, drop_if_exists: bool=True):
     '''
     '''
     cur = conn.cursor()
@@ -26,6 +26,10 @@ def create_table(conn: sqlite3.Connection, table_name: str, column_names, column
     query_str = "CREATE TABLE " + table_name + " ("
     for n, t in zip(column_names, column_types):
         query_str += n + " " + t + ", "
+    
+    for c in constraints:
+        query_str += c + ", "
+
     query_str = query_str[:-2]
     query_str += ")"
     cur.execute(query_str)
@@ -37,7 +41,8 @@ def create_images_table(conn: sqlite3.Connection):
     '''
     names = ["id", "class", "database_name", "website", "data"]
     types = ["int", "text", "text", "text", "BLOB"]
-    create_table(conn, "images", names, types, drop_if_exists=True)
+    constraints = ["PRIMARY KEY (id)"]
+    create_table(conn, "images", names, types, constraints, drop_if_exists=True)
 
 
 def create_feature_table(conn: sqlite3.Connection):
@@ -45,7 +50,8 @@ def create_feature_table(conn: sqlite3.Connection):
     '''
     names = ["id", "network", "feature", "hashing1", "hashing2", "hashing3", "hashing4", "hashing5"]
     types = ["int", "text", "BLOB", "text", "text", "text", "text", "text"]
-    create_table(conn, "features", names, types, drop_if_exists=True)
+    constraints = ["FOREIGN KEY (id) REFERENCES images(id) ON DELETE CASCADE", "PRIMARY KEY (id, network)"]
+    create_table(conn, "features", names, types, constraints, drop_if_exists=True)
 
 
 def create_db(database_name: str):
