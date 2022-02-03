@@ -66,7 +66,7 @@ if __name__ == '__main__':
     # ---------------- Am Server ausführen
     # TODO: schon gecralte Keywords nicht mehr crawlen
     # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=1, child_threads=1)
-    ImageCrawling.calculate_all_features("final.db", count=1000)
+    ImageCrawling.calculate_all_features("final.db", count=0)
 
 
     ## -------------- Testing andere Netze
