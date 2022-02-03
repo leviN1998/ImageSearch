@@ -39,6 +39,7 @@ from .database_tools import *
 from .toolbox import *
 from .hashing_interface import *
 from .crawl_shutterstock import *
+from .extractors import *
 import numpy as np
 import io
 import random
@@ -149,6 +150,20 @@ def calculate_features(database: str, network: str, extractor, hashing_func, cou
     database_tools.calculate_features(conn, network, extractor, hashing_func, count)
     database_tools._print_db_info(conn)
     conn.close()
+
+
+def calculate_all_features(database: str, count: int=0):
+    mobile_extractor = extractors.MobileNet()
+    mobile_v2_extractor = extractors.MobileNetV2()
+    vgg_extractor = extractors.VGG16Extractor()
+    xception_extractor = extractors.Xception()
+    nasnet_extractor = extractors.NasNet()
+
+    calculate_features(database, mobileNet, mobile_extractor, calculate_hashes, count)
+    calculate_features(database, mobileV2, mobile_v2_extractor, calculate_hashes, count)
+    calculate_features(database, vgg, vgg_extractor, calculate_hashes, count)
+    calculate_features(database, xcep, xception_extractor, calculate_hashes, count)
+    calculate_features(database, nas, nasnet_extractor, calculate_hashes, count)
 
 
 def print_db_info(database: str):

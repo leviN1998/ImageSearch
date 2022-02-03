@@ -66,6 +66,7 @@ if __name__ == '__main__':
     # ---------------- Am Server ausführen
     # TODO: schon gecralte Keywords nicht mehr crawlen
     # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=1, child_threads=1)
+    ImageCrawling.calculate_all_features("final.db", count=1000)
 
 
     ## -------------- Testing andere Netze
@@ -80,5 +81,4 @@ if __name__ == '__main__':
     # for i in images:
     #     toolbox.base64_to_image(i[0]).show()
 
-    vgg16_extractor = extractors.VGG16Extractor()
-    ImageCrawling.calculate_features("test.db", ImageCrawling.vgg, vgg16_extractor, hashing_interface.calculate_hashes, count=0)
+    # ImageCrawling.calculate_all_features("test.db", count=0)
