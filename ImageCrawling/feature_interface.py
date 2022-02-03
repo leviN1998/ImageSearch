@@ -27,9 +27,28 @@ def mobileNetV2_func(images):
             print("Extracted features " + str(count) + "/" + str(len(images)))
         count += 1
     return features
-    
-    
-    
+
+
+def apply_extractor(images, extractor):
+    '''
+    Inputs: array of binary images, Extractor instance for desired Network
+    Outputs: array of binary - features
+    '''
+    features = []
+    count = 0
+    print("Staring to extract " + str(len(images)) + " features. This might take some time!")
+    for image in images:
+        feature = extractor.extractImage(toolbox.binary_to_image(image))
+        # Convert feature to binary
+        buf = io.BytesIO()
+        np.save(buf, feature)
+        binary_feature =  buf.getvalue()
+        features.append(binary_feature)
+        if count % 100 == 0:
+            print("Extracted features " + str(count) + "/" + str(len(images)))
+        count += 1
+    return features
+
 
 def mobileNet_func(images):
     '''

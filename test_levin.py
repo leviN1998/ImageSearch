@@ -58,9 +58,27 @@ if __name__ == '__main__':
 
     # toolbox.base64_to_image(images[0][0]).show()
 
-    ImageCrawling.create_db("final.db")
+    # ImageCrawling.create_db("final.db")
     # ImageCrawling.print_db_info("final.db")
 
     # ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "final.db", "big", 20, 2, main_threads=1, child_threads=1)
-    ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=1, child_threads=1)
-    # ImageCrawling.print_db_info("final.db")
+
+    # ---------------- Am Server ausführen
+    # TODO: schon gecralte Keywords nicht mehr crawlen
+    # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=1, child_threads=1)
+
+
+    ## -------------- Testing andere Netze
+    # image = toolbox.binary_to_image(toolbox.get_test_image()[2])
+    # image.show()
+    # mobilenet_extractor = extractors.MobileNet()
+    # feature = mobilenet_extractor.extractImage(image)
+
+
+    # images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+
+    # for i in images:
+    #     toolbox.base64_to_image(i[0]).show()
+
+    vgg16_extractor = extractors.VGG16Extractor()
+    ImageCrawling.calculate_features("test.db", ImageCrawling.vgg, vgg16_extractor, hashing_interface.calculate_hashes, count=0)

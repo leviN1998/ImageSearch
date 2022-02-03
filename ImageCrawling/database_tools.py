@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from . import feature_interface
 
 
 def connect(database_name: str):
@@ -270,7 +271,7 @@ def _add_features(conn: sqlite3.Connection, ids, network: str, features, hashing
     conn.commit()
 
 
-def calculate_features(conn: sqlite3.Connection, network: str, feature_function, hash_creating_function, count: int=0):
+def calculate_features(conn: sqlite3.Connection, network: str, extractor, hash_creating_function, count: int=0):
     '''
     '''
     tuples = _get_ids_without_feature(conn, network)
@@ -283,7 +284,7 @@ def calculate_features(conn: sqlite3.Connection, network: str, feature_function,
     if count != 0:
         images = images[0:count]
 
-    features = feature_function(images)
+    features = feature_interface.apply_extractor(images, extractor)
     hashes = hash_creating_function(network, features)
     _add_features(conn, ids, network, features, hashes)
 

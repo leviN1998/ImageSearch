@@ -45,6 +45,13 @@ import random
 from queue import Queue
 
 
+mobileNet = "mobile_net"
+mobileV2 = "mobile_netV2"
+nas = "nas"
+vgg = "vgg16"
+xcep = "xcep"
+
+
 def crawl_images(query: str, image_database_name: str, image_count: int, test_size: int, queue, thread_count: int=5):
     ''' TODO: implement
     crawls Images for one Keyword
@@ -134,12 +141,12 @@ def get_feature(feature_func, image):
     return feature_func([image])[0]
 
 
-def calculate_features(database: str, network: str, feature_func, hashing_func, count:int=0):
+def calculate_features(database: str, network: str, extractor, hashing_func, count:int=0):
     '''
     TODO calculate Features and Hashes for all Networks and Search algorithms
     '''
     conn = database_tools.connect(database)
-    database_tools.calculate_features(conn, network, feature_func, hashing_func, count)
+    database_tools.calculate_features(conn, network, extractor, hashing_func, count)
     database_tools._print_db_info(conn)
     conn.close()
 

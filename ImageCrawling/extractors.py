@@ -43,7 +43,7 @@ class Extractor:
         #pil_img = toolbox.binary_to_image(binary_img)
         preprocessed_image = self.preprocessImage(pil_img)
         feature = self.extracting_network.predict(preprocessed_image)[0]
-        print(np.shape(feature))
+        # print(np.shape(feature))
         return feature / np.linalg.norm(feature)
 
 
