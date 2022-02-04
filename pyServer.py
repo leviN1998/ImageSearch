@@ -41,7 +41,7 @@ def recv():
             feature = mobilenet_extractor.extractImage(query_image)
 
             # at the moment network needs to be "mobile_net"
-            images = ImageCrawling.get_nearest_images_2("test.db", query_image, "big", network, feature, count=10)
+            images = ImageCrawling.get_nearest_images_2("final.db", query_image, "big", network, feature, count=10)
 
             response = ""
             for i in images:
