@@ -38,6 +38,17 @@ def test1():
         if(search_algorithm == 'hashing' ):
             checked = 'hashing'
             #results = ...
+            img = Image.open(file.stream).convert("RGB")  # PIL image
+            feature = mobilenet_extractor.extractImage(img)
+            uploaded_img = toolbox.image_to_base64(img)
+
+            image = toolbox.image_to_binary(img)
+            startTime = time.time()
+
+            results = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=30)
+
+            t = str((time.time() - startTime))
+            checked = 'euklid'
         
         else: #lineare Suche
         
