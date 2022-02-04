@@ -24,7 +24,7 @@ def recv():
     while True:
         conn, addr = client.accept()
         print("client with address: ", addr, " is connected.")
-        data = conn.recv(82560)
+        data = conn.recv(104857600) # 100 MB
         data = data.decode("utf-8")
         print("Recieved this data: <", data, "> from the client.")
 
