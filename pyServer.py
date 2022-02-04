@@ -35,6 +35,7 @@ def recv():
         if mode == "Search":
             network = data_recieved[1]
             query_image = data_recieved[2]
+            print(query_image)
             query_image = toolbox.base64_to_image(query_image)
             
             mobilenet_extractor = extractors.MobileNet()
