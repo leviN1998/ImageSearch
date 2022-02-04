@@ -45,7 +45,7 @@ def test1():
             image = toolbox.image_to_binary(img)
             startTime = time.time()
 
-            results = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=30)
+            results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature, count=30)
 
             t = str((time.time() - startTime))
             checked = 'euklid'
@@ -108,7 +108,7 @@ def mobilenetv2():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileV2, feature, count=30)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
@@ -128,7 +128,7 @@ def nasnet():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.nas, feature, count=30)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
@@ -148,7 +148,7 @@ def xception():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.xcep, feature, count=30)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
@@ -168,7 +168,7 @@ def test():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.vgg, feature, count=30)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
