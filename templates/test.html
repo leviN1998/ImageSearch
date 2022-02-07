@@ -1,4 +1,10 @@
 {% extends 'template.html' %}
+
+{% block whitecursive %}
+Using {{ extractor }} algorithm
+{{ extractor_text }}
+{% endblock %}
+
 {% block whitetext %}
 <html>
     <head>
@@ -35,4 +41,8 @@
 </div>
     </body>
 </html>
+{% endblock %}
+
+{% block whiteanything %}
+{{ extractor_text }}
 {% endblock %}
