@@ -74,7 +74,7 @@ vgg16_txt = "VGG16 is a simple and widely used Convolutional Neural Network (CNN
 
 
 @app.route('/mobilenet', methods=['POST', 'GET'])
-def first():
+def mobilenet():
     if request.method == 'POST':
         file = request.files['query_img']
         search_algorithm = request.form.get('search')
@@ -123,45 +123,22 @@ def mobilenetv2():
 
     if request.method == 'POST':
         file = request.files['query_img']
-        search_algorithm = request.form.get('search')
 
-        if search_algorithm == 'hashing':
-            'hashing'
-            # results = ...
-            img = Image.open(file.stream).convert("RGB")  # PIL image
-            feature = mobilenetv2_extractor.extractImage(img)
-            uploaded_img = toolbox.image_to_base64(img)
-
-            image = toolbox.image_to_binary(img)
-            startTime = time.time()
-
-            results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature,
-                                                         count=50)
-
-            t = str((time.time() - startTime))
-            checked = 'euklid'
-
-        else:  # lineare Suche
-
-            img = Image.open(file.stream).convert("RGB")  # PIL image
-            uploaded_img = toolbox.image_to_base64(img)
-
-            image = toolbox.image_to_binary(img)
-            startTime = time.time()
-            results = ImageCrawling.get_nearest_images("final.db",
-                                                       image,
-                                                       "big",
-                                                       "mobile_net",
-                                                       mobilenet_extractor.extractImage(img),  # feature
-                                                       count=50)
-            t = str((time.time() - startTime))
-            checked = 'euklid'
+        # results = ...
+        img = Image.open(file.stream).convert("RGB")  # PIL image
+        feature = mobilenetv2_extractor.extractImage(img)
+        uploaded_img = toolbox.image_to_base64(img)
+        image = toolbox.image_to_binary(img)
+        startTime = time.time()
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileV2, feature,
+                                                     count=50)
+        t = str((time.time() - startTime))
+        checked = 'euklid'
 
         return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=mobilenetv2_txt)
     else:
-        return render_template('algorithm.html', extractor="MobileNetv2", checked='',
-                               extractor_text=mobilenetv2_txt)
+        return render_template('algorithm.html', extractor="MobileNet Version 2", extractor_text=mobilenetv2_txt)
 
 
 @app.route('/nasnet', methods=['POST', 'GET'])
@@ -175,13 +152,14 @@ def nasnet():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.nas, feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.nas, feature, count=50)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+                               extractor_text=nasnet_txt)
     else:
-        return render_template('algorithm.html', extractor="NasNet", )
+        return render_template('algorithm.html', extractor="NasNet", extractor_text=nasnet_txt)
 
 
 @app.route('/xception', methods=['POST', 'GET'])
@@ -195,17 +173,18 @@ def xception():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.xcep, feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.xcep, feature, count=50)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+                               extractor_text=xception_txt)
     else:
-        return render_template('algorithm.html', extractor="Xception", )
+        return render_template('algorithm.html', extractor="Xception", extractor_text=xception_txt)
 
 
 @app.route('/vgg16', methods=['GET', 'POST'])
-def test():
+def vgg16():
     if request.method == 'POST':
         file = request.files['query_img']
 
@@ -215,14 +194,15 @@ def test():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.vgg, feature, count=30)
+        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.vgg, feature, count=50)
         t = str((time.time() - startTime))
         checked = 'euklid'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t
+                               , extractor_text=vgg16_txt)
 
     else:
-        return render_template('algorithm.html', extractor="VGG16", )
+        return render_template('algorithm.html', extractor="VGG16", extractor_text=vgg16_txt)
 
 
 @app.route('/')
