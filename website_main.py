@@ -25,7 +25,14 @@ nasnet_extractor = extractors.NasNet()
 xception_extractor = extractors.Xception()
 
 # Text for each extractor
-test_txt = "The Test extractor works as follows: ..."
+test_txt = "The full architecture of MobileNet V1 consists of a regular 3×3 convolution as the very " \
+                "first layer, followed by 13 times the above building block." \
+                "There are no pooling layers in between these depthwise separable blocks. Instead, some of the " \
+                "depthwise layers have a stride of 2 to reduce the spatial dimensions of the data. When that happens, " \
+                "the corresponding pointwise layer also doubles the number of output channels. If the input image " \
+                "is 224×224×3 then the output of the network is a 7×7×1024 feature map. Thanks to the innovation" \
+                " of depthwise separable convolutions, MobileNet has to do about 9 times less work than comparable " \
+                "neural nets with the same accuracy."
 mobilenet_txt = "The full architecture of MobileNet V1 consists of a regular 3×3 convolution as the very " \
                 "first layer, followed by 13 times the above building block." \
                 "There are no pooling layers in between these depthwise separable blocks. Instead, some of the " \
