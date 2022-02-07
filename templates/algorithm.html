@@ -5,12 +5,16 @@
 {% endblock %}
 
 {% block whitecursive %}
-Using {{ extractor }} algorithm
+Using {{ extractor }} algorithm <br>
 {{ extractor_text }}
 {% endblock %}
 
 {% block whitetext %}
-<div class="w3-container" style="max-width:2000px">
+<html>
+    <head>
+    </head>
+    <body>
+    <div class="w3-container" style="max-width:2000px">
     <form method="POST" enctype="multipart/form-data">
         <div id="dropzone">
             <div>upload</div>
@@ -23,25 +27,27 @@ Using {{ extractor }} algorithm
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
         </div>
+
         <input type="submit">
     </form>
     <h2>Uploaded Image:</h2>
-    {% if query_path %}
-    <img src="{{ query_path }}" width="300px">
+    {% if query_img %}
+    <img src="data:image/format;base64,{{ query_img }}" width="300px">
     {% endif %}
     <h2>Similar Images:</h2>
     <p>time: {{ t }}</p>
     {% for score in scores %}
     <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
-        <img src="{{ score[1] }}" height="200px" max-width="300px" min-width="250px">
-        <figcaption>{{ score[0] }}</figcaption>
+        <img src="data:image/format;base64,{{ score[0] }}" height="200px" max-width="300px" min-width="250px">
+        <figcaption>{{ score[1] }}</figcaption>
     </figure>
     {% endfor %}
 </div>
+    </body>
+</html>
 {% endblock %}
 
 {% block whiteanything %}
-{{ extractor_text }}
 {% endblock %}
 
 {% block bottom %}{% endblock %}
