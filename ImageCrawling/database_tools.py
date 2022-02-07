@@ -64,7 +64,21 @@ def create_db(database_name: str):
     conn.close()
 
 
-def __print_table(col_names, data, max_elements: int=20, max_element_length: int=20):
+def __print_table(col_names, data, max_rows: int=20, max_element_length: int=20):
+    '''
+    '''
+    strings = __create_printing(col_names, data, max_element_length)
+    print()
+    count = 0
+    for s in strings:
+        print(s)
+        count += 1
+        if count == max_rows:
+            break
+    print
+
+
+def __create_printing(col_names, data, max_element_length: int=20):
     '''
     '''
     # Example result: [(0, 'porcupine', 'cifar_100', 'shutterstock', verylong)]
@@ -79,8 +93,7 @@ def __print_table(col_names, data, max_elements: int=20, max_element_length: int
                 string = "..."
             col.append(string)
         rows += 1
-        if rows == max_elements:
-            break
+    
     # make all strings in a column same length
     for i in range(0, len(cols)):
         max_len = 0
@@ -98,14 +111,14 @@ def __print_table(col_names, data, max_elements: int=20, max_element_length: int
                     string += filler
                 cols[i][j] = string + cols[i][j]
             cols[i][j] = " " + cols[i][j] + " " 
-    # print Coloumns
-    print()
+    # create output list
+    output = []
     for i in range(0, len(cols[0])):
         string = "|"
         for c in cols:
             string += c[i] + "|"
-        print(string)
-    print()
+        output.append(string)
+    return output
 
 
 def print_table(conn: sqlite3.Connection, table_name: str, max_elements: int=20, max_element_length: int=20):
@@ -139,6 +152,20 @@ def print_info_images(conn: sqlite3.Connection):
     __print_table(["database", "class", "count"], info_result)
 
 
+def get_info_images(conn: sqlite3.Connection):
+    '''
+    '''
+    cur = conn.cursor()
+    sub_query = "images"
+    query_str =  "SELECT t.database_name, t.class, count(t.class) "
+    query_str += "FROM " + sub_query + " AS t "
+    query_str += "GROUP BY t.database_name, t.class "
+    query_str += "ORDER BY t.database_name"
+    cur.execute(query_str)
+    info_result = cur.fetchall()
+    return __create_printing(["database", "class", "count"], info_result)
+
+
 def print_info_features(conn: sqlite3.Connection):
     '''
     TODO do usefull print
@@ -169,6 +196,35 @@ def print_info_features(conn: sqlite3.Connection):
     __print_table(["network", "database", "database_size", "features_size"], tuples)
 
 
+def get_info_features(conn: sqlite3.Connection):
+    '''
+    '''
+    cur = conn.cursor()
+    query_str =  "SELECT i.database_name, count(i.database_name) "
+    query_str += "FROM images AS i "
+    query_str += "GROUP BY i.database_name"
+    cur.execute(query_str)
+    images_infos = cur.fetchall()
+    # print(images_infos)     # [('cifar10', 50000), ('cifar10_test', 10000)]
+    query_str =  "SELECT i.database_name, f.network, count(f.network) "
+    query_str += "FROM images AS i, features AS f "
+    query_str += "WHERE i.id = f.id "
+    query_str += "GROUP BY f.network, i.database_name"
+    cur.execute(query_str)
+    features_infos = cur.fetchall()
+    # print(features_infos)   # [('cifar10', 'mobile_net', 3000)]
+    tuples = []
+    for i in images_infos:
+        found = False
+        for f in features_infos:
+            if f[0] == i[0]:
+                tuples.append((f[1], i[0], i[1], f[2]))
+                found = True
+        if not found:
+            tuples.append(("None", i[0], i[1], "None"))
+    return __create_printing(["network", "database", "database_size", "features_size"], tuples)
+
+
 
 def print_db_info(database_name: str):
     '''
@@ -176,6 +232,21 @@ def print_db_info(database_name: str):
     conn = connect(database_name)
     _print_db_info(conn)
     conn.close()
+
+
+def save_db_info(database_name: str, file: str):
+    '''
+    '''
+    conn = connect(database_name)
+    strings = get_info_images(conn)
+    strings.append("")
+    strings.append("")
+    strings += get_info_features(conn)
+    conn.close()
+
+    with open(file, "w") as f:
+        for s in strings:
+            f.write(s + "\n")
 
 
 def _print_db_info(conn: sqlite3.Connection):
@@ -187,6 +258,22 @@ def _print_db_info(conn: sqlite3.Connection):
     print()
     print_info_features(conn)
     conn.close()
+
+
+def get_all_keywords(database: str):
+    conn = connect(database)
+    cur = conn.cursor()
+    query_str =  "SELECT i.class "
+    query_str += "FROM images AS i "
+    query_str += "GROUP BY i.class"
+    cur.execute(query_str)
+    tuples = cur.fetchall()
+    output = []
+    for t in tuples:
+        output.append(t[0])
+    conn.close()
+    return output
+
 
 
 def drop_db_from_images(conn: sqlite3.Connection, database_name: str):

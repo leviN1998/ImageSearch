@@ -132,6 +132,17 @@ def crawl_from_txt(file: str, database: str, image_database_name: str, image_cou
     '''
     '''
     keywords = toolbox.extract_keywords(file)
+    keywords_length = len(keywords)
+    existing_keywords = database_tools.get_all_keywords(database)
+    existing_length = len(existing_keywords)
+    for k in existing_keywords:
+        i = 0
+        while i < len(keywords):
+            if keywords[i] == k:
+                del keywords[i]
+            i += 1
+    
+    print("Keywords to crawl: " + str(keywords_length) + " existing Keywords: " + str(existing_length) + " crawling without duplicates: " + str(len(keywords)))
     crawl_images_batch(keywords, database, image_database_name, image_count, test_size, main_threads, child_threads)
 
 

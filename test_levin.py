@@ -65,8 +65,10 @@ if __name__ == '__main__':
 
     # ---------------- Am Server ausführen
     # TODO: schon gecralte Keywords nicht mehr crawlen
-    # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=1, child_threads=1)
-    ImageCrawling.calculate_all_features("final.db", count=0)
+    database_tools.save_db_info("final.db", "database_log.txt")
+    ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=5, child_threads=10)
+    database_tools.save_db_info("final.db", "database_log_after.txt")
+    # ImageCrawling.calculate_all_features("final.db", count=0)
     # ImageCrawling.print_db_info("final.db")
 
 
@@ -83,3 +85,6 @@ if __name__ == '__main__':
     #     toolbox.base64_to_image(i[0]).show()
 
     # ImageCrawling.calculate_all_features("test.db", count=0)
+
+    # database_tools.print_db_info("test.db")
+    # database_tools.save_db_info("test.db", "database_log.txt")
