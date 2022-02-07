@@ -25,14 +25,6 @@ nasnet_extractor = extractors.NasNet()
 xception_extractor = extractors.Xception()
 
 # Text for each extractor
-test_txt = "The full architecture of MobileNet V1 consists of a regular 3×3 convolution as the very " \
-                "first layer, followed by 13 times the above building block." \
-                "There are no pooling layers in between these depthwise separable blocks. Instead, some of the " \
-                "depthwise layers have a stride of 2 to reduce the spatial dimensions of the data. When that happens, " \
-                "the corresponding pointwise layer also doubles the number of output channels. If the input image " \
-                "is 224×224×3 then the output of the network is a 7×7×1024 feature map. Thanks to the innovation" \
-                " of depthwise separable convolutions, MobileNet has to do about 9 times less work than comparable " \
-                "neural nets with the same accuracy."
 mobilenet_txt = "The full architecture of MobileNet V1 consists of a regular 3×3 convolution as the very " \
                 "first layer, followed by 13 times the above building block." \
                 "There are no pooling layers in between these depthwise separable blocks. Instead, some of the " \
@@ -81,8 +73,8 @@ vgg16_txt = "VGG16 is a simple and widely used Convolutional Neural Network (CNN
             "linear transformation of the input channels (followed by non-linearity), are also utilized."
 
 
-@app.route('/test', methods=['POST', 'GET'])
-def test1():
+@app.route('/mobilenet', methods=['POST', 'GET'])
+def first():
     if request.method == 'POST':
         file = request.files['query_img']
         search_algorithm = request.form.get('search')
@@ -98,7 +90,7 @@ def test1():
             startTime = time.time()
 
             results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature,
-                                                         count=30)
+                                                         count=50)
 
             t = str((time.time() - startTime))
             checked = 'euklid'
@@ -115,62 +107,61 @@ def test1():
                                                        "big",
                                                        "mobile_net",
                                                        mobilenet_extractor.extractImage(img),  # feature
-                                                       count=30)
+                                                       count=50)
             t = str((time.time() - startTime))
             checked = 'euklid'
 
         return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=test_txt)
+                               extractor_text=mobilenet_txt)
     else:
         return render_template('algorithm.html', extractor="MobileNet", checked='',
-                               extractor_text=test_txt)
-
-
-@app.route('/mobilenet', methods=['POST', 'GET'])
-def first():
-    if request.method == 'POST':
-        file = request.files['query_img']
-
-        # Save query image
-        img = Image.open(file.stream)  # PIL image
-        uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file.filename
-        img.save(uploaded_img_path)
-
-        # Run search
-        startTime = time.time()
-        extractedImg = mobilenet_extractor.extractImage_by_path(uploaded_img_path)
-        scores = mobilenet_extractor.linearSearch(extractedImg, mobilenet_feature_dir)
-        t = str((time.time() - startTime))
-
-        return render_template('algorithm.html',
-                               extractor="MobileNet",
-                               query_path=uploaded_img_path,
-                               checked='',
-                               scores=scores,
-                               t=t)
-    else:
-        return render_template('algorithm.html', extractor="MobileNet", checked='')
+                               extractor_text=mobilenet_txt)
 
 
 @app.route('/mobilenetv2', methods=['POST', 'GET'])
 def mobilenetv2():
+
     if request.method == 'POST':
         file = request.files['query_img']
+        search_algorithm = request.form.get('search')
 
-        # results = ...
-        img = Image.open(file.stream).convert("RGB")  # PIL image
-        feature = mobilenetv2_extractor.extractImage(img)
-        uploaded_img = toolbox.image_to_base64(img)
-        image = toolbox.image_to_binary(img)
-        startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileV2, feature,
-                                                     count=30)
-        t = str((time.time() - startTime))
-        checked = 'euklid'
+        if search_algorithm == 'hashing':
+            'hashing'
+            # results = ...
+            img = Image.open(file.stream).convert("RGB")  # PIL image
+            feature = mobilenetv2_extractor.extractImage(img)
+            uploaded_img = toolbox.image_to_base64(img)
 
-        return render_template('test.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+            image = toolbox.image_to_binary(img)
+            startTime = time.time()
+
+            results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature,
+                                                         count=50)
+
+            t = str((time.time() - startTime))
+            checked = 'euklid'
+
+        else:  # lineare Suche
+
+            img = Image.open(file.stream).convert("RGB")  # PIL image
+            uploaded_img = toolbox.image_to_base64(img)
+
+            image = toolbox.image_to_binary(img)
+            startTime = time.time()
+            results = ImageCrawling.get_nearest_images("final.db",
+                                                       image,
+                                                       "big",
+                                                       "mobile_net",
+                                                       mobilenet_extractor.extractImage(img),  # feature
+                                                       count=50)
+            t = str((time.time() - startTime))
+            checked = 'euklid'
+
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+                               extractor_text=mobilenetv2_txt)
     else:
-        return render_template('algorithm.html', extractor="MobileNet Version 2", )
+        return render_template('algorithm.html', extractor="MobileNetv2", checked='',
+                               extractor_text=mobilenetv2_txt)
 
 
 @app.route('/nasnet', methods=['POST', 'GET'])
@@ -188,7 +179,7 @@ def nasnet():
         t = str((time.time() - startTime))
         checked = 'euklid'
 
-        return render_template('test.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
     else:
         return render_template('algorithm.html', extractor="NasNet", )
 
@@ -208,7 +199,7 @@ def xception():
         t = str((time.time() - startTime))
         checked = 'euklid'
 
-        return render_template('test.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
     else:
         return render_template('algorithm.html', extractor="Xception", )
 
@@ -228,7 +219,7 @@ def test():
         t = str((time.time() - startTime))
         checked = 'euklid'
 
-        return render_template('test.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
+        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t)
 
     else:
         return render_template('algorithm.html', extractor="VGG16", )
