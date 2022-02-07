@@ -93,7 +93,7 @@ def mobilenet():
                                                          count=50)
 
             t = str((time.time() - startTime))
-            checked = 'euklid'
+            checked = 'hashing'
 
         else:  # lineare Suche
 
@@ -133,7 +133,7 @@ def mobilenetv2():
         results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileV2, feature,
                                                      count=50)
         t = str((time.time() - startTime))
-        checked = 'euklid'
+        checked = 'hashing'
 
         return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=mobilenetv2_txt)
@@ -154,7 +154,7 @@ def nasnet():
         startTime = time.time()
         results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.nas, feature, count=50)
         t = str((time.time() - startTime))
-        checked = 'euklid'
+        checked = 'hashing'
 
         return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=nasnet_txt)
@@ -175,7 +175,7 @@ def xception():
         startTime = time.time()
         results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.xcep, feature, count=50)
         t = str((time.time() - startTime))
-        checked = 'euklid'
+        checked = 'hashing'
 
         return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=xception_txt)
@@ -196,7 +196,7 @@ def vgg16():
         startTime = time.time()
         results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.vgg, feature, count=50)
         t = str((time.time() - startTime))
-        checked = 'euklid'
+        checked = 'hashing'
 
         return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t
                                , extractor_text=vgg16_txt)
