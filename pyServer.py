@@ -9,9 +9,9 @@ from ImageCrawling import toolbox
 from ImageCrawling import extractors
 
 # Auf dem Server
-# host, port = "134.2.56.169", 1234
+host, port = "134.2.56.169", 1234
 # lokal
-host, port = "127.0.0.1", 1234
+# host, port = "127.0.0.1", 1234
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 

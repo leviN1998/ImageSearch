@@ -2,9 +2,9 @@ import socket
 from ImageCrawling import toolbox
 
 # lokal
-ADDR = ("127.0.0.1", 1234)
+# ADDR = ("127.0.0.1", 1234)
 # server
-# ADDR = ("134.2.56.169", 1234)
+ADDR = ("134.2.56.169", 1234)
 
 
 def send(msg):
