@@ -8,8 +8,10 @@ from PIL import Image
 from ImageCrawling import toolbox
 from ImageCrawling import extractors
 
-
+# Auf dem Server
 host, port = "134.2.56.169", 1234
+# lokal
+# host, port = "127.0.0.1", 1234
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
@@ -26,7 +28,7 @@ def recv():
         print("client with address: ", addr, " is connected.")
         data = conn.recv(104857600) # 100 MB
         data = data.decode("utf-8")
-        print("Recieved this data: <", data, "> from the client.")
+        print("Recieved this data: <", data[0:30], "> from the client.")
 
         data_recieved = data.split()
         mode = data_recieved[0]
@@ -35,14 +37,19 @@ def recv():
         if mode == "Search":
             network = data_recieved[1]
             query_image = data_recieved[2]
-            print(query_image)
+            # print(query_image)
+            print(network)
+            response = "Accepted"
             query_image = toolbox.base64_to_image(query_image)
+            # query_image.show()
             
             mobilenet_extractor = extractors.MobileNet()
             feature = mobilenet_extractor.extractImage(query_image)
 
-            # at the moment network needs to be "mobile_net"
+            # # at the moment network needs to be "mobile_net"
             images = ImageCrawling.get_nearest_images_2("final.db", query_image, "big", network, feature, count=10)
+            # zum lokal testen
+            # images = ImageCrawling.get_nearest_images_2("test.db", query_image, "big", network, feature, count=10)
 
             response = ""
             for i in images:
