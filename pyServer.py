@@ -9,9 +9,9 @@ from ImageCrawling import toolbox
 from ImageCrawling import extractors
 
 # Auf dem Server
-host, port = "134.2.56.169", 1234
+# host, port = "134.2.56.169", 1234
 # lokal
-# host, port = "127.0.0.1", 1234
+host, port = "127.0.0.1", 1234
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
@@ -36,7 +36,16 @@ def recv():
 
         if mode == "Search":
             network = data_recieved[1]
-            query_image = data_recieved[2]
+            message_count = int(data_recieved[2])
+            print("recieving " + str(message_count) + " messages")
+            query_image = ""
+            conn.send("Ok".encode("utf-8"))
+
+            for i in range(0, message_count):
+                data = conn.recv(104857600)
+                query_image += data.decode('utf-8')
+                conn.send("Ok".encode("utf-8"))
+
             # print(query_image)
             print(network)
             print()
