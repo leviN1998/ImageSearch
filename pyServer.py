@@ -47,12 +47,12 @@ def recv():
                 conn.send("Ok".encode("utf-8"))
 
             # print(query_image)
-            print(network)
-            print()
-            print("-----------------------------")
-            print(query_image)
-            print()
-            print("-----------------------------")
+            # print(network)
+            # print()
+            # print("-----------------------------")
+            # print(query_image)
+            # print()
+            # print("-----------------------------")
 
             response = "Accepted"
             query_image = toolbox.base64_to_image(query_image)
@@ -71,7 +71,32 @@ def recv():
                 response += i[0]
                 response += " "
 
-            conn.send(response.encode("utf-8"))
+            
+            count = 0
+            current = ""
+            messages = []
+            for c in response:
+                if count == 200:
+                    messages.append(current)
+                    current = ""
+                    count = 0
+                current += c
+                count += 1
+
+            messages.append(current)
+
+            # Sending Search mobilenet message_count
+            initial_msg = str(len(messages))
+            print(initial_msg)
+            message = initial_msg.encode('utf-8')
+            conn.send(message)
+            conn.recv(104857600)
+
+            for m in messages:
+                conn.send(m.encode('utf-8'))
+                conn.recv(104857600)
+
+
             conn.close()
             print("-----------------------------")
 

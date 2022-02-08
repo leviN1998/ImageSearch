@@ -37,7 +37,7 @@ def send(msg):
         client.recv(104857600)
 
 
-    response = client.recv(104857600).decode('utf-8')
+    response = recieve_images(client)
     images = response.split()
     client.close()
     for i in images:
@@ -50,6 +50,20 @@ def disconnect():
     client.send(message)
     print(client.recv(104857600).decode('utf-8'))
     client.close()
+
+
+def recieve_images(client):
+    count = int(client.recv(104857600).decode("utf-8"))
+    client.send("Ok".encode("utf-8"))
+
+    message = ""
+    for i in range(0, count):
+        data = client.recv(104857600)
+        message += data.decode('utf-8')
+        client.send("Ok".encode("utf-8"))
+
+    return message
+
 
 
 image = toolbox.binary_to_image(toolbox.get_test_image()[2])
