@@ -39,6 +39,12 @@ def recv():
             query_image = data_recieved[2]
             # print(query_image)
             print(network)
+            print()
+            print("-----------------------------")
+            print(query_image)
+            print()
+            print("-----------------------------")
+
             response = "Accepted"
             query_image = toolbox.base64_to_image(query_image)
             # query_image.show()
