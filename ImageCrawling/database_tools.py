@@ -1,5 +1,7 @@
 import sqlite3
 import os
+
+from ImageCrawling import toolbox
 from . import feature_interface
 
 
@@ -324,6 +326,20 @@ def _get_ids_without_feature(conn: sqlite3.Connection, network: str):
     cur.execute(query_str)
     results = cur.fetchall()
     return results
+
+
+def get_images(conn: sqlite3.Connection, keyword: str):
+    cur = conn.cursor()
+    query_str =  "SELECT i.data "
+    query_str += "FROM images AS i "
+    query_str += "WHERE i.class = '" + keyword + "' "
+    query_str += "AND i.database_name = 'big'"
+    cur.execute(query_str)
+    results = cur.fetchall()
+    output = []
+    for r in results:
+        output.append(toolbox.image_to_base64(toolbox.binary_to_image(r[0])))
+    return output
 
 
 def add_images(conn: sqlite3.Connection, images, img_class: str, img_db_name: str, website: str):

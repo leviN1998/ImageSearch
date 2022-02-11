@@ -193,6 +193,15 @@ def get_image(database: str, id: int):
     return result[4]
 
 
+def get_images(database: str, keyword: str):
+    '''
+    '''
+    conn = database_tools.connect(database)
+    result = database_tools.get_images(conn, keyword)
+    conn.close()
+    return result
+
+
 def get_nearest_images(database: str, image, img_database_name: str, network: str, image_feature, count: int=10):
     '''
     Returns [(Image, Distance),()]

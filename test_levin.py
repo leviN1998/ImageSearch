@@ -68,8 +68,8 @@ if __name__ == '__main__':
     database_tools.save_db_info("final.db", "database_log.txt")
     ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=5, child_threads=10)
     database_tools.save_db_info("final.db", "database_log_after.txt")
-    # ImageCrawling.calculate_all_features("final.db", count=0)
-    # ImageCrawling.print_db_info("final.db")
+    ImageCrawling.calculate_all_features("final.db", count=0)
+    ImageCrawling.print_db_info("final.db")
 
 
     ## -------------- Testing andere Netze
@@ -77,6 +77,8 @@ if __name__ == '__main__':
     # image.show()
     # mobilenet_extractor = extractors.MobileNet()
     # feature = mobilenet_extractor.extractImage(image)
+    # ImageCrawling.print_db_info("test.db")
+    # print(ImageCrawling.get_images("test.db", "airplane"))
 
 
     # images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
