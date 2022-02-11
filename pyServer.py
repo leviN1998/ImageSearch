@@ -45,7 +45,7 @@ def recv():
                 data = conn.recv(104857600)
                 query_image += data.decode('utf-8')
                 conn.send("Ok".encode("utf-8"))
-                print("Got message: " + data.decode('utf-8'))
+                print("Got message[" + str(i) + "]: " + data.decode('utf-8'))
 
             # print(query_image)
             # print(network)
