@@ -7,6 +7,7 @@ from PIL import Image
 #import threading
 from ImageCrawling import toolbox
 from ImageCrawling import extractors
+import time
 
 # Auf dem Server
 host, port = "134.2.56.169", 1234
@@ -98,13 +99,14 @@ def recv():
             # Sending Search mobilenet message_count
             initial_msg = str(len(messages))
             print(initial_msg)
-            message = initial_msg.encode('utf-8')
-            conn.send(message)
-            conn.recv(104857600)
+            # message = initial_msg.encode('utf-8')
+            # conn.send(message)
+            # conn.recv(104857600)
 
             for m in messages:
                 conn.send(m.encode('utf-8'))
-                conn.recv(104857600)
+                # conn.recv(104857600)
+                time.sleep(0.02)
 
 
             conn.close()
