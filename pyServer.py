@@ -49,7 +49,7 @@ def recv():
             i = 0
             while True:
                 data = conn.recv(104857600)
-                if data.decode('utf-8') == "":
+                if data.decode('utf-8') == "END":
                     print("End")
                     break
                 query_image += data.decode('utf-8')
