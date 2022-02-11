@@ -41,11 +41,20 @@ def recv():
             query_image = ""
             # conn.send("Ok".encode("utf-8"))
 
-            for i in range(0, message_count):
+            # for i in range(0, message_count):
+            #     data = conn.recv(104857600)
+            #     query_image += data.decode('utf-8')
+            #     # conn.send("Ok".encode("utf-8"))
+            #     print("Got message[" + str(i) + "]: " + data.decode('utf-8'))
+            i = 0
+            while True:
                 data = conn.recv(104857600)
+                if data.decode('utf-8') == "":
+                    print("End")
+                    break
                 query_image += data.decode('utf-8')
-                # conn.send("Ok".encode("utf-8"))
-                print("Got message[" + str(i) + "]: " + data.decode('utf-8'))
+                print("Got message[" + str(i) + "]: " + data.decode('utf-8') + "|")
+                i += 1
 
             # print(query_image)
             # print(network)
