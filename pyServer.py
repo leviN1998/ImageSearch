@@ -28,7 +28,7 @@ def recv():
         print("client with address: ", addr, " is connected.")
         data = conn.recv(104857600) # 100 MB
         # data = data.decode("utf-8")
-        data = data.decode("unicode")
+        data = data.decode("unicode-escape")
         print("Recieved this data: <", data[0:30], "> from the client.")
 
         data_recieved = data.split()
