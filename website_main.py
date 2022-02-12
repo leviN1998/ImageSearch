@@ -8,6 +8,9 @@ import ImageCrawling
 from ImageCrawling import extractors
 from ImageCrawling import toolbox
 
+import os
+import crawling_filter
+
 app = Flask(__name__)
 
 # set feature directories
@@ -205,6 +208,62 @@ def vgg16():
         return render_template('algorithm.html', extractor="VGG16", extractor_text=vgg16_txt)
 
 
+
+@app.route('/crawling', methods=['POST', 'GET'])
+def crawling():
+
+    #images = crawling_filter.get_pil_img('./static/images/test_img/')
+    features = []
+
+    if request.method == 'POST':
+
+        #crawled_img = bimages
+        #crawled_img = ImageCrawling.get_images("final.db", keyword)
+
+        if(request.form.get('keyword') != None):
+            keyword = request.form['keyword'].lower()
+            crawled_img = ImageCrawling.get_images("final.db", keyword)
+            return render_template('image-picker.html', keyword=keyword, max = len(crawled_img), images=crawled_img)
+
+
+        else:
+            selected_img = []
+            selected_img_features = []
+            other_img_features = []
+            keyword = request.form['kword']
+            crawled_img = ImageCrawling.get_images("final.db", keyword)
+            path = "./static/images/filter_img/" + keyword + "_" + datetime.now().isoformat().replace(":", ".") + "/"
+            os.makedirs(path, exist_ok=True)
+            
+            for i in range(len(crawled_img)):
+
+                img = crawled_img[i]
+                if(request.form.get(img) != None):                                            
+                    selected_img.append(img)
+                    #selected_img_features.append((img, features[i]))
+                    #save img
+                    pil_img = toolbox.base64_to_image(img)
+                    pil_img.save(path + "/" + keyword + "_" + str(i), 'JPEG')
+                #else: 
+                    #other_img_features.append((img, features[i]))
+
+            '''
+            #filtern nach geringer Distanz zu selected_img
+            num = int(request.form.get('num')) - len(selected_img)
+                
+            scores = crawling_filter.filter_crawled_images(selected_img_features, other_img_features, num)
+
+            filtered_img = []
+            for score in scores:
+                filtered_img.append(score[0])'''
+
+            return render_template('show-images.html', selected_img=selected_img, filtered_img=None)
+
+    else:
+    
+        return render_template('enter-keyword.html')
+
+
 @app.route('/')
 def second():
     return render_template('home.html')
@@ -216,5 +275,5 @@ def third():
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(debug=True, host='134.2.56.169')
+     app.run(debug=True)
+    #app.run(debug=True, host='134.2.56.169')
