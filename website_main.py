@@ -212,28 +212,31 @@ def vgg16():
 @app.route('/crawling', methods=['POST', 'GET'])
 def crawling():
 
-    #images = crawling_filter.get_pil_img('./static/images/test_img/')
     features = []
 
     if request.method == 'POST':
 
-        #crawled_img = bimages
-        #crawled_img = ImageCrawling.get_images("final.db", keyword)
-
         if(request.form.get('keyword') != None):
             keyword = request.form['keyword'].lower()
             crawled_img = ImageCrawling.get_images("final.db", keyword)
-            return render_template('image-picker.html', keyword=keyword, max = len(crawled_img), images=crawled_img)
+            return render_template('image-picker.html', keyword=keyword,images=crawled_img)
 
 
-        else:
-            selected_img = []
-            selected_img_features = []
-            other_img_features = []
-            keyword = request.form['kword']
-            crawled_img = ImageCrawling.get_images("final.db", keyword)
+	elif(request.form.get('selected_img') !=None):
+	    #save selected images
+	    selected_img = requeset.form.get('selected_img')
+	    keyword = request.form['kword']
             path = "./static/images/filter_img/" + keyword + "_" + datetime.now().isoformat().replace(":", ".") + "/"
             os.makedirs(path, exist_ok=True)
+	    for img in selected_img:
+		pil_img = toolbox.base64_to_image(img)
+		pil_img.save(path + "/" + keyword + "_" + str(i), 'JPEG')
+        else: #show selected_img
+            selected_img = []
+            keyword = request.form['kword']
+	    #selected_img_features = []
+            #other_img_features = []
+            crawled_img = ImageCrawling.get_images("final.db", keyword)
             
             for i in range(len(crawled_img)):
 
@@ -241,9 +244,6 @@ def crawling():
                 if(request.form.get(img) != None):                                            
                     selected_img.append(img)
                     #selected_img_features.append((img, features[i]))
-                    #save img
-                    pil_img = toolbox.base64_to_image(img)
-                    pil_img.save(path + "/" + keyword + "_" + str(i), 'JPEG')
                 #else: 
                     #other_img_features.append((img, features[i]))
 
@@ -257,7 +257,7 @@ def crawling():
             for score in scores:
                 filtered_img.append(score[0])'''
 
-            return render_template('show-images.html', selected_img=selected_img, filtered_img=None)
+            return render_template('show-images.html', keyword = keyword, selected_img=selected_img, filtered_img=None)
 
     else:
     
