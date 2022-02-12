@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+
+{% block whitehead %}
+<h1>Pick best images</h1>
+{% endblock %}
+
+{% block whitetext %}
+<div class="container">
+
+        <p>Show Filter Images:</p>
+
+        {% for img in selected_img %}
+        <img src="data:image/format;base64,{{ img }}" width="300px">
+        {% endfor %}
+        
+        <p>Show Result Images:</p>
+
+        {% for img in filtered_img %}
+        <img src="data:image/format;base64,{{ img }}" width="300px">
+        {% endfor %}
+
+
+</div>
+{% endblock %}
+
+{% block whiteanything %}
+{% endblock %}
+
+{% block bottom %}{% endblock %}
+{% block bottomcursive %}{% endblock %}

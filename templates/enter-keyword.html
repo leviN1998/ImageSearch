@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+
+{% block whitehead %}
+<h1>Crawl images</h1>
+{% endblock %}
+
+{% block whitecursive %}
+{% endblock %}
+
+{% block whitetext %}
+<div class="container">
+    <form method="POST">
+        <p>Enter keyword:</p>
+        <label for="keyword">keyword</label><br>
+        <input type="text" id="keyword" name="keyword" required><br>
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}
+
+{% block whiteanything %}
+{% endblock %}
+
+{% block bottom %}{% endblock %}
+{% block bottomcursive %}{% endblock %}
