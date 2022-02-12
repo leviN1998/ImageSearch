@@ -7,15 +7,14 @@
 {% block whitetext %}
 <div class="container">
 
-        <p>Show Filter Images:</p>
+        <p>Saved These Images:</p>
+        <p>path: {{ path }}</p>
 
         {% for img in selected_img %}
         <img src="data:image/format;base64,{{ img }}" width="300px">
         {% endfor %}
-        <form method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="kword" id="kword" value={{keyword}}>
-                <input type="hidden" name="selected_img" id="selected_img" value={{selected_img}}>
-                <input type="submit" value="Save">
+        <form method="POST">
+                <input type="submit" value="OK">
         </form>
 
 </div>

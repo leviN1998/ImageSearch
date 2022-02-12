@@ -218,34 +218,23 @@ def crawling():
             keyword = request.form['keyword'].lower()
             crawled_img = ImageCrawling.get_images("final.db", keyword)
             return render_template('image-picker.html', keyword=keyword, images=crawled_img)
-            
-        elif(request.form.get('selected_img') !=None):
-	        #save selected images
-            selected_img_string = request.form.get('selected_img')
-            selected_img = selected_img_string.split('[')[1].split(']')[0].split(',')
 
-            keyword = request.form['kword']
-            path = "./static/images/filter_img/" + keyword + "_" + datetime.now().isoformat().replace(":", ".") + "/"
-            os.makedirs(path, exist_ok=True)
-	        
-            for img in selected_img:
-                pil_img = toolbox.base64_to_image(img)
-                pil_img.save(path + "/" + keyword + "_" + str(i), 'JPEG')
-            
-            return render_template('enter-keyword.html')
-
-        else: #show selected_img
+        else: #save & show selected_img
             selected_img = []
             keyword = request.form['kword']
             crawled_img = ImageCrawling.get_images("final.db", keyword)
-            
+            path = "./static/images/filter_img/" + keyword + "_" + datetime.now().isoformat().replace(":", ".") + "/"
+            os.makedirs(path, exist_ok=True)
+
             for i in range(len(crawled_img)):
 
                 img = crawled_img[i]
                 if(request.form.get(img) != None):                                         
                     selected_img.append(img)
+                    pil_img = toolbox.base64_to_image(img)
+                    pil_img.save(path + "/" + keyword + "_" + str(i), 'JPEG')
                    
-            return render_template('show-images.html', keyword = keyword, selected_img=selected_img, filtered_img=None)
+            return render_template('show-images.html', keyword = keyword, selected_img=selected_img, path = path, filtered_img=None)
 
     else:
         return render_template('enter-keyword.html')
