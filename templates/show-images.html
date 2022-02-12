@@ -12,13 +12,11 @@
         {% for img in selected_img %}
         <img src="data:image/format;base64,{{ img }}" width="300px">
         {% endfor %}
-        
-        <p>Show Result Images:</p>
-
-        {% for img in filtered_img %}
-        <img src="data:image/format;base64,{{ img }}" width="300px">
-        {% endfor %}
-
+        <form>
+                <input type="hidden" name="kword" id="kword" value={{keyword}}>
+                <input type="hidden" name="selected_img" id="selected_img" value={{selected_img}}>
+                <input type="submit" value="Save">
+        </form>
 
 </div>
 {% endblock %}

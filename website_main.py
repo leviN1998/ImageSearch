@@ -229,6 +229,7 @@ def crawling():
             for img in selected_img:
                 pil_img = toolbox.base64_to_image(img)
                 pil_img.save(path + "/" + keyword + "_" + str(i), 'JPEG')
+            
             return render_template('enter-keyword.html')
 
         else: #show selected_img

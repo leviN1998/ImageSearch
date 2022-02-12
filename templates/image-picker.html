@@ -14,8 +14,6 @@ Keyword: {{ keyword }}
 
         <p>Pick the best images for "{{keyword}}":</p>
         <input type="hidden" id="kword" name="kword" value={{keyword}}>
-        <label for="number">Number of results</label>
-        <input type="number" id="num" name="num" min="1" max={{max}} required>
         <br>
         {% for img in images %}
         <input type="checkbox" id={{img}} name={{img}} value={{img}}>
