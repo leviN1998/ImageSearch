@@ -224,10 +224,10 @@ def crawling():
             keyword = request.form['kword']
             crawled_img = ImageCrawling.get_images("final.db", keyword)
             j = 0
-            path = "./static/images/filter_img/" + keyword + str(j)
+            path = "./static/images/filter_img/" + keyword + "_" + str(j)
             while(os.path.exists(path)):
                 j += 1
-                path = "./static/images/filter_img/" + keyword + str(j)
+                path = "./static/images/filter_img/" + keyword + "_" + str(j)
                 
             os.makedirs(path, exist_ok=True)
 
