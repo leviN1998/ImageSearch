@@ -87,7 +87,7 @@ def recv():
             current = ""
             messages = []
             for c in response:
-                if count == 200:
+                if count == 1000:
                     messages.append(current)
                     current = ""
                     count = 0
