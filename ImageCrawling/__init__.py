@@ -183,6 +183,12 @@ def print_db_info(database: str):
     database_tools.print_db_info(database)
 
 
+def get_keywords(database: str):
+    '''
+    '''
+    return database_tools.get_all_keywords(database)
+
+
 def get_image(database: str, id: int):
     '''
     Get Image from id
