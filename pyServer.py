@@ -87,7 +87,7 @@ def recv():
             current = ""
             messages = []
             for c in response:
-                if count == 1000:
+                if count == 5000:
                     messages.append(current)
                     current = ""
                     count = 0
@@ -106,7 +106,7 @@ def recv():
             for m in messages:
                 conn.send(m.encode('utf-8'))
                 # conn.recv(104857600)
-                time.sleep(0.02)
+                time.sleep(0.005)
 
 
             conn.close()
