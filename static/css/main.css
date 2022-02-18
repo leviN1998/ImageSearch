@@ -141,6 +141,10 @@ body.dark-theme {
   }
 }
 
+.figtext {
+    color: var(--text-color)
+}
+
 body {
   background: var(--bkg-color);
 }
