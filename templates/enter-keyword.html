@@ -10,9 +10,12 @@
 {% block whitetext %}
 <div class="container">
     <form method="POST">
-        <p>Enter keyword:</p>
-        <label for="keyword">keyword</label><br>
-        <input type="text" id="keyword" name="keyword" required><br>
+        <p>Choose a keyword:</p>
+        {% for k in keywords}
+        <input type="radio" name="keyword" id="keyword" value={{k}}></input>
+        <label for="keyword"> {{k}}</label><br>
+        {% endfor %}
+        <br>
         <input type="submit">
     </form>
 </div>
