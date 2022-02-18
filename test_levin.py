@@ -64,12 +64,13 @@ if __name__ == '__main__':
     # ImageCrawling.crawl_from_txt("ImageDatabases/keywords2.txt", "final.db", "big", 20, 2, main_threads=1, child_threads=1)
 
     # ---------------- Am Server ausführen
-    # TODO: schon gecralte Keywords nicht mehr crawlen
-    database_tools.save_db_info("final.db", "database_log.txt")
-    ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=5, child_threads=10)
-    database_tools.save_db_info("final.db", "database_log_after.txt")
-    ImageCrawling.calculate_all_features("final.db", count=0)
-    ImageCrawling.print_db_info("final.db")
+    # TODO: schon gecrawlte Keywords nicht mehr crawlen
+    # database_tools.save_db_info("final.db", "database_log.txt")
+    # ImageCrawling.crawl_from_txt("ImageDatabases/keywords.txt", "final.db", "big", 2200, 200, main_threads=5, child_threads=10)
+    # database_tools.save_db_info("final.db", "database_log_after.txt")
+    # ImageCrawling.calculate_all_features("final.db", count=0)
+    # ImageCrawling.print_db_info("final.db")
+    ImageCrawling.calculate_metric("final.db", "big")
 
 
     ## -------------- Testing andere Netze
@@ -82,6 +83,13 @@ if __name__ == '__main__':
 
 
     # images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+    # buf = io.BytesIO()
+    # np.save(buf, feature)
+    # binary_feature =  buf.getvalue()
+    # print(ImageCrawling.search_for_classes("test.db", "big", ImageCrawling.mobileNet, binary_feature, count=15))
+    # print(ImageCrawling.calculate_class_score("test.db", "big", ImageCrawling.mobileNet, "tank"))
+    # print(ImageCrawling.calculate_network_score("test.db", "big", ImageCrawling.mobileNet))
+    # ImageCrawling.calculate_metric("test.db", "big")
 
     # for i in images:
     #     toolbox.base64_to_image(i[0]).show()
