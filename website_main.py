@@ -114,7 +114,7 @@ def mobilenet():
             t = str((time.time() - startTime))
             checked = 'euklid'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+        return render_template('algorithm.html', extractor="MobileNet", query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=mobilenet_txt)
     else:
         return render_template('algorithm.html', extractor="MobileNet", checked='',
@@ -138,7 +138,7 @@ def mobilenetv2():
         t = str((time.time() - startTime))
         checked = 'hashing'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+        return render_template('algorithm.html', extractor="MobileNet Version 2", query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=mobilenetv2_txt)
     else:
         return render_template('algorithm.html', extractor="MobileNet Version 2", extractor_text=mobilenetv2_txt)
@@ -159,7 +159,7 @@ def nasnet():
         t = str((time.time() - startTime))
         checked = 'hashing'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+        return render_template('algorithm.html', extractor="NasNet", query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=nasnet_txt)
     else:
         return render_template('algorithm.html', extractor="NasNet", extractor_text=nasnet_txt)
@@ -180,7 +180,7 @@ def xception():
         t = str((time.time() - startTime))
         checked = 'hashing'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t,
+        return render_template('algorithm.html', extractor="Xception", query_img=uploaded_img, checked=checked, scores=results, t=t,
                                extractor_text=xception_txt)
     else:
         return render_template('algorithm.html', extractor="Xception", extractor_text=xception_txt)
@@ -201,7 +201,7 @@ def vgg16():
         t = str((time.time() - startTime))
         checked = 'hashing'
 
-        return render_template('algorithm.html', query_img=uploaded_img, checked=checked, scores=results, t=t
+        return render_template('algorithm.html', extractor="VGG16", query_img=uploaded_img, checked=checked, scores=results, t=t
                                , extractor_text=vgg16_txt)
 
     else:
