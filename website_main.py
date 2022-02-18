@@ -215,7 +215,7 @@ def crawling():
     if request.method == 'POST':
 
         if(request.form.get('keyword') != None):
-            keyword = request.form['keyword'].lower()
+            keyword = request.form['keyword']
             crawled_img = ImageCrawling.get_images("final.db", keyword)
             return render_template('image-picker.html', keyword=keyword, images=crawled_img)
 
@@ -242,7 +242,8 @@ def crawling():
             return render_template('show-images.html', keyword = keyword, selected_img=selected_img, path = path, filtered_img=None)
 
     else:
-        return render_template('enter-keyword.html')
+        keywords = ImageCrawling.get_keywords("final.db")
+        return render_template('enter-keyword.html', keywords=keywords)
 
 
 @app.route('/')
