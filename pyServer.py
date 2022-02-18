@@ -69,8 +69,24 @@ def recv():
             query_image = toolbox.base64_to_image(query_image)
             # query_image.show()
             
-            mobilenet_extractor = extractors.MobileNet()
-            feature = mobilenet_extractor.extractImage(query_image)
+            if network == "mobile_net":
+                mobilenet_extractor = extractors.MobileNet()
+                feature = mobilenet_extractor.extractImage(query_image)
+            elif network == "mobile_netV2":
+                mobilenetv2_extractor = extractors.MobileNetV2()
+                feature = mobilenetv2_extractor.extractImage(query_image)
+            elif network == "xcep":
+                xception_extractor = extractors.Xception()
+                feature = xception_extractor.extractImage(query_image)
+            elif network == "nas":
+                nasnet_extractor = extractors.NasNet()
+                feature = nasnet_extractor.extractImage(query_image)
+            else network == "vgg16":
+                vgg16_extractor = extractors.VGG16Extractor()
+                feature = vgg16_extractor.extractImage(query_image)
+                
+            
+            
 
             # # at the moment network needs to be "mobile_net"
             images = ImageCrawling.get_nearest_images_2("final.db", query_image, "big", network, feature, count=10)
