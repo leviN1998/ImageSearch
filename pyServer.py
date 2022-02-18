@@ -81,7 +81,7 @@ def recv():
             elif network == "nas":
                 nasnet_extractor = extractors.NasNet()
                 feature = nasnet_extractor.extractImage(query_image)
-            else network == "vgg16":
+            else:
                 vgg16_extractor = extractors.VGG16Extractor()
                 feature = vgg16_extractor.extractImage(query_image)
                 
