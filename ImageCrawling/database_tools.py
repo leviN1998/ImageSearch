@@ -425,6 +425,46 @@ def get_images_from_hash(conn: sqlite3.Connection, network: str, database_name: 
     return cur.fetchall()
 
 
+def get_classes_from_hash(conn: sqlite3.Connection, network: str, database_name: str, hash):
+    '''
+    '''
+    cur = conn.cursor()
+    query_str =  "SELECT i.class, f.feature "
+    query_str += "FROM features AS f, images AS i "
+    query_str += "WHERE f.network = '" + network + "' "
+    query_str += "AND i.id = f.id "
+    query_str += "AND i.database_name = '" + database_name + "' "
+    query_str += "AND (f.hashing1 = '" + hash[0] + "' "
+    query_str += "OR f.hashing2 = '" + hash[1] + "' "
+    query_str += "OR f.hashing3 = '" + hash[2] + "' "
+    query_str += "OR f.hashing4 = '" + hash[3] + "' "
+    query_str += "OR f.hashing5 = '" + hash[4] + "')"
+
+    cur.execute(query_str)
+    return cur.fetchall()
+
 if __name__ == '__main__':
     create_db("test.db")
     print_db_info("test.db")
+
+
+def get_test_images_for_class(database: str, network: str, database_name: str, class_name: str):
+    '''
+    '''
+    conn = connect(database)
+    cur = conn.cursor()
+    query_str =  "SELECT f.feature "
+    query_str += "FROM features AS f, images AS i "
+    query_str += "WHERE f.network = '" + network + "' "
+    query_str += "AND i.id = f.id "
+    query_str += "AND i.database_name = '" + database_name + "_test' "
+    query_str += "AND i.class = '" + class_name + "' "
+
+    cur.execute(query_str)
+    tuples = cur.fetchall()
+    output = []
+    for t in tuples:
+        output.append(t[0])
+
+    conn.close()
+    return output
