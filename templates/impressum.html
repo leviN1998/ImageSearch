@@ -15,40 +15,46 @@ This Website with all its function is a group project by students
 {% endblock %}
 
 {% block whiteanything %}
+<h2> Developers: </h2>
 <style>
-.devs {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    .container {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  width: 350px;
+  height: 200px;
+  outline: dashed 1px black;
+  /* Center child horizontally*/
+  display: flex;
+  justify-content: center;
 }
 </style>
-<h2> Developers: </h2>
-
-        <figure class = "devs" style="float: left; margin-right: 10px; margin-bottom: 10px;">
+<div class="t-container">
+        <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
             <img src="./static/website_images/Felix.jpeg" height="100px">
             <figcaption>Felix</figcaption>
         </figure>
-        <figure class = "devs" style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
             <img src="./static/website_images/Crypto.jpg" height="100px">
             <figcaption>Karin</figcaption>
         </figure>
-        <figure class = "devs" style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
             <img src="./static/website_images/Crypto.jpg" height="100px">
             <figcaption>Levin</figcaption>
         </figure>
-        <figure class = "devs" style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
             <img src="./static/website_images/Crypto.jpg" height="100px">
             <figcaption>Marc</figcaption>
         </figure>
-        <figure class = "devs" style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
             <img src="./static/website_images/Timo.jpeg" height="100px">
             <figcaption>Timo</figcaption>
         </figure>
-        <figure class = "devs" style="float: left; margin-right: 10px; margin-bottom: 10px;">
+        <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
             <img src="./static/website_images/Crypto.jpg" height="100px">
             <figcaption>Ying</figcaption>
         </figure>
-
+</div>
 
 
 {% endblock %}
