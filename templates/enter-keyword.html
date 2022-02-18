@@ -11,7 +11,7 @@
 <div class="container">
     <form method="POST">
         <p>Choose a keyword:</p>
-        {% for k in keywords}
+        {% for k in keywords %}
         <input type="radio" name="keyword" id="keyword" value={{k}}></input>
         <label for="keyword"> {{k}}</label><br>
         {% endfor %}
@@ -20,9 +20,3 @@
     </form>
 </div>
 {% endblock %}
-
-{% block whiteanything %}
-{% endblock %}
-
-{% block bottom %}{% endblock %}
-{% block bottomcursive %}{% endblock %}
