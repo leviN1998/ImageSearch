@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            * { box-sizing: border-box;}
+
+            .query {text-align: center;}
+
+            .comparision::after {
+            content: ""; clear: both; display: table;
+            }
+
+            [class*="col-"] {
+            float: left; padding: 15px;
+            }
+
+            .col-6 {width: 50%;}
+
+            .header {
+            text-align: center; border: 1px solid red; padding: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Image Search (Mobilenet)</h1>
+            <h3>Comparision of different search algorithms</h3>
+        </div>
+        <div class="query">
+            
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="query_img"><br>
+                <input type="submit">
+            </form>
+            <h2>Query:</h2>
+            {% if query_path %}
+            <img src="{{ query_path }}" width="300px">
+            <figcaption>Time for extracting: {{ extractTime }}</figcaption>
+            {% endif %}
+        </div>
+
+        <div class="comparision">
+            <div class="col-4">
+                <h3>Results using distance comparision:</h3>
+                <p>time: {{ linearTime }}</p>
+                {% for score in scores %}
+                <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                    <img src="{{ score[1] }}" height="200px">
+                    <br>
+                    <figcaption>{{ score[0] }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+
+            <div class="col-4">
+                <h3>Results using nearpy:</h3>
+                <p>time: {{ nearpyTime }}</p>
+                {% for nearpy_result in nearpy_results %} 
+                <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                    <img src="{{ nearpy_result[1] }}" height="200px">
+                    <br>
+                    <figcaption>{{ nearpy_result[0] }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+
+            <div class="col-4">
+                <h3>Results using flann:</h3>
+                <p>time: {{ flannTime }}</p>
+                {% for flann_result in flann_results %} 
+                <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                    <img src="{{ flann_result[1] }}" height="200px">
+                    <br>
+                    <figcaption>{{ flann_result[0] }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+
