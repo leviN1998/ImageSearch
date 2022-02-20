@@ -24,10 +24,10 @@ def precision(database: str, network: str):
             # print(pre)
             precision_for_keyword.append(pre)
         avg_pre = sum(precision_for_keyword)/10
-        print("precision for class:" + avg_pre)
+        print("precision for class:" + str(avg_pre))
         precision_for_all.append(avg_pre)
     return statistics.mean(precision_for_all)
 
 
 if __name__ == "__main__":
-    print(precision("final.db", ImageCrawling.mobileNet))
+    print(str(precision("final.db", ImageCrawling.mobileNet)))
