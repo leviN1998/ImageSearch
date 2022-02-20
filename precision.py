@@ -8,11 +8,11 @@ from ImageCrawling import database_tools
 def precision(database: str, network: str):
     keywords = ImageCrawling.get_keywords(database)
 
-    precision_for_keyword = []
     precision_for_all = []
 
     for k in keywords:
         print("class:" + k)
+        precision_for_keyword = []
         test_bi_feas = database_tools.get_test_images_for_class(database, network, "big", k)[:5]
         for fea in test_bi_feas:
             # feature = extractors.MobileNet.extractImage(img)
