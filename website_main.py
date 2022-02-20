@@ -9,7 +9,6 @@ from ImageCrawling import extractors
 from ImageCrawling import toolbox
 
 import os
-import crawling_filter
 
 app = Flask(__name__)
 
