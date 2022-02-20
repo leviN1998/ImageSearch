@@ -340,6 +340,7 @@ def calculate_class_score(database: str, img_database_name: str, network: str, i
     '''
     '''
     test_images = database_tools.get_test_images_for_class(database, network, img_database_name, image_class)
+    test_images = test_images[0:10]
     top_1 = 0.0
     top_5 = 0.0
     top_15 = 0.0
