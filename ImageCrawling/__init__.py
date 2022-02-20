@@ -239,7 +239,7 @@ def get_nearest_images(database: str, image, img_database_name: str, network: st
     return output
 
 
-def get_nearest_images_2(database: str, image, img_database_name: str, network: str, image_feature, count: int=10):
+def get_nearest_images_2(database: str, image, img_database_name: str, network: str, image_feature, count: int=10, percentage: int=100):
     '''
     '''
     conn = database_tools.connect(database)
@@ -250,6 +250,8 @@ def get_nearest_images_2(database: str, image, img_database_name: str, network: 
     features = database_tools.get_images_from_hash(conn, network, img_database_name, hash)
 
     print("found " + str(len(features)) + " features")
+    used_length = math.ceil(len(features) * (percentage / 100.0))
+    print("using " + str(used_length) + " features (" + str(percentage) + "%)")
 
     closest_images = []
     #image_feature = np.load(io.BytesIO(get_feature(feature_func, image)))

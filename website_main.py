@@ -80,6 +80,7 @@ def mobilenet():
     if request.method == 'POST':
         file = request.files['query_img']
         search_algorithm = request.form.get('search')
+        search_size = int(request.form.get('searchsize'))
 
         if search_algorithm == 'hashing':
             'hashing'
@@ -92,7 +93,7 @@ def mobilenet():
             startTime = time.time()
 
             results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature,
-                                                         count=50)
+                                                         count=50, percentage=search_size)
 
             t = str((time.time() - startTime))
             checked = 'hashing'

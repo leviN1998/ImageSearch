@@ -27,6 +27,22 @@
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
         </div>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" name="searchsize" value="100" class="slider" id="myRange">
+            <p>Size of search-space: <span id="demo"></span></p>
+        </div>
+
+        <script>
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            }
+        </script>
+
+
 
         <input type="submit">
     </form>
