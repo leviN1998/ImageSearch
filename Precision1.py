@@ -7,6 +7,7 @@ from ImageCrawling import database_tools
 # search precision
 def precision(database: str, network: str):
     keywords = ImageCrawling.get_keywords(database)
+
     precision_for_keyword = []
     precision_for_all = []
 
