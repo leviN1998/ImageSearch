@@ -24,6 +24,7 @@ def precision(database: str, network: str):
             pre = count/50
             print(pre)
             precision_for_keyword.append(pre)
+        print(precision_for_keyword)
         avg_pre = statistics.mean(precision_for_keyword)
         print("precision for class:" + str(avg_pre))
         precision_for_all.append(avg_pre)
