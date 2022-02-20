@@ -1,4 +1,6 @@
 import time
+import io
+import numpy as np
 import ImageCrawling
 from ImageCrawling import extractors
 from ImageCrawling import toolbox
@@ -27,22 +29,21 @@ def euklid_time_one_search(feature):
     #image = toolbox.image_to_binary(img)
     startTime = time.time()
     
-    results = ImageCrawling.get_nearest_images("final.db", None, "big", ImageCrawling.mobileNet, feature,
-                                                count=50)[:50]
+    results = ImageCrawling.get_nearest_images("final.db", None, "big", ImageCrawling.mobileNet, feature, count=50)
     return (time.time() - startTime)
 
 
 def get_avg_time(func):
     mobilenet = extractors.MobileNet()
     time_list = []
-    keywords = database_tools.get_all_keywords
+    keywords = database_tools.get_all_keywords("final.db")
     
     for image_class in keywords:
         class_time_list = []
-        test_images = database_tools.get_test_images_for_class("final.db", ImageCrawling.mobileNet, "big", image_class)[:100]
+        test_images = database_tools.get_test_images_for_class("final.db", ImageCrawling.mobileNet, "big", image_class)[:1]
         
-        for img in test_images:
-            t = func(mobilenet.extractImage(img))
+        for feature in test_images:
+            t = func(np.load(io.BytesIO(feature)))
             class_time_list.append(t)
             mean_class_time = mean(class_time_list)
         print('Average time for ' + image_class + " : " + str(mean_class_time))
@@ -53,7 +54,7 @@ def get_avg_time(func):
 
 if __name__=="__main__":
     
-    print('hasing time: \n')
+    print('hashing time: \n')
     get_avg_time(hashing_time_one_search)
     print('\n')
     print('euklid time: \n')
