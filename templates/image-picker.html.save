@@ -1,0 +1,41 @@
+{% extends 'template.html' %}
+
+{% block whitehead %}
+<h1>Pick best images</h1>
+{% endblock %}
+
+{% block whitecursive %}
+Keyword: {{ keyword }}
+{% endblock %}
+
+{% block whitetext %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+
+        <p>Pick the best images for "{{keyword}}":</p>
+        <input type="hidden" id="k<label for="number">Number of results</label>
+        <input type="number" id="num" name="num" min="1" max={{max}} required>
+        <br>
+        {% for img in images %}
+        <input type="checkbox" id={{img}} name={{img}} value={{img}}>
+        <label for={{img}} style="display: inline-block; 
+                                    width: 200px;
+                                    height: 200px;
+                                    cursor: pointer;
+                                    background-image: url(data:image/png;base64,{{img}});">
+        </label>
+
+        {% endfor %}
+        <input type="submit">
+    </form>
+
+
+
+</div>
+{% endblock %}
+
+{% block whiteanything %}
+{% endblock %}
+
+{% block bottom %}{% endblock %}
+{% block bottomcursive %}{% endblock %}
