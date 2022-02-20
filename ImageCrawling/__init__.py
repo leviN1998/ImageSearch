@@ -236,7 +236,8 @@ def get_nearest_images(database: str, image, img_database_name: str, network: st
         img = database_tools._get_image(conn, i[0])[4]
         output.append((toolbox.image_to_base64(toolbox.binary_to_image(img)), i[1]))
     conn.close()
-    return output
+    pathname = toolbox.zip_images(output)
+    return output, pathname
 
 
 def get_nearest_images_2(database: str, image, img_database_name: str, network: str, image_feature, count: int=10, percentage: int=100):
@@ -276,7 +277,8 @@ def get_nearest_images_2(database: str, image, img_database_name: str, network: 
         output.append((toolbox.image_to_base64(toolbox.binary_to_image(img)), i[1]))
         # output.append((toolbox.binary_to_image(img), i[1]))
     conn.close()
-    return output
+    pathname = toolbox.zip_images(output)
+    return output, pathname
 
 
 def search_for_classes(database: str, img_database_name: str, network: str, image_feature, count: int=10):

@@ -2,7 +2,7 @@ import time
 from datetime import datetime
 
 from PIL import Image
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_file
 
 import ImageCrawling
 from ImageCrawling import extractors
@@ -92,7 +92,7 @@ def mobilenet():
             image = toolbox.image_to_binary(img)
             startTime = time.time()
 
-            results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature,
+            results, link = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileNet, feature,
                                                          count=50, percentage=search_size)
 
             t = str((time.time() - startTime))
@@ -105,7 +105,7 @@ def mobilenet():
 
             image = toolbox.image_to_binary(img)
             startTime = time.time()
-            results = ImageCrawling.get_nearest_images("final.db",
+            results, link = ImageCrawling.get_nearest_images("final.db",
                                                        image,
                                                        "big",
                                                        "mobile_net",
@@ -115,7 +115,7 @@ def mobilenet():
             checked = 'euklid'
 
         return render_template('algorithm.html', extractor="MobileNet", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=mobilenet_txt)
+                               extractor_text=mobilenet_txt, download_link=link)
     else:
         return render_template('algorithm.html', extractor="MobileNet", checked='',
                                extractor_text=mobilenet_txt)
@@ -133,13 +133,13 @@ def mobilenetv2():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileV2, feature,
+        results, link = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.mobileV2, feature,
                                                      count=50)
         t = str((time.time() - startTime))
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="MobileNet Version 2", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=mobilenetv2_txt)
+                               extractor_text=mobilenetv2_txt, download_link=link)
     else:
         return render_template('algorithm.html', extractor="MobileNet Version 2", extractor_text=mobilenetv2_txt)
 
@@ -155,12 +155,12 @@ def nasnet():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.nas, feature, count=50)
+        results, link = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.nas, feature, count=50)
         t = str((time.time() - startTime))
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="NasNet", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=nasnet_txt)
+                               extractor_text=nasnet_txt, download_link=link)
     else:
         return render_template('algorithm.html', extractor="NasNet", extractor_text=nasnet_txt)
 
@@ -176,12 +176,12 @@ def xception():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.xcep, feature, count=50)
+        results, link = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.xcep, feature, count=50)
         t = str((time.time() - startTime))
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="Xception", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=xception_txt)
+                               extractor_text=xception_txt, download_link=link)
     else:
         return render_template('algorithm.html', extractor="Xception", extractor_text=xception_txt)
 
@@ -197,12 +197,12 @@ def vgg16():
         uploaded_img = toolbox.image_to_base64(img)
         image = toolbox.image_to_binary(img)
         startTime = time.time()
-        results = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.vgg, feature, count=50)
+        results, link = ImageCrawling.get_nearest_images_2("final.db", image, "big", ImageCrawling.vgg, feature, count=50)
         t = str((time.time() - startTime))
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="VGG16", query_img=uploaded_img, checked=checked, scores=results, t=t
-                               , extractor_text=vgg16_txt)
+                               , extractor_text=vgg16_txt, download_link=link)
 
     else:
         return render_template('algorithm.html', extractor="VGG16", extractor_text=vgg16_txt)
@@ -254,6 +254,15 @@ def second():
 @app.route('/impressum')
 def third():
     return render_template('impressum.html')
+
+
+@app.route('/return-files/<file>')
+def return_files(file):
+    print(file)
+    try:
+        return send_file(os.path.join(os.getcwd(), 'downloads', file), download_name='images.zip')
+    except Exception as e:
+        return str(e)
 
 
 if __name__ == "__main__":

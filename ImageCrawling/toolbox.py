@@ -7,6 +7,9 @@ import io
 from PIL import Image
 from . import database_tools
 import time
+import shutil
+from datetime import datetime
+from datetime import date
 
 def extract_classes():
     '''
@@ -52,7 +55,7 @@ def binary_to_image(binary_image_data):
 
 def get_test_image():
     from . import database_tools
-    conn = database_tools.connect("test.db")
+    conn = database_tools.connect("final.db")
     cur = conn.cursor()
     query_str =  "SELECT i.id, f.feature, i.data "
     query_str += "FROM images AS i, features AS f "
@@ -190,3 +193,26 @@ def consume_queue(queue, database: str, running: bool):
             print("[Info]      added " + str(count) + " keywords to db")
             print("------------------------------------------------------------------------")
         count += 1
+
+
+def zip_and_delete(folder_name):
+    '''
+    '''
+    shutil.make_archive(folder_name, 'zip', folder_name)
+    shutil.rmtree(folder_name)
+
+
+def zip_images(images):
+    '''
+    '''
+    cur_date = date.today().strftime("%d-%m-%Y-")
+    cur_time = datetime.now().strftime("%H-%M-%S")
+    file_name = cur_date + cur_time
+    path = os.getcwd() + "/downloads/" + file_name
+    index = 0
+    os.mkdir(path)
+    for i in images:
+        base64_to_image(i[0]).save(path + '/' + str(index) + '.jpeg', format="JPEG")
+        index += 1
+    zip_and_delete(path)
+    return  file_name + ".zip"

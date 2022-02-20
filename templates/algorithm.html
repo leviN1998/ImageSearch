@@ -58,6 +58,11 @@
         <figcaption>{{ score[1] }}</figcaption>
     </figure>
     {% endfor %}
+    {% if query_img %}
+    <div class="container" style="float: left; margin-right: 10px; margin-bottom: 10px;" align="left">
+		<a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
+    </div>
+    {% endif %}
 </div>
     </body>
 </html>

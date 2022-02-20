@@ -70,19 +70,20 @@ if __name__ == '__main__':
     # database_tools.save_db_info("final.db", "database_log_after.txt")
     # ImageCrawling.calculate_all_features("final.db", count=0)
     # ImageCrawling.print_db_info("final.db")
-    ImageCrawling.calculate_metric("final.db", "big")
+    # ImageCrawling.calculate_metric("final.db", "big")
 
 
     ## -------------- Testing andere Netze
-    # image = toolbox.binary_to_image(toolbox.get_test_image()[2])
+    image = toolbox.binary_to_image(toolbox.get_test_image()[2])
     # image.show()
-    # mobilenet_extractor = extractors.MobileNet()
-    # feature = mobilenet_extractor.extractImage(image)
+    mobilenet_extractor = extractors.MobileNet()
+    feature = mobilenet_extractor.extractImage(image)
     # ImageCrawling.print_db_info("test.db")
-    # print(ImageCrawling.get_images("test.db", "airplane"))
+    # print(ImageCrawling.get_images("final.db", "airplane"))
 
 
-    # images = ImageCrawling.get_nearest_images_2("test.db", image, "big", "mobile_net", feature, count=10)
+    images, path = ImageCrawling.get_nearest_images_2("final.db", image, "big", "mobile_net", feature, count=10)
+    print(path)
     # buf = io.BytesIO()
     # np.save(buf, feature)
     # binary_feature =  buf.getvalue()
