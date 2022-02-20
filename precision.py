@@ -12,7 +12,8 @@ def precision(database: str, network: str):
     precision_for_all = []
 
     for k in keywords:
-        test_bi_feas = database_tools.get_test_images_for_class(database, network, "big", k)[:10]
+        print("class:" + k)
+        test_bi_feas = database_tools.get_test_images_for_class(database, network, "big", k)[:5]
         for fea in test_bi_feas:
             # feature = extractors.MobileNet.extractImage(img)
             classes = ImageCrawling.search_for_classes(database, "big", network, fea, count=50)
@@ -21,9 +22,9 @@ def precision(database: str, network: str):
                 if k == c:
                     count += 1
             pre = count/50
-            # print(pre)
+            print(pre)
             precision_for_keyword.append(pre)
-        avg_pre = sum(precision_for_keyword)/10
+        avg_pre = statistics.mean(precision_for_keyword)
         print("precision for class:" + str(avg_pre))
         precision_for_all.append(avg_pre)
     return statistics.mean(precision_for_all)
