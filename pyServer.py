@@ -89,7 +89,7 @@ def recv():
             
 
             # # at the moment network needs to be "mobile_net"
-            images = ImageCrawling.get_nearest_images_2("final.db", query_image, "big", network, feature, count=10)
+            images, link = ImageCrawling.get_nearest_images_2("final.db", query_image, "big", network, feature, count=10)
             # zum lokal testen
             # images = ImageCrawling.get_nearest_images_2("test.db", query_image, "big", network, feature, count=10)
 
