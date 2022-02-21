@@ -26,11 +26,12 @@
             <label for="euklid">Euklid/Linear</label>
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
+            {% if query_img %}
+            <div class="w3-button" id="download" target="_blank" href="/return-files/{{ download_link }}"></div>
+            <label for="download"> Download </label>
+            {% endif %}
         </div>
-        {% if query_img %}
-        <div class="w3-button" id="download" target="_blank" href="/return-files/{{ download_link }}"></div>
-        <label for="download"> Download </label>
-        {% endif %}
+
         <div class="slidecontainer">
             <input type="range" min="1" max="100" name="searchsize" {% if search_size %} value = {{search_size}} {% else %} value="100" {% endif %}class="slider" id="myRange">
             <p>Size of search-space: <span id="demo"></span></p>
