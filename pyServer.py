@@ -51,6 +51,7 @@ def recv():
             while True:
                 data = conn.recv(104857600)
                 if data.decode('utf-8') == "END":
+                    time.sleep(0.005)
                     print("End")
                     break
                 query_image += data.decode('utf-8')
