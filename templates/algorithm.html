@@ -27,7 +27,7 @@
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
             {% if query_img %}
-            <input type="button" id="download" href="/return-files/{{ download_link }}">
+            <input type="radio" id="download" value="/return-files/{{ download_link }}">
             <label for="download"> Download </label>
             {% endif %}
         </div>
