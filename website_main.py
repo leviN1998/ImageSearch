@@ -115,7 +115,7 @@ def mobilenet():
             checked = 'euklid'
 
         return render_template('algorithm.html', extractor="MobileNet", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=mobilenet_txt, download_link=link)
+                               extractor_text=mobilenet_txt, download_link=link, search_size=search_size)
     else:
         return render_template('algorithm.html', extractor="MobileNet", checked='',
                                extractor_text=mobilenet_txt)
@@ -126,6 +126,7 @@ def mobilenetv2():
 
     if request.method == 'POST':
         file = request.files['query_img']
+        search_size = int(request.form.get('searchsize'))
 
         # results = ...
         img = Image.open(file.stream).convert("RGB")  # PIL image
@@ -139,7 +140,7 @@ def mobilenetv2():
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="MobileNet Version 2", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=mobilenetv2_txt, download_link=link)
+                               extractor_text=mobilenetv2_txt, download_link=link, search_size=search_size)
     else:
         return render_template('algorithm.html', extractor="MobileNet Version 2", extractor_text=mobilenetv2_txt)
 
@@ -148,6 +149,7 @@ def mobilenetv2():
 def nasnet():
     if request.method == 'POST':
         file = request.files['query_img']
+        search_size = int(request.form.get('searchsize'))
 
         # results = ...
         img = Image.open(file.stream).convert("RGB")  # PIL image
@@ -160,7 +162,7 @@ def nasnet():
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="NasNet", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=nasnet_txt, download_link=link)
+                               extractor_text=nasnet_txt, download_link=link, search_size=search_size)
     else:
         return render_template('algorithm.html', extractor="NasNet", extractor_text=nasnet_txt)
 
@@ -169,6 +171,7 @@ def nasnet():
 def xception():
     if request.method == 'POST':
         file = request.files['query_img']
+        search_size = int(request.form.get('searchsize'))
 
         # results = ...
         img = Image.open(file.stream).convert("RGB")  # PIL image
@@ -181,7 +184,7 @@ def xception():
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="Xception", query_img=uploaded_img, checked=checked, scores=results, t=t,
-                               extractor_text=xception_txt, download_link=link)
+                               extractor_text=xception_txt, download_link=link, search_size=search_size)
     else:
         return render_template('algorithm.html', extractor="Xception", extractor_text=xception_txt)
 
@@ -190,6 +193,7 @@ def xception():
 def vgg16():
     if request.method == 'POST':
         file = request.files['query_img']
+        search_size = int(request.form.get('searchsize'))
 
         # results = ...
         img = Image.open(file.stream).convert("RGB")  # PIL image
@@ -202,7 +206,7 @@ def vgg16():
         checked = 'hashing'
 
         return render_template('algorithm.html', extractor="VGG16", query_img=uploaded_img, checked=checked, scores=results, t=t
-                               , extractor_text=vgg16_txt, download_link=link)
+                               , extractor_text=vgg16_txt, download_link=link, search_size=search_size)
 
     else:
         return render_template('algorithm.html', extractor="VGG16", extractor_text=vgg16_txt)
