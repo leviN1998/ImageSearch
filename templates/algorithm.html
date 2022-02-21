@@ -27,11 +27,11 @@
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
             {% if query_img %}
-            <div class="w3-button" id="download" target="_blank" href="/return-files/{{ download_link }}"></div>
-            <label for="download"> Download </label>
+            <div class="w3-button" id="download" target="_blank" href="/return-files/{{ download_link }}">
+                <a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
+            </div>
             {% endif %}
         </div>
-
         <div class="slidecontainer">
             <input type="range" min="1" max="100" name="searchsize" {% if search_size %} value = {{search_size}} {% else %} value="100" {% endif %}class="slider" id="myRange">
             <p>Size of search-space: <span id="demo"></span></p>
@@ -63,7 +63,11 @@
         <figcaption class="figcaption">{{ score[1] }}</figcaption>
     </figure>
     {% endfor %}
-
+    {% if query_img %}
+    <div class="container" style="float: left; margin-right: 10px; margin-bottom: 10px;" align="left">
+		<a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
+    </div>
+    {% endif %}
 </div>
     </body>
 </html>
