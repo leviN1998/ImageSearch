@@ -72,10 +72,22 @@
 
 {% block whiteanything %}
     {% if query_img %}
-    <div class="container" style="margin-right: auto; margin-left: auto; margin-bottom: 10px; margin-top: auto;">
+    <div id="bottom-stuff" class="container" style="margin-right: auto; margin-left: auto; margin-bottom: 10px; margin-top: auto;">
 		<a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
     </div>
     {% endif %}
+
+<style>
+#bottom-stuff {
+    padding: 0px 30px 30px 30px;
+    margin-left:150px;
+    position: relative;
+}
+
+#bottom{
+    position: absolute; bottom: 0px;
+}
+</style>
 {% endblock %}
 
 {% block bottom %}{% endblock %}
