@@ -26,15 +26,6 @@
             <label for="euklid">Euklid/Linear</label>
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
-            {% if query_img %}
-            <input type="radio" id="download" href="/return-files/{{ download_link }}" target="blank">
-            <label for="download">Download</label><br>
-            <!--
-            <div class="w3-button" id="download" target="_blank" href="/return-files/{{ download_link }}">
-                <a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
-            </div>
-            -->
-            {% endif %}
         </div>
         <div class="slidecontainer">
             <input type="range" min="1" max="100" name="searchsize" {% if search_size %} value = {{search_size}} {% else %} value="100" {% endif %}class="slider" id="myRange">
@@ -80,6 +71,11 @@
 {% endblock %}
 
 {% block whiteanything %}
+    {% if query_img %}
+    <div class="container" style="margin-right: auto; margin-left: auto;">
+		<a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
+    </div>
+    {% endif %}
 {% endblock %}
 
 {% block bottom %}{% endblock %}
