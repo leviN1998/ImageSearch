@@ -27,9 +27,13 @@
             <input type="radio" id="hashing" name="search" value="hashing" {% if checked == 'hashing'%} checked='checked' {% endif %}>
             <label for="hashing">Hashing</label><br>
             {% if query_img %}
+            <input type="radio" id="download" {% if checked href="/return-files/{{ download_link }}" target="blank" %}>
+            <label for="download">Download</label><br>
+            <!--
             <div class="w3-button" id="download" target="_blank" href="/return-files/{{ download_link }}">
                 <a href="/return-files/{{ download_link }}" target="blank"><button class='btn btn-default'>Download</button></a>
             </div>
+            -->
             {% endif %}
         </div>
         <div class="slidecontainer">
