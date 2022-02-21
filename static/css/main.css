@@ -145,6 +145,10 @@ body.dark-theme {
     color: var(--text-color)
 }
 
+.figcaption {
+    color: var(--text-color)
+}
+
 body {
   background: var(--bkg-color);
 }

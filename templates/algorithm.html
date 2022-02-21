@@ -55,7 +55,7 @@
     {% for score in scores %}
     <figure style="float: left; margin-right: 10px; margin-bottom: 10px;">
         <img src="data:image/format;base64,{{ score[0] }}" height="200px" max-width="300px" min-width="250px">
-        <figcaption>{{ score[1] }}</figcaption>
+        <figcaption class="figcaption">{{ score[1] }}</figcaption>
     </figure>
     {% endfor %}
     {% if query_img %}
